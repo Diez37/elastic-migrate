@@ -14,8 +14,8 @@ func (field *Alias) GetType() Type {
 
 func (field *Alias) Source() (interface{}, error) {
     // {
-    //      "type": "alias",
-    //		"path": "distance"
+    //  "type": "alias",
+    //  "path": "distance"
     // }
 
     source := map[string]interface{}{}

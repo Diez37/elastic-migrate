@@ -26,11 +26,11 @@ func (field *Binary) GetType() Type {
 }
 
 func (field *Binary) Source() (interface{}, error) {
-    //	{
-    //		"type": "binary",
-    //		"doc_values": false,
-    //		"store": false
-    //	}
+    // {
+    //  "type": "binary",
+    //  "doc_values": false,
+    //  "store": false
+    // }
 
     source := map[string]interface{}{}
 

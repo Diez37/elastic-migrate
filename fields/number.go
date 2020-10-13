@@ -105,17 +105,17 @@ func (field *Number) GetType() Type {
 
 func (field *Number) Source() (interface{}, error) {
     // {
-    //		"type": "long",
-    //		"coerce": false,
-    //		"boost": 2,
-    //		"doc_values": false,
-    //		"ignore_malformed": true,
-    //		"index": true,
-    //		"null_value": "NULL",
-    //		"store": true,
-    //		"meta": {
-    //          "unit": "ms"
-    //        }
+    //  "type": "long",
+    //  "coerce": false,
+    //  "boost": 2,
+    //  "doc_values": false,
+    //  "ignore_malformed": true,
+    //  "index": true,
+    //  "null_value": "NULL",
+    //  "store": true,
+    //  "meta": {
+    //    "unit": "ms"
+    //  }
     // }
 
     source := map[string]interface{}{}

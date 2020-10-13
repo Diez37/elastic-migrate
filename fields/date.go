@@ -1,6 +1,10 @@
 package fields
 
-import "strings"
+import (
+    "fmt"
+    "strings"
+    "time"
+)
 
 type Date struct {
     docValues       *bool
@@ -31,7 +35,7 @@ func (field *Date) SetDocValues(docValues bool) *Date {
 
 func (field *Date) SetIgnoreMalformed(ignoreMalformed bool) *Date {
     field.ignoreMalformed = &ignoreMalformed
-
+    fmt.Println(time.Now().Format(time.RFC3339))
     return field
 }
 
@@ -83,8 +87,8 @@ func (field *Date) GetType() Type {
 
 func (field *Date) Source() (interface{}, error) {
     // {
-    //		"type":   "date",
-    //		"format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis"
+    //  "type":   "date",
+    //  "format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis"
     // }
 
     source := map[string]interface{}{}

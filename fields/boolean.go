@@ -54,17 +54,17 @@ func (field *Boolean) GetType() Type {
 }
 
 func (field *Boolean) Source() (interface{}, error) {
-    //	{
-    //		"type": "boolean",
-    //		"doc_values": false,
-    //		"store": false,
-    //		"boost": 2.5,
-    //		"index": true,
-    //		"null_value": "NULL",
-    //		"meta": {
-    //          "unit": "ms"
-    //        }
-    //	}
+    // {
+    //  "type": "boolean",
+    //  "doc_values": false,
+    //  "store": false,
+    //  "boost": 2.5,
+    //  "index": true,
+    //  "null_value": "NULL",
+    //  "meta": {
+    //    "unit": "ms"
+    //  }
+    // }
 
     source := map[string]interface{}{}
 

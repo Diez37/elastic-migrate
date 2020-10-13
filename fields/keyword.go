@@ -110,29 +110,29 @@ func (field *Keyword) GetType() Type {
 }
 
 func (field *Keyword) Source() (interface{}, error) {
-    //	{
-    //		"type": "keyword",
-    //		"doc_values": false,
-    //		"store": false,
-    //		"boost": 2.5,
-    //		"index": true,
-    //		"null_value": "NULL",
-    //		"meta": {
-    //          "unit": "ms"
-    //        },
-    //		"eager_global_ordinals": true,
-    //		"fields": {
-    //          "raw": {
-    //            "type":  "keyword"
-    //          }
-    //        },
-    //		"ignore_above": 256
-    //		"index_options": "docs",
-    //		"norms": false,
-    //		"similarity": "BM25",
-    //		"normalizer": "lowercase",
-    //		"split_queries_on_whitespace": false
-    //	}
+    // {
+    //  "type": "keyword",
+    //  "doc_values": false,
+    //  "store": false,
+    //  "boost": 2.5,
+    //  "index": true,
+    //  "null_value": "NULL",
+    //  "meta": {
+    //    "unit": "ms"
+    //  },
+    //  "eager_global_ordinals": true,
+    //  "fields": {
+    //    "raw": {
+    //      "type":  "keyword"
+    //    }
+    //  },
+    //  "ignore_above": 256
+    //  "index_options": "docs",
+    //  "norms": false,
+    //  "similarity": "BM25",
+    //  "normalizer": "lowercase",
+    //  "split_queries_on_whitespace": false
+    // }
 
     source := map[string]interface{}{}
 
