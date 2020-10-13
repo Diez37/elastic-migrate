@@ -1,9 +1,7 @@
 package fields
 
 import (
-    "fmt"
     "strings"
-    "time"
 )
 
 type Date struct {
@@ -35,7 +33,7 @@ func (field *Date) SetDocValues(docValues bool) *Date {
 
 func (field *Date) SetIgnoreMalformed(ignoreMalformed bool) *Date {
     field.ignoreMalformed = &ignoreMalformed
-    fmt.Println(time.Now().Format(time.RFC3339))
+
     return field
 }
 
