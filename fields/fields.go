@@ -20,6 +20,13 @@ const (
     TypeObject            Type = "object"
     TypeNested            Type = "nested"
     TypeJoin              Type = "join"
+    TypeRangeInteger      Type = "integer_range"
+    TypeRangeFloat        Type = "float_range"
+    TypeRangeLong         Type = "long_range"
+    TypeRangeDouble       Type = "double_range"
+    TypeRangeIp           Type = "ip_range"
+    TypeRangeDate         Type = "date_range"
+    TypeIp                Type = "ip"
 
     IndexOptionDocs      IndexOption = "docs"
     IndexOptionFreqs     IndexOption = "freqs"
