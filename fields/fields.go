@@ -30,6 +30,7 @@ const (
     TypeText              Type = "text"
     TypeSearchAsYouType   Type = "search_as_you_type"
     TypeTokenCount        Type = "token_count"
+    TypeRankFeature       Type = "rank_feature"
 
     IndexOptionDocs      IndexOption = "docs"
     IndexOptionFreqs     IndexOption = "freqs"
