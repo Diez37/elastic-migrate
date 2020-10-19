@@ -32,6 +32,7 @@ const (
     TypeTokenCount        Type = "token_count"
     TypeRankFeature       Type = "rank_feature"
     TypeRankFeatures      Type = "rank_features"
+    TypeGeoPoint          Type = "geo_point"
 
     IndexOptionDocs      IndexOption = "docs"
     IndexOptionFreqs     IndexOption = "freqs"
