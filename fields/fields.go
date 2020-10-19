@@ -28,6 +28,7 @@ const (
     TypeRangeDate         Type = "date_range"
     TypeIp                Type = "ip"
     TypeText              Type = "text"
+    TypeSearchAsYouType   Type = "search_as_you_type"
 
     IndexOptionDocs      IndexOption = "docs"
     IndexOptionFreqs     IndexOption = "freqs"
@@ -92,9 +93,14 @@ const (
     TermVectorWithPositionsOffsets         TermVector = "with_positions_offsets"
     TermVectorWithPositionsPayloads        TermVector = "with_positions_payloads"
     TermVectorWithPositionsOffsetsPayloads TermVector = "with_positions_offsets_payloads"
+
+    ShingleSizeMaximum int = 4
+    ShingleSizeMinimum int = 2
 )
 
 var ErrorSearchAnalyzer = errors.New("analyzer must be set when search_analyzer is set")
+var ErrorShingleSizeMaximum = errors.New("max_shingle_size maximum value = 4")
+var ErrorShingleSizeMinimum = errors.New("max_shingle_size minimum value = 2")
 var ErrorDynamicUnknownType = errors.New("dynamic unknown type")
 var ErrorSearchQuoteAnalyzer = errors.New("analyzer and search_analyzer must be set when search_quote_analyzer is set")
 var ErrorScalingFactorNotSet = errors.New("scaling_factor required field on scaled_float type")
