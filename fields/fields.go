@@ -27,6 +27,7 @@ const (
     TypeRangeIp           Type = "ip_range"
     TypeRangeDate         Type = "date_range"
     TypeIp                Type = "ip"
+    TypeText              Type = "text"
 
     IndexOptionDocs      IndexOption = "docs"
     IndexOptionFreqs     IndexOption = "freqs"
@@ -39,8 +40,8 @@ const (
 
     NormalizerLowercase Normalizer = "lowercase"
 
-    // @see https://www.elastic.co/guide/en/elasticsearch/reference/7.x/date.html
-    // @see https://docs.oracle.com/javase/8/docs/api/java/util/Locale.html
+    // see https://www.elastic.co/guide/en/elasticsearch/reference/7.x/date.html
+    // see https://docs.oracle.com/javase/8/docs/api/java/util/Locale.html
     LocalRoot               Local = "ROOT" // default in elasticsearch
     LocalCanada             Local = "CANADA"
     LocalEnglish            Local = "ENGLISH"
@@ -70,32 +71,43 @@ const (
 
     DateFormatSeparator = "||"
 
-    // @see https://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html
-    ANSIC      DateFormat = "EE MMM d HH:mm:ss yyyy"
-    UnixDate   DateFormat = "EE MMM d HH:mm:ss z yyyy"
-    RubyDate   DateFormat = "EE MMM dd HH:mm:ss Z yyyy"
-    RFC822     DateFormat = "dd MMM yy HH:mm z"
-    RFC822Z    DateFormat = "dd MMM yy HH:mm Z" // RFC822 with numeric zone
-    RFC850     DateFormat = "EEEE, dd-MMM-yy HH:mm:ss z"
-    RFC1123    DateFormat = "EEE, dd MMM yyyy HH:mm:ss z"
-    RFC1123Z   DateFormat = "EEE, dd MMM yyyy HH:mm:ss Z" // RFC1123 with numeric zone
-    RFC3339    DateFormat = "yyyy-MM-dd'T'HH:mm:ssXXX"
-    Kitchen    DateFormat = "H:mma"
-    Stamp      DateFormat = "MMM d HH:mm:ss"
-    StampMilli DateFormat = "MMM d HH:mm:ss'.'S"
+    // see https://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html
+    DateFormatANSIC      DateFormat = "EE MMM d HH:mm:ss yyyy"
+    DateFormatUnixDate   DateFormat = "EE MMM d HH:mm:ss z yyyy"
+    DateFormatRubyDate   DateFormat = "EE MMM dd HH:mm:ss Z yyyy"
+    DateFormatRFC822     DateFormat = "dd MMM yy HH:mm z"
+    DateFormatRFC822Z    DateFormat = "dd MMM yy HH:mm Z" // RFC822 with numeric zone
+    DateFormatRFC850     DateFormat = "EEEE, dd-MMM-yy HH:mm:ss z"
+    DateFormatRFC1123    DateFormat = "EEE, dd MMM yyyy HH:mm:ss z"
+    DateFormatRFC1123Z   DateFormat = "EEE, dd MMM yyyy HH:mm:ss Z" // RFC1123 with numeric zone
+    DateFormatRFC3339    DateFormat = "yyyy-MM-dd'T'HH:mm:ssXXX"
+    DateFormatKitchen    DateFormat = "H:mma"
+    DateFormatStamp      DateFormat = "MMM d HH:mm:ss"
+    DateFormatStampMilli DateFormat = "MMM d HH:mm:ss'.'S"
+
+    TermVectorNo                           TermVector = "no"
+    TermVectorYes                          TermVector = "yes"
+    TermVectorWithPositions                TermVector = "with_positions"
+    TermVectorWithOffsets                  TermVector = "with_offsets"
+    TermVectorWithPositionsOffsets         TermVector = "with_positions_offsets"
+    TermVectorWithPositionsPayloads        TermVector = "with_positions_payloads"
+    TermVectorWithPositionsOffsetsPayloads TermVector = "with_positions_offsets_payloads"
 )
 
-var ErrorScalingFactorNotScaledFloat = errors.New("scaling_factor can only be installed in field type scaled_float")
-var ErrorScalingFactorNotSet = errors.New("scaling_factor required field on scaled_float type")
+var ErrorSearchAnalyzer = errors.New("analyzer must be set when search_analyzer is set")
 var ErrorDynamicUnknownType = errors.New("dynamic unknown type")
+var ErrorSearchQuoteAnalyzer = errors.New("analyzer and search_analyzer must be set when search_quote_analyzer is set")
+var ErrorScalingFactorNotSet = errors.New("scaling_factor required field on scaled_float type")
+var ErrorScalingFactorNotScaledFloat = errors.New("scaling_factor can only be installed in field type scaled_float")
 
 type Type string
-type IndexOption string
-type Similarity string
-type Normalizer string
 type Local string
 type Dynamic string
+type Similarity string
+type Normalizer string
 type DateFormat string
+type TermVector string
+type IndexOption string
 
 type Fielder interface {
     Sourcer
