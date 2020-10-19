@@ -29,6 +29,7 @@ const (
     TypeIp                Type = "ip"
     TypeText              Type = "text"
     TypeSearchAsYouType   Type = "search_as_you_type"
+    TypeTokenCount        Type = "token_count"
 
     IndexOptionDocs      IndexOption = "docs"
     IndexOptionFreqs     IndexOption = "freqs"
