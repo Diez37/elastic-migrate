@@ -150,8 +150,8 @@ func TestBoolean_Meta(t *testing.T) {
 }
 
 func TestBoolean_SetBoost(t *testing.T) {
-    var initBoost float64 = 9
-    var setBoost float64 = 5.4
+    initBoost := 9.0
+    setBoost := 5.4
 
     type fields struct {
         docValues *bool
