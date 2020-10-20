@@ -8,6 +8,10 @@ type Ip struct {
     nullValue interface{}
 }
 
+func NewIp() *Ip {
+    return &Ip{}
+}
+
 func (field *Ip) SetDocValues(docValues bool) *Ip {
     field.docValues = &docValues
 
