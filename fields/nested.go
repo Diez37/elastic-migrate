@@ -28,6 +28,7 @@ func (field *Nested) GetType() Type {
 func (field *Nested) Source() (interface{}, error) {
     // {
     //  "type": "nested",
+    //  "dynamic": true,
     //  "properties": {
     //    "age":  { "type": "integer" },
     //    "name": { "type": "text"  }
