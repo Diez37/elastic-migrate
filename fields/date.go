@@ -1,8 +1,6 @@
 package fields
 
-import (
-    "strings"
-)
+import "fmt"
 
 type Date struct {
     docValues       *bool
@@ -11,7 +9,7 @@ type Date struct {
     store           *bool
     boost           *float64
     locale          *Local
-    formats         []string
+    formats         []DateFormat
     nullValue       interface{}
     meta            []*Meta
     _type           Type
@@ -67,7 +65,7 @@ func (field *Date) Meta(metas ...*Meta) *Date {
     return field
 }
 
-func (field *Date) Formats(formats ...string) *Date {
+func (field *Date) Formats(formats ...DateFormat) *Date {
     field.formats = append(field.formats, formats...)
 
     return field
@@ -132,7 +130,13 @@ func (field *Date) Source() (interface{}, error) {
     }
 
     if len(field.formats) > 0 {
-        source["format"] = strings.Join(field.formats, DateFormatSeparator)
+        source["format"] = field.formats[0]
+
+        if len(field.formats) > 1 {
+            for _, format := range field.formats[1:] {
+                source["format"] = fmt.Sprintf("%s%s%s", source["format"], DateFormatSeparator, format)
+            }
+        }
     }
 
     return source, nil
