@@ -192,7 +192,7 @@ func (field *Keyword) Source() (interface{}, error) {
     }
 
     if field.indexOptions != nil {
-        source["index_options"] = field.indexOptions
+        source["index_options"] = *field.indexOptions
     }
 
     if field.norms != nil {
