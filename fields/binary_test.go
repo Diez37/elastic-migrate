@@ -49,12 +49,6 @@ func TestBinary_SetDocValues(t *testing.T) {
         want   *Binary
     }{
         {
-            name: "empty",
-            fields: fields{},
-            args: args{},
-            want: &Binary{},
-        },
-        {
             name: "true",
             fields: fields{},
             args: args{docValues: true},
@@ -100,12 +94,6 @@ func TestBinary_SetStore(t *testing.T) {
         args   args
         want   *Binary
     }{
-        {
-            name: "empty",
-            fields: fields{},
-            args: args{},
-            want: &Binary{},
-        },
         {
             name: "true",
             fields: fields{},
