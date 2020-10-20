@@ -35,7 +35,7 @@ func TestField_Source(t *testing.T) {
                 field: &Binary{docValues: &testFalse},
             },
             want: map[string]interface{}{
-                "type": TypeBinary,
+                "type":       TypeBinary,
                 "doc_values": false,
             },
         },

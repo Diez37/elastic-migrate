@@ -305,7 +305,7 @@ func TestDate_Meta(t *testing.T) {
 
 func TestDate_SetBoost(t *testing.T) {
     var initBoost float64 = 9
-    var setBoost float64 = 5.4
+    var setBoost = 5.4
 
     type fields struct {
         docValues       *bool
@@ -385,22 +385,22 @@ func TestDate_SetDocValues(t *testing.T) {
         want   *Date
     }{
         {
-            name: "true",
+            name:   "true",
             fields: fields{},
-            args: args{docValues: true},
-            want: &Date{docValues: &testTrue},
+            args:   args{docValues: true},
+            want:   &Date{docValues: &testTrue},
         },
         {
-            name: "false",
+            name:   "false",
             fields: fields{},
-            args: args{docValues: false},
-            want: &Date{docValues: &testFalse},
+            args:   args{docValues: false},
+            want:   &Date{docValues: &testFalse},
         },
         {
-            name: "change",
+            name:   "change",
             fields: fields{docValues: &testTrue},
-            args: args{docValues: false},
-            want: &Date{docValues: &testFalse},
+            args:   args{docValues: false},
+            want:   &Date{docValues: &testFalse},
         },
     }
     for _, tt := range tests {
@@ -447,22 +447,22 @@ func TestDate_SetIgnoreMalformed(t *testing.T) {
         want   *Date
     }{
         {
-            name: "true",
+            name:   "true",
             fields: fields{},
-            args: args{ignoreMalformed: true},
-            want: &Date{ignoreMalformed: &testTrue},
+            args:   args{ignoreMalformed: true},
+            want:   &Date{ignoreMalformed: &testTrue},
         },
         {
-            name: "false",
+            name:   "false",
             fields: fields{},
-            args: args{ignoreMalformed: false},
-            want: &Date{ignoreMalformed: &testFalse},
+            args:   args{ignoreMalformed: false},
+            want:   &Date{ignoreMalformed: &testFalse},
         },
         {
-            name: "change",
+            name:   "change",
             fields: fields{ignoreMalformed: &testTrue},
-            args: args{ignoreMalformed: false},
-            want: &Date{ignoreMalformed: &testFalse},
+            args:   args{ignoreMalformed: false},
+            want:   &Date{ignoreMalformed: &testFalse},
         },
     }
     for _, tt := range tests {
@@ -509,22 +509,22 @@ func TestDate_SetIndex(t *testing.T) {
         want   *Date
     }{
         {
-            name: "true",
+            name:   "true",
             fields: fields{},
-            args: args{index: true},
-            want: &Date{index: &testTrue},
+            args:   args{index: true},
+            want:   &Date{index: &testTrue},
         },
         {
-            name: "false",
+            name:   "false",
             fields: fields{},
-            args: args{index: false},
-            want: &Date{index: &testFalse},
+            args:   args{index: false},
+            want:   &Date{index: &testFalse},
         },
         {
-            name: "change",
+            name:   "change",
             fields: fields{index: &testTrue},
-            args: args{index: false},
-            want: &Date{index: &testFalse},
+            args:   args{index: false},
+            want:   &Date{index: &testFalse},
         },
     }
     for _, tt := range tests {
@@ -571,40 +571,40 @@ func TestDate_SetNullValue(t *testing.T) {
         want   *Date
     }{
         {
-            name: "empty",
+            name:   "empty",
             fields: fields{},
-            args: args{},
-            want: &Date{nullValue: nil},
+            args:   args{},
+            want:   &Date{nullValue: nil},
         },
         {
-            name: "int",
+            name:   "int",
             fields: fields{},
-            args: args{nullValue: 1},
-            want: &Date{nullValue: 1},
+            args:   args{nullValue: 1},
+            want:   &Date{nullValue: 1},
         },
         {
-            name: "float",
+            name:   "float",
             fields: fields{},
-            args: args{nullValue: 4.5},
-            want: &Date{nullValue: 4.5},
+            args:   args{nullValue: 4.5},
+            want:   &Date{nullValue: 4.5},
         },
         {
-            name: "string",
+            name:   "string",
             fields: fields{},
-            args: args{nullValue: "test"},
-            want: &Date{nullValue: "test"},
+            args:   args{nullValue: "test"},
+            want:   &Date{nullValue: "test"},
         },
         {
-            name: "bool",
+            name:   "bool",
             fields: fields{},
-            args: args{nullValue: true},
-            want: &Date{nullValue: true},
+            args:   args{nullValue: true},
+            want:   &Date{nullValue: true},
         },
         {
-            name: "change",
+            name:   "change",
             fields: fields{nullValue: "test"},
-            args: args{nullValue: true},
-            want: &Date{nullValue: true},
+            args:   args{nullValue: true},
+            want:   &Date{nullValue: true},
         },
     }
     for _, tt := range tests {
@@ -651,22 +651,22 @@ func TestDate_SetStore(t *testing.T) {
         want   *Date
     }{
         {
-            name: "true",
+            name:   "true",
             fields: fields{},
-            args: args{store: true},
-            want: &Date{store: &testTrue},
+            args:   args{store: true},
+            want:   &Date{store: &testTrue},
         },
         {
-            name: "false",
+            name:   "false",
             fields: fields{},
-            args: args{store: false},
-            want: &Date{store: &testFalse},
+            args:   args{store: false},
+            want:   &Date{store: &testFalse},
         },
         {
-            name: "change",
+            name:   "change",
             fields: fields{store: &testTrue},
-            args: args{store: false},
-            want: &Date{store: &testFalse},
+            args:   args{store: false},
+            want:   &Date{store: &testFalse},
         },
     }
     for _, tt := range tests {
@@ -713,7 +713,7 @@ func TestDate_Source(t *testing.T) {
         wantErr bool
     }{
         {
-            name: "empty date",
+            name:   "empty date",
             fields: fields{_type: TypeDate},
             want: map[string]interface{}{
                 "type": TypeDate,
@@ -721,7 +721,7 @@ func TestDate_Source(t *testing.T) {
             wantErr: false,
         },
         {
-            name: "empty date nano",
+            name:   "empty date nano",
             fields: fields{_type: TypeDateNano},
             want: map[string]interface{}{
                 "type": TypeDateNano,
@@ -729,73 +729,73 @@ func TestDate_Source(t *testing.T) {
             wantErr: false,
         },
         {
-            name: "docValues",
+            name:   "docValues",
             fields: fields{docValues: &testTrue},
             want: map[string]interface{}{
-                "type": Type(""),
+                "type":       Type(""),
                 "doc_values": true,
             },
             wantErr: false,
         },
         {
-            name: "ignoreMalformed",
+            name:   "ignoreMalformed",
             fields: fields{ignoreMalformed: &testTrue},
             want: map[string]interface{}{
-                "type": Type(""),
+                "type":             Type(""),
                 "ignore_malformed": true,
             },
             wantErr: false,
         },
         {
-            name: "index",
+            name:   "index",
             fields: fields{index: &testTrue},
             want: map[string]interface{}{
-                "type": Type(""),
+                "type":  Type(""),
                 "index": true,
             },
             wantErr: false,
         },
         {
-            name: "store",
+            name:   "store",
             fields: fields{store: &testTrue},
             want: map[string]interface{}{
-                "type": Type(""),
+                "type":  Type(""),
                 "store": true,
             },
             wantErr: false,
         },
         {
-            name: "boost",
+            name:   "boost",
             fields: fields{boost: &boost},
             want: map[string]interface{}{
-                "type": Type(""),
+                "type":  Type(""),
                 "boost": boost,
             },
             wantErr: false,
         },
         {
-            name: "locale",
+            name:   "locale",
             fields: fields{locale: &testLocalRoot},
             want: map[string]interface{}{
-                "type": Type(""),
+                "type":   Type(""),
                 "locale": testLocalRoot,
             },
             wantErr: false,
         },
         {
-            name: "formats",
+            name:   "formats",
             fields: fields{formats: []DateFormat{DateFormatANSIC, DateFormatEpochMillis}},
             want: map[string]interface{}{
-                "type": Type(""),
+                "type":   Type(""),
                 "format": "EE MMM d HH:mm:ss yyyy||epoch_millis",
             },
             wantErr: false,
         },
         {
-            name: "nullValue",
+            name:   "nullValue",
             fields: fields{nullValue: 2.7},
             want: map[string]interface{}{
-                "type": Type(""),
+                "type":       Type(""),
                 "null_value": 2.7,
             },
         },
@@ -803,18 +803,18 @@ func TestDate_Source(t *testing.T) {
             name: "meta",
             fields: fields{meta: []*Meta{
                 {
-                    name: "author",
+                    name:  "author",
                     value: "diez37",
                 },
                 {
-                    name: "version",
+                    name:  "version",
                     value: "0.0.1",
                 },
             }},
             want: map[string]interface{}{
                 "type": Type(""),
                 "meta": map[string]interface{}{
-                    "author": "diez37",
+                    "author":  "diez37",
                     "version": "0.0.1",
                 },
             },

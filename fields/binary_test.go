@@ -49,22 +49,22 @@ func TestBinary_SetDocValues(t *testing.T) {
         want   *Binary
     }{
         {
-            name: "true",
+            name:   "true",
             fields: fields{},
-            args: args{docValues: true},
-            want: &Binary{docValues: &testTrue},
+            args:   args{docValues: true},
+            want:   &Binary{docValues: &testTrue},
         },
         {
-            name: "false",
+            name:   "false",
             fields: fields{},
-            args: args{docValues: false},
-            want: &Binary{docValues: &testFalse},
+            args:   args{docValues: false},
+            want:   &Binary{docValues: &testFalse},
         },
         {
-            name: "change",
+            name:   "change",
             fields: fields{docValues: &testTrue},
-            args: args{docValues: false},
-            want: &Binary{docValues: &testFalse},
+            args:   args{docValues: false},
+            want:   &Binary{docValues: &testFalse},
         },
     }
     for _, tt := range tests {
@@ -95,22 +95,22 @@ func TestBinary_SetStore(t *testing.T) {
         want   *Binary
     }{
         {
-            name: "true",
+            name:   "true",
             fields: fields{},
-            args: args{store: true},
-            want: &Binary{store: &testTrue},
+            args:   args{store: true},
+            want:   &Binary{store: &testTrue},
         },
         {
-            name: "false",
+            name:   "false",
             fields: fields{},
-            args: args{store: false},
-            want: &Binary{store: &testFalse},
+            args:   args{store: false},
+            want:   &Binary{store: &testFalse},
         },
         {
-            name: "change",
+            name:   "change",
             fields: fields{store: &testTrue},
-            args: args{store: false},
-            want: &Binary{store: &testFalse},
+            args:   args{store: false},
+            want:   &Binary{store: &testFalse},
         },
     }
     for _, tt := range tests {
@@ -138,7 +138,7 @@ func TestBinary_Source(t *testing.T) {
         wantErr bool
     }{
         {
-            name: "fields empty",
+            name:   "fields empty",
             fields: fields{},
             want: map[string]interface{}{
                 "type": TypeBinary,
@@ -146,37 +146,37 @@ func TestBinary_Source(t *testing.T) {
             wantErr: false,
         },
         {
-            name: "docValues true",
+            name:   "docValues true",
             fields: fields{docValues: &testTrue},
             want: map[string]interface{}{
-                "type": TypeBinary,
+                "type":       TypeBinary,
                 "doc_values": true,
             },
             wantErr: false,
         },
         {
-            name: "docValues false",
+            name:   "docValues false",
             fields: fields{docValues: &testFalse},
             want: map[string]interface{}{
-                "type": TypeBinary,
+                "type":       TypeBinary,
                 "doc_values": false,
             },
             wantErr: false,
         },
         {
-            name: "store true",
+            name:   "store true",
             fields: fields{store: &testTrue},
             want: map[string]interface{}{
-                "type": TypeBinary,
+                "type":  TypeBinary,
                 "store": true,
             },
             wantErr: false,
         },
         {
-            name: "store false",
+            name:   "store false",
             fields: fields{store: &testFalse},
             want: map[string]interface{}{
-                "type": TypeBinary,
+                "type":  TypeBinary,
                 "store": false,
             },
             wantErr: false,

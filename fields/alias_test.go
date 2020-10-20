@@ -15,9 +15,9 @@ func TestAlias_GetType(t *testing.T) {
         want   Type
     }{
         {
-            name: "type alias",
+            name:   "type alias",
             fields: fields{path: "alis"},
-            want: TypeAlias,
+            want:   TypeAlias,
         },
     }
     for _, tt := range tests {
@@ -43,7 +43,7 @@ func TestAlias_Source(t *testing.T) {
         wantErr bool
     }{
         {
-            name: "no error",
+            name:   "no error",
             fields: fields{path: "test"},
             want: map[string]interface{}{
                 "type": TypeAlias,

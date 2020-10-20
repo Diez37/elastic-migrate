@@ -174,25 +174,25 @@ func TestFielddataFrequencyFilter_Source(t *testing.T) {
             wantErr: false,
         },
         {
-            name:    "max",
-            fields:  fields{max: &value},
-            want:    map[string]interface{}{
+            name:   "max",
+            fields: fields{max: &value},
+            want: map[string]interface{}{
                 "max": value,
             },
             wantErr: false,
         },
         {
-            name:    "min",
-            fields:  fields{min: &value},
-            want:    map[string]interface{}{
+            name:   "min",
+            fields: fields{min: &value},
+            want: map[string]interface{}{
                 "min": value,
             },
             wantErr: false,
         },
         {
-            name:    "minSegmentSize",
-            fields:  fields{minSegmentSize: &valueInt},
-            want:    map[string]interface{}{
+            name:   "minSegmentSize",
+            fields: fields{minSegmentSize: &valueInt},
+            want: map[string]interface{}{
                 "min_segment_size": valueInt,
             },
             wantErr: false,

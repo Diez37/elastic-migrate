@@ -16,9 +16,9 @@ func TestNested_GetType(t *testing.T) {
         want   Type
     }{
         {
-            name: "type nested",
+            name:   "type nested",
             fields: fields{},
-            want: TypeNested,
+            want:   TypeNested,
         },
     }
     for _, tt := range tests {
@@ -61,7 +61,7 @@ func TestNested_Properties(t *testing.T) {
             },
         },
         {
-            name:   "add",
+            name: "add",
             fields: fields{properties: []*Field{
                 {name: "3gram", field: &Text{}},
             }},
@@ -162,36 +162,36 @@ func TestNested_Source(t *testing.T) {
         wantErr bool
     }{
         {
-            name:    "empty",
-            fields:  fields{},
-            want:    map[string]interface{}{
+            name:   "empty",
+            fields: fields{},
+            want: map[string]interface{}{
                 "type": TypeNested,
             },
             wantErr: false,
         },
         {
-            name:    "dynamicEnabled",
-            fields:  fields{dynamic: &dynamicEnabled},
-            want:    map[string]interface{}{
-                "type": TypeNested,
+            name:   "dynamicEnabled",
+            fields: fields{dynamic: &dynamicEnabled},
+            want: map[string]interface{}{
+                "type":    TypeNested,
                 "dynamic": true,
             },
             wantErr: false,
         },
         {
-            name:    "dynamicDisabled",
-            fields:  fields{dynamic: &dynamicDisabled},
-            want:    map[string]interface{}{
-                "type": TypeNested,
+            name:   "dynamicDisabled",
+            fields: fields{dynamic: &dynamicDisabled},
+            want: map[string]interface{}{
+                "type":    TypeNested,
                 "dynamic": false,
             },
             wantErr: false,
         },
         {
-            name:    "dynamicStrict",
-            fields:  fields{dynamic: &dynamicStrict},
-            want:    map[string]interface{}{
-                "type": TypeNested,
+            name:   "dynamicStrict",
+            fields: fields{dynamic: &dynamicStrict},
+            want: map[string]interface{}{
+                "type":    TypeNested,
                 "dynamic": dynamicStrict,
             },
             wantErr: false,
@@ -203,15 +203,15 @@ func TestNested_Source(t *testing.T) {
             wantErr: true,
         },
         {
-            name:    "properties",
-            fields:  fields{properties: []*Field{
+            name: "properties",
+            fields: fields{properties: []*Field{
                 {name: "name", field: &Keyword{}},
             }},
-            want:    map[string]interface{}{
+            want: map[string]interface{}{
                 "type": TypeNested,
                 "properties": map[string]interface{}{
                     "name": map[string]interface{}{
-                      "type": TypeKeyword,
+                        "type": TypeKeyword,
                     },
                 },
             },

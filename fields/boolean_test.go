@@ -61,10 +61,10 @@ func TestBoolean_Meta(t *testing.T) {
         want   *Boolean
     }{
         {
-            name: "empty",
+            name:   "empty",
             fields: fields{},
-            args: args{},
-            want: &Boolean{},
+            args:   args{},
+            want:   &Boolean{},
         },
         {
             name:   "set meta",
@@ -219,22 +219,22 @@ func TestBoolean_SetDocValues(t *testing.T) {
         want   *Boolean
     }{
         {
-            name: "true",
+            name:   "true",
             fields: fields{},
-            args: args{docValues: true},
-            want: &Boolean{docValues: &testTrue},
+            args:   args{docValues: true},
+            want:   &Boolean{docValues: &testTrue},
         },
         {
-            name: "false",
+            name:   "false",
             fields: fields{},
-            args: args{docValues: false},
-            want: &Boolean{docValues: &testFalse},
+            args:   args{docValues: false},
+            want:   &Boolean{docValues: &testFalse},
         },
         {
-            name: "change",
+            name:   "change",
             fields: fields{docValues: &testTrue},
-            args: args{docValues: false},
-            want: &Boolean{docValues: &testFalse},
+            args:   args{docValues: false},
+            want:   &Boolean{docValues: &testFalse},
         },
     }
     for _, tt := range tests {
@@ -273,22 +273,22 @@ func TestBoolean_SetIndex(t *testing.T) {
         want   *Boolean
     }{
         {
-            name: "true",
+            name:   "true",
             fields: fields{},
-            args: args{index: true},
-            want: &Boolean{index: &testTrue},
+            args:   args{index: true},
+            want:   &Boolean{index: &testTrue},
         },
         {
-            name: "false",
+            name:   "false",
             fields: fields{},
-            args: args{index: false},
-            want: &Boolean{index: &testFalse},
+            args:   args{index: false},
+            want:   &Boolean{index: &testFalse},
         },
         {
-            name: "change",
+            name:   "change",
             fields: fields{index: &testTrue},
-            args: args{index: false},
-            want: &Boolean{index: &testFalse},
+            args:   args{index: false},
+            want:   &Boolean{index: &testFalse},
         },
     }
     for _, tt := range tests {
@@ -327,40 +327,40 @@ func TestBoolean_SetNullValue(t *testing.T) {
         want   *Boolean
     }{
         {
-            name: "empty",
+            name:   "empty",
             fields: fields{},
-            args: args{},
-            want: &Boolean{nullValue: nil},
+            args:   args{},
+            want:   &Boolean{nullValue: nil},
         },
         {
-            name: "int",
+            name:   "int",
             fields: fields{},
-            args: args{nullValue: 1},
-            want: &Boolean{nullValue: 1},
+            args:   args{nullValue: 1},
+            want:   &Boolean{nullValue: 1},
         },
         {
-            name: "float",
+            name:   "float",
             fields: fields{},
-            args: args{nullValue: 4.5},
-            want: &Boolean{nullValue: 4.5},
+            args:   args{nullValue: 4.5},
+            want:   &Boolean{nullValue: 4.5},
         },
         {
-            name: "string",
+            name:   "string",
             fields: fields{},
-            args: args{nullValue: "test"},
-            want: &Boolean{nullValue: "test"},
+            args:   args{nullValue: "test"},
+            want:   &Boolean{nullValue: "test"},
         },
         {
-            name: "bool",
+            name:   "bool",
             fields: fields{},
-            args: args{nullValue: true},
-            want: &Boolean{nullValue: true},
+            args:   args{nullValue: true},
+            want:   &Boolean{nullValue: true},
         },
         {
-            name: "change",
+            name:   "change",
             fields: fields{nullValue: "test"},
-            args: args{nullValue: true},
-            want: &Boolean{nullValue: true},
+            args:   args{nullValue: true},
+            want:   &Boolean{nullValue: true},
         },
     }
     for _, tt := range tests {
@@ -399,22 +399,22 @@ func TestBoolean_SetStore(t *testing.T) {
         want   *Boolean
     }{
         {
-            name: "true",
+            name:   "true",
             fields: fields{},
-            args: args{store: true},
-            want: &Boolean{store: &testTrue},
+            args:   args{store: true},
+            want:   &Boolean{store: &testTrue},
         },
         {
-            name: "false",
+            name:   "false",
             fields: fields{},
-            args: args{store: false},
-            want: &Boolean{store: &testFalse},
+            args:   args{store: false},
+            want:   &Boolean{store: &testFalse},
         },
         {
-            name: "change",
+            name:   "change",
             fields: fields{store: &testTrue},
-            args: args{store: false},
-            want: &Boolean{store: &testFalse},
+            args:   args{store: false},
+            want:   &Boolean{store: &testFalse},
         },
     }
     for _, tt := range tests {
@@ -452,49 +452,49 @@ func TestBoolean_Source(t *testing.T) {
         wantErr bool
     }{
         {
-            name: "empty",
+            name:   "empty",
             fields: fields{},
             want: map[string]interface{}{
                 "type": TypeBoolean,
             },
         },
         {
-            name: "docValues",
+            name:   "docValues",
             fields: fields{docValues: &testTrue},
             want: map[string]interface{}{
-                "type": TypeBoolean,
+                "type":       TypeBoolean,
                 "doc_values": true,
             },
         },
         {
-            name: "store",
+            name:   "store",
             fields: fields{store: &testTrue},
             want: map[string]interface{}{
-                "type": TypeBoolean,
+                "type":  TypeBoolean,
                 "store": true,
             },
         },
         {
-            name: "boost",
+            name:   "boost",
             fields: fields{boost: &boost},
             want: map[string]interface{}{
-                "type": TypeBoolean,
+                "type":  TypeBoolean,
                 "boost": boost,
             },
         },
         {
-            name: "index",
+            name:   "index",
             fields: fields{index: &testTrue},
             want: map[string]interface{}{
-                "type": TypeBoolean,
+                "type":  TypeBoolean,
                 "index": true,
             },
         },
         {
-            name: "nullValue",
+            name:   "nullValue",
             fields: fields{nullValue: 2.7},
             want: map[string]interface{}{
-                "type": TypeBoolean,
+                "type":       TypeBoolean,
                 "null_value": 2.7,
             },
         },
@@ -502,18 +502,18 @@ func TestBoolean_Source(t *testing.T) {
             name: "meta",
             fields: fields{meta: []*Meta{
                 {
-                    name: "author",
+                    name:  "author",
                     value: "diez37",
                 },
                 {
-                    name: "version",
+                    name:  "version",
                     value: "0.0.1",
                 },
             }},
             want: map[string]interface{}{
                 "type": TypeBoolean,
                 "meta": map[string]interface{}{
-                    "author": "diez37",
+                    "author":  "diez37",
                     "version": "0.0.1",
                 },
             },

@@ -44,7 +44,7 @@ func TestKeyword_Fields(t *testing.T) {
             },
         },
         {
-            name:   "add",
+            name: "add",
             fields: fields{fields: []*Field{
                 {name: "3gram", field: &Text{}},
             }},
@@ -107,9 +107,9 @@ func TestKeyword_GetType(t *testing.T) {
         want   Type
     }{
         {
-            name: "type keyword",
+            name:   "type keyword",
             fields: fields{},
-            want: TypeKeyword,
+            want:   TypeKeyword,
         },
     }
     for _, tt := range tests {
@@ -164,10 +164,10 @@ func TestKeyword_Meta(t *testing.T) {
         want   *Keyword
     }{
         {
-            name: "empty",
+            name:   "empty",
             fields: fields{},
-            args: args{},
-            want: &Keyword{},
+            args:   args{},
+            want:   &Keyword{},
         },
         {
             name:   "set meta",
@@ -354,22 +354,22 @@ func TestKeyword_SetDocValues(t *testing.T) {
         want   *Keyword
     }{
         {
-            name: "true",
+            name:   "true",
             fields: fields{},
-            args: args{docValues: true},
-            want: &Keyword{docValues: &testTrue},
+            args:   args{docValues: true},
+            want:   &Keyword{docValues: &testTrue},
         },
         {
-            name: "false",
+            name:   "false",
             fields: fields{},
-            args: args{docValues: false},
-            want: &Keyword{docValues: &testFalse},
+            args:   args{docValues: false},
+            want:   &Keyword{docValues: &testFalse},
         },
         {
-            name: "change",
+            name:   "change",
             fields: fields{docValues: &testTrue},
-            args: args{docValues: false},
-            want: &Keyword{docValues: &testFalse},
+            args:   args{docValues: false},
+            want:   &Keyword{docValues: &testFalse},
         },
     }
     for _, tt := range tests {
@@ -424,22 +424,22 @@ func TestKeyword_SetEagerGlobalOrdinals(t *testing.T) {
         want   *Keyword
     }{
         {
-            name: "true",
+            name:   "true",
             fields: fields{},
-            args: args{eagerGlobalOrdinals: true},
-            want: &Keyword{eagerGlobalOrdinals: &testTrue},
+            args:   args{eagerGlobalOrdinals: true},
+            want:   &Keyword{eagerGlobalOrdinals: &testTrue},
         },
         {
-            name: "false",
+            name:   "false",
             fields: fields{},
-            args: args{eagerGlobalOrdinals: false},
-            want: &Keyword{eagerGlobalOrdinals: &testFalse},
+            args:   args{eagerGlobalOrdinals: false},
+            want:   &Keyword{eagerGlobalOrdinals: &testFalse},
         },
         {
-            name: "change",
+            name:   "change",
             fields: fields{eagerGlobalOrdinals: &testTrue},
-            args: args{eagerGlobalOrdinals: false},
-            want: &Keyword{eagerGlobalOrdinals: &testFalse},
+            args:   args{eagerGlobalOrdinals: false},
+            want:   &Keyword{eagerGlobalOrdinals: &testFalse},
         },
     }
     for _, tt := range tests {
@@ -561,22 +561,22 @@ func TestKeyword_SetIndex(t *testing.T) {
         want   *Keyword
     }{
         {
-            name: "true",
+            name:   "true",
             fields: fields{},
-            args: args{index: true},
-            want: &Keyword{index: &testTrue},
+            args:   args{index: true},
+            want:   &Keyword{index: &testTrue},
         },
         {
-            name: "false",
+            name:   "false",
             fields: fields{},
-            args: args{index: false},
-            want: &Keyword{index: &testFalse},
+            args:   args{index: false},
+            want:   &Keyword{index: &testFalse},
         },
         {
-            name: "change",
+            name:   "change",
             fields: fields{index: &testTrue},
-            args: args{index: false},
-            want: &Keyword{index: &testFalse},
+            args:   args{index: false},
+            want:   &Keyword{index: &testFalse},
         },
     }
     for _, tt := range tests {
@@ -758,22 +758,22 @@ func TestKeyword_SetNorms(t *testing.T) {
         want   *Keyword
     }{
         {
-            name: "true",
+            name:   "true",
             fields: fields{},
-            args: args{norms: true},
-            want: &Keyword{norms: &testTrue},
+            args:   args{norms: true},
+            want:   &Keyword{norms: &testTrue},
         },
         {
-            name: "false",
+            name:   "false",
             fields: fields{},
-            args: args{norms: false},
-            want: &Keyword{norms: &testFalse},
+            args:   args{norms: false},
+            want:   &Keyword{norms: &testFalse},
         },
         {
-            name: "change",
+            name:   "change",
             fields: fields{norms: &testTrue},
-            args: args{norms: false},
-            want: &Keyword{norms: &testFalse},
+            args:   args{norms: false},
+            want:   &Keyword{norms: &testFalse},
         },
     }
     for _, tt := range tests {
@@ -828,40 +828,40 @@ func TestKeyword_SetNullValue(t *testing.T) {
         want   *Keyword
     }{
         {
-            name: "empty",
+            name:   "empty",
             fields: fields{},
-            args: args{},
-            want: &Keyword{nullValue: nil},
+            args:   args{},
+            want:   &Keyword{nullValue: nil},
         },
         {
-            name: "int",
+            name:   "int",
             fields: fields{},
-            args: args{nullValue: 1},
-            want: &Keyword{nullValue: 1},
+            args:   args{nullValue: 1},
+            want:   &Keyword{nullValue: 1},
         },
         {
-            name: "float",
+            name:   "float",
             fields: fields{},
-            args: args{nullValue: 4.5},
-            want: &Keyword{nullValue: 4.5},
+            args:   args{nullValue: 4.5},
+            want:   &Keyword{nullValue: 4.5},
         },
         {
-            name: "string",
+            name:   "string",
             fields: fields{},
-            args: args{nullValue: "test"},
-            want: &Keyword{nullValue: "test"},
+            args:   args{nullValue: "test"},
+            want:   &Keyword{nullValue: "test"},
         },
         {
-            name: "bool",
+            name:   "bool",
             fields: fields{},
-            args: args{nullValue: true},
-            want: &Keyword{nullValue: true},
+            args:   args{nullValue: true},
+            want:   &Keyword{nullValue: true},
         },
         {
-            name: "change",
+            name:   "change",
             fields: fields{nullValue: "test"},
-            args: args{nullValue: true},
-            want: &Keyword{nullValue: true},
+            args:   args{nullValue: true},
+            want:   &Keyword{nullValue: true},
         },
     }
     for _, tt := range tests {
@@ -983,22 +983,22 @@ func TestKeyword_SetSplitQueriesOnWhitespace(t *testing.T) {
         want   *Keyword
     }{
         {
-            name: "true",
+            name:   "true",
             fields: fields{},
-            args: args{splitQueriesOnWhitespace: true},
-            want: &Keyword{splitQueriesOnWhitespace: &testTrue},
+            args:   args{splitQueriesOnWhitespace: true},
+            want:   &Keyword{splitQueriesOnWhitespace: &testTrue},
         },
         {
-            name: "false",
+            name:   "false",
             fields: fields{},
-            args: args{splitQueriesOnWhitespace: false},
-            want: &Keyword{splitQueriesOnWhitespace: &testFalse},
+            args:   args{splitQueriesOnWhitespace: false},
+            want:   &Keyword{splitQueriesOnWhitespace: &testFalse},
         },
         {
-            name: "change",
+            name:   "change",
             fields: fields{splitQueriesOnWhitespace: &testTrue},
-            args: args{splitQueriesOnWhitespace: false},
-            want: &Keyword{splitQueriesOnWhitespace: &testFalse},
+            args:   args{splitQueriesOnWhitespace: false},
+            want:   &Keyword{splitQueriesOnWhitespace: &testFalse},
         },
     }
     for _, tt := range tests {
@@ -1053,22 +1053,22 @@ func TestKeyword_SetStore(t *testing.T) {
         want   *Keyword
     }{
         {
-            name: "true",
+            name:   "true",
             fields: fields{},
-            args: args{store: true},
-            want: &Keyword{store: &testTrue},
+            args:   args{store: true},
+            want:   &Keyword{store: &testTrue},
         },
         {
-            name: "false",
+            name:   "false",
             fields: fields{},
-            args: args{store: false},
-            want: &Keyword{store: &testFalse},
+            args:   args{store: false},
+            want:   &Keyword{store: &testFalse},
         },
         {
-            name: "change",
+            name:   "change",
             fields: fields{store: &testTrue},
-            args: args{store: false},
-            want: &Keyword{store: &testFalse},
+            args:   args{store: false},
+            want:   &Keyword{store: &testFalse},
         },
     }
     for _, tt := range tests {
@@ -1126,106 +1126,106 @@ func TestKeyword_Source(t *testing.T) {
         wantErr bool
     }{
         {
-            name:    "empty",
-            fields:  fields{},
-            want:    map[string]interface{}{
+            name:   "empty",
+            fields: fields{},
+            want: map[string]interface{}{
                 "type": TypeKeyword,
             },
             wantErr: false,
         },
         {
-            name: "docValues",
+            name:   "docValues",
             fields: fields{docValues: &testTrue},
             want: map[string]interface{}{
-                "type": TypeKeyword,
+                "type":       TypeKeyword,
                 "doc_values": true,
             },
         },
         {
-            name: "store",
+            name:   "store",
             fields: fields{store: &testTrue},
             want: map[string]interface{}{
-                "type": TypeKeyword,
+                "type":  TypeKeyword,
                 "store": true,
             },
         },
         {
-            name: "index",
+            name:   "index",
             fields: fields{index: &testTrue},
             want: map[string]interface{}{
-                "type": TypeKeyword,
+                "type":  TypeKeyword,
                 "index": true,
             },
         },
         {
-            name: "eagerGlobalOrdinals",
+            name:   "eagerGlobalOrdinals",
             fields: fields{eagerGlobalOrdinals: &testTrue},
             want: map[string]interface{}{
-                "type": TypeKeyword,
+                "type":                  TypeKeyword,
                 "eager_global_ordinals": true,
             },
         },
         {
-            name: "norms",
+            name:   "norms",
             fields: fields{norms: &testTrue},
             want: map[string]interface{}{
-                "type": TypeKeyword,
+                "type":  TypeKeyword,
                 "norms": true,
             },
         },
         {
-            name: "splitQueriesOnWhitespace",
+            name:   "splitQueriesOnWhitespace",
             fields: fields{splitQueriesOnWhitespace: &testTrue},
             want: map[string]interface{}{
-                "type": TypeKeyword,
+                "type":                        TypeKeyword,
                 "split_queries_on_whitespace": true,
             },
         },
         {
-            name: "boost",
+            name:   "boost",
             fields: fields{boost: &boost},
             want: map[string]interface{}{
-                "type": TypeKeyword,
+                "type":  TypeKeyword,
                 "boost": boost,
             },
         },
         {
-            name: "ignoreAbove",
+            name:   "ignoreAbove",
             fields: fields{ignoreAbove: &ignoreAbove},
             want: map[string]interface{}{
-                "type": TypeKeyword,
+                "type":         TypeKeyword,
                 "ignore_above": ignoreAbove,
             },
         },
         {
-            name: "indexOptions",
+            name:   "indexOptions",
             fields: fields{indexOptions: &indexOptions},
             want: map[string]interface{}{
-                "type": TypeKeyword,
+                "type":          TypeKeyword,
                 "index_options": indexOptions,
             },
         },
         {
-            name: "similarity",
+            name:   "similarity",
             fields: fields{similarity: &similarity},
             want: map[string]interface{}{
-                "type": TypeKeyword,
+                "type":       TypeKeyword,
                 "similarity": similarity,
             },
         },
         {
-            name: "normalizer",
+            name:   "normalizer",
             fields: fields{normalizer: &normalizer},
             want: map[string]interface{}{
-                "type": TypeKeyword,
+                "type":       TypeKeyword,
                 "normalizer": normalizer,
             },
         },
         {
-            name: "nullValue",
+            name:   "nullValue",
             fields: fields{nullValue: 2.7},
             want: map[string]interface{}{
-                "type": TypeKeyword,
+                "type":       TypeKeyword,
                 "null_value": 2.7,
             },
         },
@@ -1233,18 +1233,18 @@ func TestKeyword_Source(t *testing.T) {
             name: "meta",
             fields: fields{meta: []*Meta{
                 {
-                    name: "author",
+                    name:  "author",
                     value: "diez37",
                 },
                 {
-                    name: "version",
+                    name:  "version",
                     value: "0.0.1",
                 },
             }},
             want: map[string]interface{}{
                 "type": TypeKeyword,
                 "meta": map[string]interface{}{
-                    "author": "diez37",
+                    "author":  "diez37",
                     "version": "0.0.1",
                 },
             },

@@ -111,17 +111,17 @@ func TestIndexPrefixes_Source(t *testing.T) {
             wantErr: false,
         },
         {
-            name:    "minChars",
-            fields:  fields{minChars: &value},
-            want:    map[string]interface{}{
+            name:   "minChars",
+            fields: fields{minChars: &value},
+            want: map[string]interface{}{
                 "min_chars": value,
             },
             wantErr: false,
         },
         {
-            name:    "maxChars",
-            fields:  fields{maxChars: &value},
-            want:    map[string]interface{}{
+            name:   "maxChars",
+            fields: fields{maxChars: &value},
+            want: map[string]interface{}{
                 "max_chars": value,
             },
             wantErr: false,

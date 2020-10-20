@@ -17,9 +17,9 @@ func TestGeoPoint_GetType(t *testing.T) {
         want   Type
     }{
         {
-            name: "type geo point",
+            name:   "type geo point",
             fields: fields{},
-            want: TypeGeoPoint,
+            want:   TypeGeoPoint,
         },
     }
     for _, tt := range tests {
@@ -52,22 +52,22 @@ func TestGeoPoint_SetIgnoreMalformed(t *testing.T) {
         want   *GeoPoint
     }{
         {
-            name: "true",
+            name:   "true",
             fields: fields{},
-            args: args{ignoreMalformed: true},
-            want: &GeoPoint{ignoreMalformed: &testTrue},
+            args:   args{ignoreMalformed: true},
+            want:   &GeoPoint{ignoreMalformed: &testTrue},
         },
         {
-            name: "false",
+            name:   "false",
             fields: fields{},
-            args: args{ignoreMalformed: false},
-            want: &GeoPoint{ignoreMalformed: &testFalse},
+            args:   args{ignoreMalformed: false},
+            want:   &GeoPoint{ignoreMalformed: &testFalse},
         },
         {
-            name: "change",
+            name:   "change",
             fields: fields{ignoreMalformed: &testTrue},
-            args: args{ignoreMalformed: false},
-            want: &GeoPoint{ignoreMalformed: &testFalse},
+            args:   args{ignoreMalformed: false},
+            want:   &GeoPoint{ignoreMalformed: &testFalse},
         },
     }
     for _, tt := range tests {
@@ -100,22 +100,22 @@ func TestGeoPoint_SetIgnoreZValue(t *testing.T) {
         want   *GeoPoint
     }{
         {
-            name: "true",
+            name:   "true",
             fields: fields{},
-            args: args{ignoreZValue: true},
-            want: &GeoPoint{ignoreZValue: &testTrue},
+            args:   args{ignoreZValue: true},
+            want:   &GeoPoint{ignoreZValue: &testTrue},
         },
         {
-            name: "false",
+            name:   "false",
             fields: fields{},
-            args: args{ignoreZValue: false},
-            want: &GeoPoint{ignoreZValue: &testFalse},
+            args:   args{ignoreZValue: false},
+            want:   &GeoPoint{ignoreZValue: &testFalse},
         },
         {
-            name: "change",
+            name:   "change",
             fields: fields{ignoreZValue: &testTrue},
-            args: args{ignoreZValue: false},
-            want: &GeoPoint{ignoreZValue: &testFalse},
+            args:   args{ignoreZValue: false},
+            want:   &GeoPoint{ignoreZValue: &testFalse},
         },
     }
     for _, tt := range tests {
@@ -148,40 +148,40 @@ func TestGeoPoint_SetNullValue(t *testing.T) {
         want   *GeoPoint
     }{
         {
-            name: "empty",
+            name:   "empty",
             fields: fields{},
-            args: args{},
-            want: &GeoPoint{nullValue: nil},
+            args:   args{},
+            want:   &GeoPoint{nullValue: nil},
         },
         {
-            name: "int",
+            name:   "int",
             fields: fields{},
-            args: args{nullValue: 1},
-            want: &GeoPoint{nullValue: 1},
+            args:   args{nullValue: 1},
+            want:   &GeoPoint{nullValue: 1},
         },
         {
-            name: "float",
+            name:   "float",
             fields: fields{},
-            args: args{nullValue: 4.5},
-            want: &GeoPoint{nullValue: 4.5},
+            args:   args{nullValue: 4.5},
+            want:   &GeoPoint{nullValue: 4.5},
         },
         {
-            name: "string",
+            name:   "string",
             fields: fields{},
-            args: args{nullValue: "test"},
-            want: &GeoPoint{nullValue: "test"},
+            args:   args{nullValue: "test"},
+            want:   &GeoPoint{nullValue: "test"},
         },
         {
-            name: "bool",
+            name:   "bool",
             fields: fields{},
-            args: args{nullValue: true},
-            want: &GeoPoint{nullValue: true},
+            args:   args{nullValue: true},
+            want:   &GeoPoint{nullValue: true},
         },
         {
-            name: "change",
+            name:   "change",
             fields: fields{nullValue: "test"},
-            args: args{nullValue: true},
-            want: &GeoPoint{nullValue: true},
+            args:   args{nullValue: true},
+            want:   &GeoPoint{nullValue: true},
         },
     }
     for _, tt := range tests {
@@ -211,7 +211,7 @@ func TestGeoPoint_Source(t *testing.T) {
         wantErr bool
     }{
         {
-            name: "empty",
+            name:   "empty",
             fields: fields{},
             want: map[string]interface{}{
                 "type": TypeGeoPoint,
@@ -219,28 +219,28 @@ func TestGeoPoint_Source(t *testing.T) {
             wantErr: false,
         },
         {
-            name: "ignoreMalformed",
+            name:   "ignoreMalformed",
             fields: fields{ignoreMalformed: &testTrue},
             want: map[string]interface{}{
-                "type": TypeGeoPoint,
+                "type":             TypeGeoPoint,
                 "ignore_malformed": true,
             },
             wantErr: false,
         },
         {
-            name: "ignoreZValue",
+            name:   "ignoreZValue",
             fields: fields{ignoreZValue: &testTrue},
             want: map[string]interface{}{
-                "type": TypeGeoPoint,
+                "type":           TypeGeoPoint,
                 "ignore_z_value": true,
             },
             wantErr: false,
         },
         {
-            name: "nullValue",
+            name:   "nullValue",
             fields: fields{nullValue: 2.7},
             want: map[string]interface{}{
-                "type": TypeGeoPoint,
+                "type":       TypeGeoPoint,
                 "null_value": 2.7,
             },
         },

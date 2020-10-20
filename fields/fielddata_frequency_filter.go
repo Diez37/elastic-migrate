@@ -51,4 +51,3 @@ func (fielddata *FielddataFrequencyFilter) Source() (interface{}, error) {
 
     return source, nil
 }
-

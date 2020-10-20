@@ -107,22 +107,22 @@ func TestIp_SetDocValues(t *testing.T) {
         want   *Ip
     }{
         {
-            name: "true",
+            name:   "true",
             fields: fields{},
-            args: args{docValues: true},
-            want: &Ip{docValues: &testTrue},
+            args:   args{docValues: true},
+            want:   &Ip{docValues: &testTrue},
         },
         {
-            name: "false",
+            name:   "false",
             fields: fields{},
-            args: args{docValues: false},
-            want: &Ip{docValues: &testFalse},
+            args:   args{docValues: false},
+            want:   &Ip{docValues: &testFalse},
         },
         {
-            name: "change",
+            name:   "change",
             fields: fields{docValues: &testTrue},
-            args: args{docValues: false},
-            want: &Ip{docValues: &testFalse},
+            args:   args{docValues: false},
+            want:   &Ip{docValues: &testFalse},
         },
     }
     for _, tt := range tests {
@@ -159,22 +159,22 @@ func TestIp_SetIndex(t *testing.T) {
         want   *Ip
     }{
         {
-            name: "true",
+            name:   "true",
             fields: fields{},
-            args: args{index: true},
-            want: &Ip{index: &testTrue},
+            args:   args{index: true},
+            want:   &Ip{index: &testTrue},
         },
         {
-            name: "false",
+            name:   "false",
             fields: fields{},
-            args: args{index: false},
-            want: &Ip{index: &testFalse},
+            args:   args{index: false},
+            want:   &Ip{index: &testFalse},
         },
         {
-            name: "change",
+            name:   "change",
             fields: fields{index: &testTrue},
-            args: args{index: false},
-            want: &Ip{index: &testFalse},
+            args:   args{index: false},
+            want:   &Ip{index: &testFalse},
         },
     }
     for _, tt := range tests {
@@ -211,40 +211,40 @@ func TestIp_SetNullValue(t *testing.T) {
         want   *Ip
     }{
         {
-            name: "empty",
+            name:   "empty",
             fields: fields{},
-            args: args{},
-            want: &Ip{nullValue: nil},
+            args:   args{},
+            want:   &Ip{nullValue: nil},
         },
         {
-            name: "int",
+            name:   "int",
             fields: fields{},
-            args: args{nullValue: 1},
-            want: &Ip{nullValue: 1},
+            args:   args{nullValue: 1},
+            want:   &Ip{nullValue: 1},
         },
         {
-            name: "float",
+            name:   "float",
             fields: fields{},
-            args: args{nullValue: 4.5},
-            want: &Ip{nullValue: 4.5},
+            args:   args{nullValue: 4.5},
+            want:   &Ip{nullValue: 4.5},
         },
         {
-            name: "string",
+            name:   "string",
             fields: fields{},
-            args: args{nullValue: "test"},
-            want: &Ip{nullValue: "test"},
+            args:   args{nullValue: "test"},
+            want:   &Ip{nullValue: "test"},
         },
         {
-            name: "bool",
+            name:   "bool",
             fields: fields{},
-            args: args{nullValue: true},
-            want: &Ip{nullValue: true},
+            args:   args{nullValue: true},
+            want:   &Ip{nullValue: true},
         },
         {
-            name: "change",
+            name:   "change",
             fields: fields{nullValue: "test"},
-            args: args{nullValue: true},
-            want: &Ip{nullValue: true},
+            args:   args{nullValue: true},
+            want:   &Ip{nullValue: true},
         },
     }
     for _, tt := range tests {
@@ -281,22 +281,22 @@ func TestIp_SetStore(t *testing.T) {
         want   *Ip
     }{
         {
-            name: "true",
+            name:   "true",
             fields: fields{},
-            args: args{store: true},
-            want: &Ip{store: &testTrue},
+            args:   args{store: true},
+            want:   &Ip{store: &testTrue},
         },
         {
-            name: "false",
+            name:   "false",
             fields: fields{},
-            args: args{store: false},
-            want: &Ip{store: &testFalse},
+            args:   args{store: false},
+            want:   &Ip{store: &testFalse},
         },
         {
-            name: "change",
+            name:   "change",
             fields: fields{store: &testTrue},
-            args: args{store: false},
-            want: &Ip{store: &testFalse},
+            args:   args{store: false},
+            want:   &Ip{store: &testFalse},
         },
     }
     for _, tt := range tests {
@@ -332,49 +332,49 @@ func TestIp_Source(t *testing.T) {
         wantErr bool
     }{
         {
-            name: "empty",
+            name:   "empty",
             fields: fields{},
             want: map[string]interface{}{
                 "type": TypeIp,
             },
         },
         {
-            name: "docValues",
+            name:   "docValues",
             fields: fields{docValues: &testTrue},
             want: map[string]interface{}{
-                "type": TypeIp,
+                "type":       TypeIp,
                 "doc_values": true,
             },
         },
         {
-            name: "store",
+            name:   "store",
             fields: fields{store: &testTrue},
             want: map[string]interface{}{
-                "type": TypeIp,
+                "type":  TypeIp,
                 "store": true,
             },
         },
         {
-            name: "boost",
+            name:   "boost",
             fields: fields{boost: &boost},
             want: map[string]interface{}{
-                "type": TypeIp,
+                "type":  TypeIp,
                 "boost": boost,
             },
         },
         {
-            name: "index",
+            name:   "index",
             fields: fields{index: &testTrue},
             want: map[string]interface{}{
-                "type": TypeIp,
+                "type":  TypeIp,
                 "index": true,
             },
         },
         {
-            name: "nullValue",
+            name:   "nullValue",
             fields: fields{nullValue: 2.7},
             want: map[string]interface{}{
-                "type": TypeIp,
+                "type":       TypeIp,
                 "null_value": 2.7,
             },
         },

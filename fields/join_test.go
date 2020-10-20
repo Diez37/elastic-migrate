@@ -51,41 +51,41 @@ func TestJoin_Questions(t *testing.T) {
         {
             name:   "set",
             fields: fields{},
-            args:   args{relations: []*Relation{
+            args: args{relations: []*Relation{
                 {
                     question: "test",
-                    answers: []string{"test1", "test2"},
+                    answers:  []string{"test1", "test2"},
                 },
             }},
-            want:   &Join{relations: []*Relation{
+            want: &Join{relations: []*Relation{
                 {
                     question: "test",
-                    answers: []string{"test1", "test2"},
+                    answers:  []string{"test1", "test2"},
                 },
             }},
         },
         {
-            name:   "add",
+            name: "add",
             fields: fields{relations: []*Relation{
                 {
                     question: "test2",
-                    answers: []string{"test3", "test4"},
+                    answers:  []string{"test3", "test4"},
                 },
             }},
-            args:   args{relations: []*Relation{
+            args: args{relations: []*Relation{
                 {
                     question: "test",
-                    answers: []string{"test1", "test2"},
+                    answers:  []string{"test1", "test2"},
                 },
             }},
-            want:   &Join{relations: []*Relation{
+            want: &Join{relations: []*Relation{
                 {
                     question: "test2",
-                    answers: []string{"test3", "test4"},
+                    answers:  []string{"test3", "test4"},
                 },
                 {
                     question: "test",
-                    answers: []string{"test1", "test2"},
+                    answers:  []string{"test1", "test2"},
                 },
             }},
         },
@@ -118,22 +118,22 @@ func TestJoin_SetEagerGlobalOrdinals(t *testing.T) {
         want   *Join
     }{
         {
-            name: "true",
+            name:   "true",
             fields: fields{},
-            args: args{eagerGlobalOrdinals: true},
-            want: &Join{eagerGlobalOrdinals: &testTrue},
+            args:   args{eagerGlobalOrdinals: true},
+            want:   &Join{eagerGlobalOrdinals: &testTrue},
         },
         {
-            name: "false",
+            name:   "false",
             fields: fields{},
-            args: args{eagerGlobalOrdinals: false},
-            want: &Join{eagerGlobalOrdinals: &testFalse},
+            args:   args{eagerGlobalOrdinals: false},
+            want:   &Join{eagerGlobalOrdinals: &testFalse},
         },
         {
-            name: "change",
+            name:   "change",
             fields: fields{eagerGlobalOrdinals: &testTrue},
-            args: args{eagerGlobalOrdinals: false},
-            want: &Join{eagerGlobalOrdinals: &testFalse},
+            args:   args{eagerGlobalOrdinals: false},
+            want:   &Join{eagerGlobalOrdinals: &testFalse},
         },
     }
     for _, tt := range tests {
@@ -161,31 +161,31 @@ func TestJoin_Source(t *testing.T) {
         wantErr bool
     }{
         {
-            name:    "empty",
-            fields:  fields{},
-            want:    map[string]interface{}{
+            name:   "empty",
+            fields: fields{},
+            want: map[string]interface{}{
                 "type": TypeJoin,
             },
             wantErr: false,
         },
         {
-            name:    "eagerGlobalOrdinals",
-            fields:  fields{eagerGlobalOrdinals: &testTrue},
-            want:    map[string]interface{}{
-                "type": TypeJoin,
+            name:   "eagerGlobalOrdinals",
+            fields: fields{eagerGlobalOrdinals: &testTrue},
+            want: map[string]interface{}{
+                "type":                  TypeJoin,
                 "eager_global_ordinals": testTrue,
             },
             wantErr: false,
         },
         {
-            name:    "relations",
-            fields:  fields{relations: []*Relation{
+            name: "relations",
+            fields: fields{relations: []*Relation{
                 {
                     question: "test",
-                    answers: []string{"test1", "test2"},
+                    answers:  []string{"test1", "test2"},
                 },
             }},
-            want:    map[string]interface{}{
+            want: map[string]interface{}{
                 "type": TypeJoin,
                 "relations": map[string][]string{
                     "test": {"test1", "test2"},
@@ -231,13 +231,13 @@ func TestNewJoin(t *testing.T) {
             args: args{relations: []*Relation{
                 {
                     question: "test",
-                    answers: []string{"test1", "test2"},
+                    answers:  []string{"test1", "test2"},
                 },
             }},
             want: &Join{relations: []*Relation{
                 {
                     question: "test",
-                    answers: []string{"test1", "test2"},
+                    answers:  []string{"test1", "test2"},
                 },
             }},
         },
