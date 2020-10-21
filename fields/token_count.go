@@ -1,6 +1,6 @@
 package fields
 
-import "elastic-migrate/settings"
+import "github.com/diez37/elastic-migrate/settings"
 
 type TokenCount struct {
     enablePositionIncrements *bool
