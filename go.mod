@@ -1,4 +1,4 @@
-module github.com/Diez37/elastic-migrate
+module github.com/diez37/elastic-migrate
 
 go 1.15
 
