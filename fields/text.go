@@ -105,8 +105,8 @@ func (field *Text) SetIndexOptions(indexOptions IndexOption) *Text {
     return field
 }
 
-func (field *Text) SetIndexPrefixes(indexPrefixes IndexPrefixes) *Text {
-    field.indexPrefixes = &indexPrefixes
+func (field *Text) SetIndexPrefixes(indexPrefixes *IndexPrefixes) *Text {
+    field.indexPrefixes = indexPrefixes
 
     return field
 }
