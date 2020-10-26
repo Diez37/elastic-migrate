@@ -98,11 +98,7 @@ type RangeDate struct {
 }
 
 func NewRangeDate() *RangeDate {
-    return &RangeDate{}
-}
-
-func (field *RangeDate) GetType() Type {
-    return TypeRangeDate
+    return &RangeDate{Range: Range{_type: TypeRangeDate}}
 }
 
 func (field *RangeDate) Formats(formats ...DateFormat) *RangeDate {

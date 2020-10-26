@@ -53,7 +53,7 @@ func TestNewRangeDate(t *testing.T) {
     }{
         {
             name: "date",
-            want: &RangeDate{},
+            want: &RangeDate{Range: Range{_type: TypeRangeDate}},
         },
     }
     for _, tt := range tests {
@@ -141,7 +141,7 @@ func TestRangeDate_GetType(t *testing.T) {
     }{
         {
             name:   "range date type",
-            fields: fields{},
+            fields: fields{Range: Range{_type: TypeRangeDate}},
             want:   TypeRangeDate,
         },
     }
@@ -172,65 +172,72 @@ func TestRangeDate_Source(t *testing.T) {
         wantErr bool
     }{
         {
-            name:    "empty",
-            fields:  fields{},
-            want:    map[string]interface{}{
+            name:   "empty",
+            fields: fields{Range: Range{_type: TypeRangeDate}},
+            want: map[string]interface{}{
                 "type": TypeRangeDate,
             },
             wantErr: false,
         },
         {
-            name:    "coerce",
-            fields:  fields{Range: Range{
+            name: "coerce",
+            fields: fields{Range: Range{
                 coerce: &testTrue,
+                _type:  TypeRangeDate,
             }},
-            want:    map[string]interface{}{
-                "type": TypeRangeDate,
+            want: map[string]interface{}{
+                "type":   TypeRangeDate,
                 "coerce": true,
             },
             wantErr: false,
         },
         {
-            name:    "boost",
-            fields:  fields{Range: Range{
+            name: "boost",
+            fields: fields{Range: Range{
                 boost: &initBoost,
+                _type: TypeRangeDate,
             }},
-            want:    map[string]interface{}{
-                "type": TypeRangeDate,
+            want: map[string]interface{}{
+                "type":  TypeRangeDate,
                 "boost": initBoost,
             },
             wantErr: false,
         },
         {
-            name:    "index",
-            fields:  fields{Range: Range{
+            name: "index",
+            fields: fields{Range: Range{
                 index: &testTrue,
+                _type: TypeRangeDate,
             }},
-            want:    map[string]interface{}{
-                "type": TypeRangeDate,
+            want: map[string]interface{}{
+                "type":  TypeRangeDate,
                 "index": true,
             },
             wantErr: false,
         },
         {
-            name:    "store",
-            fields:  fields{Range: Range{
+            name: "store",
+            fields: fields{Range: Range{
                 store: &testTrue,
+                _type: TypeRangeDate,
             }},
-            want:    map[string]interface{}{
-                "type": TypeRangeDate,
+            want: map[string]interface{}{
+                "type":  TypeRangeDate,
                 "store": true,
             },
             wantErr: false,
         },
         {
-            name:    "format",
-            fields:  fields{formats: []DateFormat{
-                DateFormatEpochSecond,
-                DateFormatDateOptionalTime,
-            }},
-            want:    map[string]interface{}{
-                "type": TypeRangeDate,
+            name: "format",
+            fields: fields{
+                formats: []DateFormat{
+                    DateFormatEpochSecond,
+                    DateFormatDateOptionalTime,
+                },
+                Range: Range{_type: TypeRangeDate},
+            },
+            want: map[string]interface{}{
+                "type":   TypeRangeDate,
                 "format": "epoch_second||date_optional_time",
             },
             wantErr: false,
@@ -531,77 +538,77 @@ func TestRange_Source(t *testing.T) {
         wantErr bool
     }{
         {
-            name:    "integer",
-            fields:  fields{_type: TypeRangeInteger},
-            want:    map[string]interface{}{
+            name:   "integer",
+            fields: fields{_type: TypeRangeInteger},
+            want: map[string]interface{}{
                 "type": TypeRangeInteger,
             },
             wantErr: false,
         },
         {
-            name:    "float",
-            fields:  fields{_type: TypeRangeFloat},
-            want:    map[string]interface{}{
+            name:   "float",
+            fields: fields{_type: TypeRangeFloat},
+            want: map[string]interface{}{
                 "type": TypeRangeFloat,
             },
             wantErr: false,
         },
         {
-            name:    "long",
-            fields:  fields{_type: TypeRangeLong},
-            want:    map[string]interface{}{
+            name:   "long",
+            fields: fields{_type: TypeRangeLong},
+            want: map[string]interface{}{
                 "type": TypeRangeLong,
             },
             wantErr: false,
         },
         {
-            name:    "double",
-            fields:  fields{_type: TypeRangeDouble},
-            want:    map[string]interface{}{
+            name:   "double",
+            fields: fields{_type: TypeRangeDouble},
+            want: map[string]interface{}{
                 "type": TypeRangeDouble,
             },
             wantErr: false,
         },
         {
-            name:    "ip",
-            fields:  fields{_type: TypeRangeIp},
-            want:    map[string]interface{}{
+            name:   "ip",
+            fields: fields{_type: TypeRangeIp},
+            want: map[string]interface{}{
                 "type": TypeRangeIp,
             },
             wantErr: false,
         },
         {
-            name:    "coerce",
-            fields:  fields{coerce: &testTrue},
-            want:    map[string]interface{}{
-                "type": Type(""),
+            name:   "coerce",
+            fields: fields{coerce: &testTrue},
+            want: map[string]interface{}{
+                "type":   Type(""),
                 "coerce": true,
             },
             wantErr: false,
         },
         {
-            name:    "boost",
-            fields:  fields{boost: &initBoost},
-            want:    map[string]interface{}{
-                "type": Type(""),
+            name:   "boost",
+            fields: fields{boost: &initBoost},
+            want: map[string]interface{}{
+                "type":  Type(""),
                 "boost": initBoost,
             },
             wantErr: false,
         },
         {
-            name:    "index",
-            fields:  fields{index: &testTrue},
-            want:    map[string]interface{}{
-                "type": Type(""),
+            name:   "index",
+            fields: fields{index: &testTrue},
+            want: map[string]interface{}{
+                "type":  Type(""),
                 "index": true,
             },
             wantErr: false,
         },
         {
-            name:    "store",
-            fields:  fields{store: &testTrue},
-            want:    map[string]interface{}{
-                "type": Type(""),
+            name:   "store",
+            fields: fields{store: &testTrue},
+            want: map[string]interface{}{
+                "type":  Type(""),
                 "store": true,
             },
             wantErr: false,
