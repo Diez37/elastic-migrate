@@ -5,7 +5,7 @@ import (
     "testing"
 )
 
-func TestNew(t *testing.T) {
+func TestNewNumber(t *testing.T) {
     tests := []struct {
         name        string
         constructor func() *Number
