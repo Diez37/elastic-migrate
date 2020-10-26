@@ -1,6 +1,8 @@
 package fields
 
-import "strings"
+import (
+    "fmt"
+)
 
 type Range struct {
     coerce *bool
@@ -92,7 +94,7 @@ func (field *Range) Source() (interface{}, error) {
 
 type RangeDate struct {
     Range
-    formats []string
+    formats []DateFormat
 }
 
 func NewRangeDate() *RangeDate {
@@ -103,7 +105,7 @@ func (field *RangeDate) GetType() Type {
     return TypeRangeDate
 }
 
-func (field *RangeDate) Formats(formats ...string) *RangeDate {
+func (field *RangeDate) Formats(formats ...DateFormat) *RangeDate {
     field.formats = append(field.formats, formats...)
 
     return field
@@ -125,9 +127,16 @@ func (field *RangeDate) Source() (interface{}, error) {
     }
 
     source := sourceRange.(map[string]interface{})
+    source["type"] = field.GetType()
 
     if len(field.formats) > 0 {
-        source["format"] = strings.Join(field.formats, DateFormatSeparator)
+        source["format"] = field.formats[0]
+
+        if len(field.formats) > 1 {
+            for _, format := range field.formats[1:] {
+                source["format"] = fmt.Sprintf("%s%s%s", source["format"], DateFormatSeparator, format)
+            }
+        }
     }
 
     return source, nil
