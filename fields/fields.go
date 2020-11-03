@@ -1,6 +1,9 @@
 package fields
 
-import "errors"
+import (
+    "errors"
+    "github.com/diez37/elastic-migrate/sourcer"
+)
 
 const (
     TypeBinary            Type = "binary"
@@ -200,10 +203,8 @@ type TermVector string
 type IndexOption string
 
 type Fielder interface {
-    Sourcer
+    sourcer.Sourcer
     GetType() Type
 }
 
-type Sourcer interface {
-    Source() (interface{}, error)
-}
+
