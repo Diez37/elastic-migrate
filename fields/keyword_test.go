@@ -1,6 +1,7 @@
 package fields
 
 import (
+    "github.com/diez37/elastic-migrate/settings"
     "reflect"
     "testing"
 )
@@ -16,7 +17,7 @@ func TestKeyword_Fields(t *testing.T) {
         boost                    *float64
         ignoreAbove              *int
         indexOptions             *IndexOption
-        similarity               *Similarity
+        similarity               *settings.SimilarityName
         normalizer               *Normalizer
         nullValue                interface{}
         fields                   []*Field
@@ -95,7 +96,7 @@ func TestKeyword_GetType(t *testing.T) {
         boost                    *float64
         ignoreAbove              *int
         indexOptions             *IndexOption
-        similarity               *Similarity
+        similarity               *settings.SimilarityName
         normalizer               *Normalizer
         nullValue                interface{}
         fields                   []*Field
@@ -148,7 +149,7 @@ func TestKeyword_Meta(t *testing.T) {
         boost                    *float64
         ignoreAbove              *int
         indexOptions             *IndexOption
-        similarity               *Similarity
+        similarity               *settings.SimilarityName
         normalizer               *Normalizer
         nullValue                interface{}
         fields                   []*Field
@@ -274,7 +275,7 @@ func TestKeyword_SetBoost(t *testing.T) {
         boost                    *float64
         ignoreAbove              *int
         indexOptions             *IndexOption
-        similarity               *Similarity
+        similarity               *settings.SimilarityName
         normalizer               *Normalizer
         nullValue                interface{}
         fields                   []*Field
@@ -338,7 +339,7 @@ func TestKeyword_SetDocValues(t *testing.T) {
         boost                    *float64
         ignoreAbove              *int
         indexOptions             *IndexOption
-        similarity               *Similarity
+        similarity               *settings.SimilarityName
         normalizer               *Normalizer
         nullValue                interface{}
         fields                   []*Field
@@ -408,7 +409,7 @@ func TestKeyword_SetEagerGlobalOrdinals(t *testing.T) {
         boost                    *float64
         ignoreAbove              *int
         indexOptions             *IndexOption
-        similarity               *Similarity
+        similarity               *settings.SimilarityName
         normalizer               *Normalizer
         nullValue                interface{}
         fields                   []*Field
@@ -481,7 +482,7 @@ func TestKeyword_SetIgnoreAbove(t *testing.T) {
         boost                    *float64
         ignoreAbove              *int
         indexOptions             *IndexOption
-        similarity               *Similarity
+        similarity               *settings.SimilarityName
         normalizer               *Normalizer
         nullValue                interface{}
         fields                   []*Field
@@ -545,7 +546,7 @@ func TestKeyword_SetIndex(t *testing.T) {
         boost                    *float64
         ignoreAbove              *int
         indexOptions             *IndexOption
-        similarity               *Similarity
+        similarity               *settings.SimilarityName
         normalizer               *Normalizer
         nullValue                interface{}
         fields                   []*Field
@@ -618,7 +619,7 @@ func TestKeyword_SetIndexOptions(t *testing.T) {
         boost                    *float64
         ignoreAbove              *int
         indexOptions             *IndexOption
-        similarity               *Similarity
+        similarity               *settings.SimilarityName
         normalizer               *Normalizer
         nullValue                interface{}
         fields                   []*Field
@@ -684,7 +685,7 @@ func TestKeyword_SetNormalizer(t *testing.T) {
         boost                    *float64
         ignoreAbove              *int
         indexOptions             *IndexOption
-        similarity               *Similarity
+        similarity               *settings.SimilarityName
         normalizer               *Normalizer
         nullValue                interface{}
         fields                   []*Field
@@ -742,7 +743,7 @@ func TestKeyword_SetNorms(t *testing.T) {
         boost                    *float64
         ignoreAbove              *int
         indexOptions             *IndexOption
-        similarity               *Similarity
+        similarity               *settings.SimilarityName
         normalizer               *Normalizer
         nullValue                interface{}
         fields                   []*Field
@@ -812,7 +813,7 @@ func TestKeyword_SetNullValue(t *testing.T) {
         boost                    *float64
         ignoreAbove              *int
         indexOptions             *IndexOption
-        similarity               *Similarity
+        similarity               *settings.SimilarityName
         normalizer               *Normalizer
         nullValue                interface{}
         fields                   []*Field
@@ -890,8 +891,8 @@ func TestKeyword_SetNullValue(t *testing.T) {
 }
 
 func TestKeyword_SetSimilarity(t *testing.T) {
-    initValue := SimilarityClassic
-    setValue := SimilarityBM25
+    initValue := settings.SimilarityName("test1")
+    setValue := settings.SimilarityName("test2")
 
     type fields struct {
         docValues                *bool
@@ -903,14 +904,14 @@ func TestKeyword_SetSimilarity(t *testing.T) {
         boost                    *float64
         ignoreAbove              *int
         indexOptions             *IndexOption
-        similarity               *Similarity
+        similarity               *settings.SimilarityName
         normalizer               *Normalizer
         nullValue                interface{}
         fields                   []*Field
         meta                     []*Meta
     }
     type args struct {
-        similarity Similarity
+        similarity settings.SimilarityName
     }
     tests := []struct {
         name   string
@@ -921,13 +922,13 @@ func TestKeyword_SetSimilarity(t *testing.T) {
         {
             name:   "set",
             fields: fields{},
-            args:   args{similarity: SimilarityBM25},
+            args:   args{similarity: setValue},
             want:   &Keyword{similarity: &setValue},
         },
         {
             name:   "change",
             fields: fields{similarity: &initValue},
-            args:   args{similarity: SimilarityBM25},
+            args:   args{similarity: setValue},
             want:   &Keyword{similarity: &setValue},
         },
     }
@@ -967,7 +968,7 @@ func TestKeyword_SetSplitQueriesOnWhitespace(t *testing.T) {
         boost                    *float64
         ignoreAbove              *int
         indexOptions             *IndexOption
-        similarity               *Similarity
+        similarity               *settings.SimilarityName
         normalizer               *Normalizer
         nullValue                interface{}
         fields                   []*Field
@@ -1037,7 +1038,7 @@ func TestKeyword_SetStore(t *testing.T) {
         boost                    *float64
         ignoreAbove              *int
         indexOptions             *IndexOption
-        similarity               *Similarity
+        similarity               *settings.SimilarityName
         normalizer               *Normalizer
         nullValue                interface{}
         fields                   []*Field
@@ -1100,7 +1101,7 @@ func TestKeyword_Source(t *testing.T) {
     boost := 2.5
     ignoreAbove := 2
     indexOptions := IndexOptionFreqs
-    similarity := SimilarityBM25
+    similarity := settings.SimilarityName("test1")
     normalizer := NormalizerLowercase
 
     type fields struct {
@@ -1113,7 +1114,7 @@ func TestKeyword_Source(t *testing.T) {
         boost                    *float64
         ignoreAbove              *int
         indexOptions             *IndexOption
-        similarity               *Similarity
+        similarity               *settings.SimilarityName
         normalizer               *Normalizer
         nullValue                interface{}
         fields                   []*Field
@@ -1210,7 +1211,7 @@ func TestKeyword_Source(t *testing.T) {
             fields: fields{similarity: &similarity},
             want: map[string]interface{}{
                 "type":       TypeKeyword,
-                "similarity": similarity,
+                "similarity": settings.SimilarityName("test1"),
             },
         },
         {
