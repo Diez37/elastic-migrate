@@ -2,7 +2,7 @@ package fields
 
 import (
     "errors"
-    "github.com/diez37/elastic-migrate/sourcer"
+    "github.com/diez37/elastic-migrate/interfaces"
 )
 
 const (
@@ -41,10 +41,6 @@ const (
     IndexOptionFreqs     IndexOption = "freqs"
     IndexOptionPositions IndexOption = "positions"
     IndexOptionOffsets   IndexOption = "offsets"
-
-    SimilarityBM25    Similarity = "BM25"
-    SimilarityClassic Similarity = "classic" // TF/IDF
-    SimilarityBoolean Similarity = "boolean"
 
     NormalizerLowercase Normalizer = "lowercase"
 
@@ -196,14 +192,13 @@ var ErrorScalingFactorNotScaledFloat = errors.New("scaling_factor can only be in
 type Type string
 type Local string
 type Dynamic string
-type Similarity string
 type Normalizer string
 type DateFormat string
 type TermVector string
 type IndexOption string
 
 type Fielder interface {
-    sourcer.Sourcer
+    interfaces.Sourcer
     GetType() Type
 }
 

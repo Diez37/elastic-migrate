@@ -35,7 +35,7 @@ func TestSearchAsYouType_GetType(t *testing.T) {
         searchAnalyzer      *settings.AnalyzerName
         searchQuoteAnalyzer *settings.AnalyzerName
         indexOptions        *IndexOption
-        similarity          *Similarity
+        similarity          *settings.SimilarityName
         termVector          *TermVector
     }
     tests := []struct {
@@ -83,7 +83,7 @@ func TestSearchAsYouType_SetAnalyzer(t *testing.T) {
         searchAnalyzer      *settings.AnalyzerName
         searchQuoteAnalyzer *settings.AnalyzerName
         indexOptions        *IndexOption
-        similarity          *Similarity
+        similarity          *settings.SimilarityName
         termVector          *TermVector
     }
     type args struct {
@@ -139,7 +139,7 @@ func TestSearchAsYouType_SetIndex(t *testing.T) {
         searchAnalyzer      *settings.AnalyzerName
         searchQuoteAnalyzer *settings.AnalyzerName
         indexOptions        *IndexOption
-        similarity          *Similarity
+        similarity          *settings.SimilarityName
         termVector          *TermVector
     }
     type args struct {
@@ -204,7 +204,7 @@ func TestSearchAsYouType_SetIndexOptions(t *testing.T) {
         searchAnalyzer      *settings.AnalyzerName
         searchQuoteAnalyzer *settings.AnalyzerName
         indexOptions        *IndexOption
-        similarity          *Similarity
+        similarity          *settings.SimilarityName
         termVector          *TermVector
     }
     type args struct {
@@ -263,7 +263,7 @@ func TestSearchAsYouType_SetMaxShingleSize(t *testing.T) {
         searchAnalyzer      *settings.AnalyzerName
         searchQuoteAnalyzer *settings.AnalyzerName
         indexOptions        *IndexOption
-        similarity          *Similarity
+        similarity          *settings.SimilarityName
         termVector          *TermVector
     }
     type args struct {
@@ -319,7 +319,7 @@ func TestSearchAsYouType_SetNorms(t *testing.T) {
         searchAnalyzer      *settings.AnalyzerName
         searchQuoteAnalyzer *settings.AnalyzerName
         indexOptions        *IndexOption
-        similarity          *Similarity
+        similarity          *settings.SimilarityName
         termVector          *TermVector
     }
     type args struct {
@@ -384,7 +384,7 @@ func TestSearchAsYouType_SetSearchAnalyzer(t *testing.T) {
         searchAnalyzer      *settings.AnalyzerName
         searchQuoteAnalyzer *settings.AnalyzerName
         indexOptions        *IndexOption
-        similarity          *Similarity
+        similarity          *settings.SimilarityName
         termVector          *TermVector
     }
     type args struct {
@@ -443,7 +443,7 @@ func TestSearchAsYouType_SetSearchQuoteAnalyzer(t *testing.T) {
         searchAnalyzer      *settings.AnalyzerName
         searchQuoteAnalyzer *settings.AnalyzerName
         indexOptions        *IndexOption
-        similarity          *Similarity
+        similarity          *settings.SimilarityName
         termVector          *TermVector
     }
     type args struct {
@@ -490,8 +490,8 @@ func TestSearchAsYouType_SetSearchQuoteAnalyzer(t *testing.T) {
 }
 
 func TestSearchAsYouType_SetSimilarity(t *testing.T) {
-    initValue := SimilarityClassic
-    setValue := SimilarityBM25
+    initValue := settings.SimilarityName("test1")
+    setValue := settings.SimilarityName("test2")
 
     type fields struct {
         index               *bool
@@ -502,11 +502,11 @@ func TestSearchAsYouType_SetSimilarity(t *testing.T) {
         searchAnalyzer      *settings.AnalyzerName
         searchQuoteAnalyzer *settings.AnalyzerName
         indexOptions        *IndexOption
-        similarity          *Similarity
+        similarity          *settings.SimilarityName
         termVector          *TermVector
     }
     type args struct {
-        similarity Similarity
+        similarity settings.SimilarityName
     }
     tests := []struct {
         name   string
@@ -558,7 +558,7 @@ func TestSearchAsYouType_SetStore(t *testing.T) {
         searchAnalyzer      *settings.AnalyzerName
         searchQuoteAnalyzer *settings.AnalyzerName
         indexOptions        *IndexOption
-        similarity          *Similarity
+        similarity          *settings.SimilarityName
         termVector          *TermVector
     }
     type args struct {
@@ -623,7 +623,7 @@ func TestSearchAsYouType_SetTermVector(t *testing.T) {
         searchAnalyzer      *settings.AnalyzerName
         searchQuoteAnalyzer *settings.AnalyzerName
         indexOptions        *IndexOption
-        similarity          *Similarity
+        similarity          *settings.SimilarityName
         termVector          *TermVector
     }
     type args struct {
@@ -673,7 +673,7 @@ func TestSearchAsYouType_Source(t *testing.T) {
     initMaxShingleSize := 4
     initAnalyzerName := settings.AnalyzerStandard
     initIndexOptionValue := IndexOptionOffsets
-    initSimilarityOptionValue := SimilarityClassic
+    initSimilarityOptionValue := settings.SimilarityName("test1")
     initTermVectorValue := TermVectorYes
 
     type fields struct {
@@ -685,7 +685,7 @@ func TestSearchAsYouType_Source(t *testing.T) {
         searchAnalyzer      *settings.AnalyzerName
         searchQuoteAnalyzer *settings.AnalyzerName
         indexOptions        *IndexOption
-        similarity          *Similarity
+        similarity          *settings.SimilarityName
         termVector          *TermVector
     }
     tests := []struct {
@@ -789,7 +789,7 @@ func TestSearchAsYouType_Source(t *testing.T) {
             fields: fields{similarity: &initSimilarityOptionValue},
             want: map[string]interface{}{
                 "type":       TypeSearchAsYouType,
-                "similarity": initSimilarityOptionValue,
+                "similarity": settings.SimilarityName("test1"),
             },
             wantErr: false,
         },
