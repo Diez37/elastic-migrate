@@ -71,8 +71,8 @@ func TestSearchAsYouType_GetType(t *testing.T) {
 }
 
 func TestSearchAsYouType_SetAnalyzer(t *testing.T) {
-    initAnalyzerName := settings.AnalyzerStandard
-    changeAnalyzerName := settings.AnalyzerSimple
+    initAnalyzerName := settings.AnalyzerNameStandard
+    changeAnalyzerName := settings.AnalyzerNameSimple
 
     type fields struct {
         index               *bool
@@ -372,8 +372,8 @@ func TestSearchAsYouType_SetNorms(t *testing.T) {
 }
 
 func TestSearchAsYouType_SetSearchAnalyzer(t *testing.T) {
-    initAnalyzerName := settings.AnalyzerStandard
-    changeAnalyzerName := settings.AnalyzerSimple
+    initAnalyzerName := settings.AnalyzerNameStandard
+    changeAnalyzerName := settings.AnalyzerNameSimple
 
     type fields struct {
         index               *bool
@@ -431,8 +431,8 @@ func TestSearchAsYouType_SetSearchAnalyzer(t *testing.T) {
 }
 
 func TestSearchAsYouType_SetSearchQuoteAnalyzer(t *testing.T) {
-    initAnalyzerName := settings.AnalyzerStandard
-    changeAnalyzerName := settings.AnalyzerSimple
+    initAnalyzerName := settings.AnalyzerNameStandard
+    changeAnalyzerName := settings.AnalyzerNameSimple
 
     type fields struct {
         index               *bool
@@ -671,7 +671,7 @@ func TestSearchAsYouType_SetTermVector(t *testing.T) {
 
 func TestSearchAsYouType_Source(t *testing.T) {
     initMaxShingleSize := 4
-    initAnalyzerName := settings.AnalyzerStandard
+    initAnalyzerName := settings.AnalyzerNameStandard
     initIndexOptionValue := IndexOptionOffsets
     initSimilarityOptionValue := settings.SimilarityName("test1")
     initTermVectorValue := TermVectorYes
