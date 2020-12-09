@@ -1,13 +1,18 @@
 package settings
 
-import (
-    "errors"
-    "regexp"
-)
+type Size struct {
+    value string
+}
 
-type Size string
+func NewSize(value string) *Size {
+    return &Size{value: value}
+}
 
-func (size Size) Validate() (bool, error) {
+func (size *Size) Source() (interface{}, error) {
+    return size.value, nil
+}
+
+/*func (size Size) Validate() (bool, error) {
     re := regexp.MustCompile(`(?ms)^[0-9]+(mb|gb)$`)
 
     if !re.Match([]byte(size)) {
@@ -15,4 +20,4 @@ func (size Size) Validate() (bool, error) {
     }
 
     return true, nil
-}
+}*/

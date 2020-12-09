@@ -13,7 +13,7 @@ type Keyword struct {
     ignoreAbove              *int
     indexOptions             *IndexOption
     similarity               *settings.SimilarityName
-    normalizer               *Normalizer
+    normalizer               *settings.NormalizerName
     nullValue                interface{}
     fields                   []*Field
     meta                     []*Meta
@@ -83,7 +83,7 @@ func (field *Keyword) SetSimilarity(similarity settings.SimilarityName) *Keyword
     return field
 }
 
-func (field *Keyword) SetNormalizer(normalizer Normalizer) *Keyword {
+func (field *Keyword) SetNormalizer(normalizer settings.NormalizerName) *Keyword {
     field.normalizer = &normalizer
 
     return field

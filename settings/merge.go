@@ -5,19 +5,42 @@ type Merge struct {
     policy    *Policy
 }
 
-type Scheduler struct {
-    autoThrottle   *bool
-    maxMergeCount  *uint
-    maxThreadCount *uint
+func NewMerge() *Merge {
+    return &Merge{}
 }
 
-type Policy struct {
-    maxMergeAtOnceExplicit *uint
-    maxMergeAtOnce         *uint
-    floorSegment           *Size
-    maxMergedSegment       *Size
-    reclaimDeletesWeight   *float32
-    expungeDeletesAllowed  *float32
-    segmentsPerTier        *float32
-    deletesPctAllowed      *float32
+func (merge *Merge) SetScheduler(scheduler *Scheduler) *Merge {
+    merge.scheduler = scheduler
+    
+    return merge
+}
+
+func (merge *Merge) SetPolicy(policy *Policy) *Merge {
+    merge.policy = policy
+    
+    return merge
+}
+
+func (merge *Merge) Source() (interface{}, error) {
+    source := map[string]interface{}{}
+
+    if merge.scheduler != nil {
+        schedulerSource, err := merge.scheduler.Source()
+        if err != nil {
+            return nil, err
+        }
+
+        source["scheduler"] = schedulerSource
+    }
+
+    if merge.policy != nil {
+        policySource, err := merge.policy.Source()
+        if err != nil {
+            return nil, err
+        }
+
+        source["policy"] = policySource
+    }
+
+    return source, nil
 }

@@ -50,6 +50,7 @@ type SimilarityIBLambdaType string
 type Similarity interface {
     Type() SimilarityType
     Name() SimilarityName
+    Source() (interface{}, error)
 }
 
 // see https://en.wikipedia.org/wiki/Okapi_BM25

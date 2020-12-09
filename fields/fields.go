@@ -2,7 +2,6 @@ package fields
 
 import (
     "errors"
-    "github.com/diez37/elastic-migrate/interfaces"
 )
 
 const (
@@ -41,8 +40,6 @@ const (
     IndexOptionFreqs     IndexOption = "freqs"
     IndexOptionPositions IndexOption = "positions"
     IndexOptionOffsets   IndexOption = "offsets"
-
-    NormalizerLowercase Normalizer = "lowercase"
 
     // see https://www.elastic.co/guide/en/elasticsearch/reference/7.x/date.html
     // see https://docs.oracle.com/javase/8/docs/api/java/util/Locale.html
@@ -192,13 +189,12 @@ var ErrorScalingFactorNotScaledFloat = errors.New("scaling_factor can only be in
 type Type string
 type Local string
 type Dynamic string
-type Normalizer string
 type DateFormat string
 type TermVector string
 type IndexOption string
 
 type Fielder interface {
-    interfaces.Sourcer
+    Source() (interface{}, error)
     GetType() Type
 }
 

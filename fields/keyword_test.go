@@ -18,7 +18,7 @@ func TestKeyword_Fields(t *testing.T) {
         ignoreAbove              *int
         indexOptions             *IndexOption
         similarity               *settings.SimilarityName
-        normalizer               *Normalizer
+        normalizer               *settings.NormalizerName
         nullValue                interface{}
         fields                   []*Field
         meta                     []*Meta
@@ -97,7 +97,7 @@ func TestKeyword_GetType(t *testing.T) {
         ignoreAbove              *int
         indexOptions             *IndexOption
         similarity               *settings.SimilarityName
-        normalizer               *Normalizer
+        normalizer               *settings.NormalizerName
         nullValue                interface{}
         fields                   []*Field
         meta                     []*Meta
@@ -150,7 +150,7 @@ func TestKeyword_Meta(t *testing.T) {
         ignoreAbove              *int
         indexOptions             *IndexOption
         similarity               *settings.SimilarityName
-        normalizer               *Normalizer
+        normalizer               *settings.NormalizerName
         nullValue                interface{}
         fields                   []*Field
         meta                     []*Meta
@@ -276,7 +276,7 @@ func TestKeyword_SetBoost(t *testing.T) {
         ignoreAbove              *int
         indexOptions             *IndexOption
         similarity               *settings.SimilarityName
-        normalizer               *Normalizer
+        normalizer               *settings.NormalizerName
         nullValue                interface{}
         fields                   []*Field
         meta                     []*Meta
@@ -340,7 +340,7 @@ func TestKeyword_SetDocValues(t *testing.T) {
         ignoreAbove              *int
         indexOptions             *IndexOption
         similarity               *settings.SimilarityName
-        normalizer               *Normalizer
+        normalizer               *settings.NormalizerName
         nullValue                interface{}
         fields                   []*Field
         meta                     []*Meta
@@ -410,7 +410,7 @@ func TestKeyword_SetEagerGlobalOrdinals(t *testing.T) {
         ignoreAbove              *int
         indexOptions             *IndexOption
         similarity               *settings.SimilarityName
-        normalizer               *Normalizer
+        normalizer               *settings.NormalizerName
         nullValue                interface{}
         fields                   []*Field
         meta                     []*Meta
@@ -483,7 +483,7 @@ func TestKeyword_SetIgnoreAbove(t *testing.T) {
         ignoreAbove              *int
         indexOptions             *IndexOption
         similarity               *settings.SimilarityName
-        normalizer               *Normalizer
+        normalizer               *settings.NormalizerName
         nullValue                interface{}
         fields                   []*Field
         meta                     []*Meta
@@ -547,7 +547,7 @@ func TestKeyword_SetIndex(t *testing.T) {
         ignoreAbove              *int
         indexOptions             *IndexOption
         similarity               *settings.SimilarityName
-        normalizer               *Normalizer
+        normalizer               *settings.NormalizerName
         nullValue                interface{}
         fields                   []*Field
         meta                     []*Meta
@@ -620,7 +620,7 @@ func TestKeyword_SetIndexOptions(t *testing.T) {
         ignoreAbove              *int
         indexOptions             *IndexOption
         similarity               *settings.SimilarityName
-        normalizer               *Normalizer
+        normalizer               *settings.NormalizerName
         nullValue                interface{}
         fields                   []*Field
         meta                     []*Meta
@@ -673,7 +673,7 @@ func TestKeyword_SetIndexOptions(t *testing.T) {
 }
 
 func TestKeyword_SetNormalizer(t *testing.T) {
-    setValue := NormalizerLowercase
+    setValue := settings.NormalizerNameLowercase
 
     type fields struct {
         docValues                *bool
@@ -686,13 +686,13 @@ func TestKeyword_SetNormalizer(t *testing.T) {
         ignoreAbove              *int
         indexOptions             *IndexOption
         similarity               *settings.SimilarityName
-        normalizer               *Normalizer
+        normalizer               *settings.NormalizerName
         nullValue                interface{}
         fields                   []*Field
         meta                     []*Meta
     }
     type args struct {
-        normalizer Normalizer
+        normalizer settings.NormalizerName
     }
     tests := []struct {
         name   string
@@ -703,7 +703,7 @@ func TestKeyword_SetNormalizer(t *testing.T) {
         {
             name:   "set",
             fields: fields{},
-            args:   args{normalizer: NormalizerLowercase},
+            args:   args{normalizer: settings.NormalizerNameLowercase},
             want:   &Keyword{normalizer: &setValue},
         },
     }
@@ -744,7 +744,7 @@ func TestKeyword_SetNorms(t *testing.T) {
         ignoreAbove              *int
         indexOptions             *IndexOption
         similarity               *settings.SimilarityName
-        normalizer               *Normalizer
+        normalizer               *settings.NormalizerName
         nullValue                interface{}
         fields                   []*Field
         meta                     []*Meta
@@ -814,7 +814,7 @@ func TestKeyword_SetNullValue(t *testing.T) {
         ignoreAbove              *int
         indexOptions             *IndexOption
         similarity               *settings.SimilarityName
-        normalizer               *Normalizer
+        normalizer               *settings.NormalizerName
         nullValue                interface{}
         fields                   []*Field
         meta                     []*Meta
@@ -905,7 +905,7 @@ func TestKeyword_SetSimilarity(t *testing.T) {
         ignoreAbove              *int
         indexOptions             *IndexOption
         similarity               *settings.SimilarityName
-        normalizer               *Normalizer
+        normalizer               *settings.NormalizerName
         nullValue                interface{}
         fields                   []*Field
         meta                     []*Meta
@@ -969,7 +969,7 @@ func TestKeyword_SetSplitQueriesOnWhitespace(t *testing.T) {
         ignoreAbove              *int
         indexOptions             *IndexOption
         similarity               *settings.SimilarityName
-        normalizer               *Normalizer
+        normalizer               *settings.NormalizerName
         nullValue                interface{}
         fields                   []*Field
         meta                     []*Meta
@@ -1039,7 +1039,7 @@ func TestKeyword_SetStore(t *testing.T) {
         ignoreAbove              *int
         indexOptions             *IndexOption
         similarity               *settings.SimilarityName
-        normalizer               *Normalizer
+        normalizer               *settings.NormalizerName
         nullValue                interface{}
         fields                   []*Field
         meta                     []*Meta
@@ -1102,7 +1102,7 @@ func TestKeyword_Source(t *testing.T) {
     ignoreAbove := 2
     indexOptions := IndexOptionFreqs
     similarity := settings.SimilarityName("test1")
-    normalizer := NormalizerLowercase
+    normalizer := settings.NormalizerNameLowercase
 
     type fields struct {
         docValues                *bool
@@ -1115,7 +1115,7 @@ func TestKeyword_Source(t *testing.T) {
         ignoreAbove              *int
         indexOptions             *IndexOption
         similarity               *settings.SimilarityName
-        normalizer               *Normalizer
+        normalizer               *settings.NormalizerName
         nullValue                interface{}
         fields                   []*Field
         meta                     []*Meta
