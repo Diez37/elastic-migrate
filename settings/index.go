@@ -207,14 +207,14 @@ func (index *Index) SetFlushAfterMerge(flushAfterMerge *Size) *Index {
     return index
 }
 
-func (index *Index) SetDefaultPipeline(defaultPipeline *PipelineName) *Index {
-    index.defaultPipeline = defaultPipeline
+func (index *Index) SetDefaultPipeline(defaultPipeline PipelineName) *Index {
+    index.defaultPipeline = &defaultPipeline
 
     return index
 }
 
-func (index *Index) SetFinalPipeline(finalPipeline *PipelineName) *Index {
-    index.finalPipeline = finalPipeline
+func (index *Index) SetFinalPipeline(finalPipeline PipelineName) *Index {
+    index.finalPipeline = &finalPipeline
 
     return index
 }
@@ -255,8 +255,8 @@ func (index *Index) SetSoftDeletes(softDeletes *SoftDeletes) *Index {
     return index
 }
 
-func (index *Index) SetCodec(codec *IndexCode) *Index {
-    index.codec = codec
+func (index *Index) SetCodec(codec IndexCode) *Index {
+    index.codec = &codec
 
     return index
 }

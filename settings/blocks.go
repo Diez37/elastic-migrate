@@ -30,12 +30,16 @@ func (blocks *Blocks) SetReadOnlyAllowDelete(readOnlyAllowDelete bool) *Blocks {
 	return blocks
 }
 
-func (blocks *Blocks) SetReadOnly(readOnly bool) {
+func (blocks *Blocks) SetReadOnly(readOnly bool) *Blocks {
 	blocks.readOnly = &readOnly
+
+	return blocks
 }
 
-func (blocks *Blocks) SetWrite(write bool) {
+func (blocks *Blocks) SetWrite(write bool) *Blocks {
 	blocks.write = &write
+
+	return blocks
 }
 
 func (blocks *Blocks) Source() (interface{}, error) {

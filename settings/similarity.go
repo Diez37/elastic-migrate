@@ -1,5 +1,7 @@
 package settings
 
+import "github.com/olivere/elastic/v7"
+
 const (
     SimilarityNameDefault SimilarityName = "default"
 
@@ -416,17 +418,21 @@ func (similarity *SimilarityScripted) Source() (interface{}, error) {
 }
 
 type SimilarityScript struct {
-    source string
+    script *elastic.Script
 }
 
-func NewSimilarityScript(source string) *SimilarityScript {
-    return &SimilarityScript{source: source}
+func NewSimilarityScript(script *elastic.Script) *SimilarityScript {
+    return &SimilarityScript{script: script}
 }
 
 func (script *SimilarityScript) Source() (interface{}, error) {
-    return map[string]interface{}{
-        "source": script.source,
-    }, nil
+    source, err := script.script.Source()
+
+    if err != nil {
+        return nil, err
+    }
+
+    return source, nil
 }
 
 // https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-similarity.html#default-base
