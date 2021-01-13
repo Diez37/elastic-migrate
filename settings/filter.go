@@ -476,14 +476,6 @@ func (filter *FilterCondition) Name() FilterName {
 }
 
 func (filter *FilterCondition) Source() (interface{}, error) {
-    if filter.script == nil {
-        return nil, FilterScriptConditionError
-    }
-
-    if len(filter.filter) == 0 {
-        return nil, FilterFiltersConditionError
-    }
-
     source := map[string]interface{}{
         "type": filter.Type(),
     }
@@ -868,8 +860,8 @@ func (filter *FilterHyphenationDecompounder) SetOnlyLongestMatch(onlyLongestMatc
 	return filter
 }
 
-func (filter *FilterHyphenationDecompounder) AddWordList(wordList string) *FilterHyphenationDecompounder {
-	filter.wordList = append(filter.wordList, wordList)
+func (filter *FilterHyphenationDecompounder) AddWordList(wordList ...string) *FilterHyphenationDecompounder {
+	filter.wordList = append(filter.wordList, wordList...)
 
 	return filter
 }
@@ -1606,20 +1598,18 @@ func (filter *FilterPredicateTokenFilter) Name() FilterName {
 }
 
 func (filter *FilterPredicateTokenFilter) Source() (interface{}, error) {
-    if filter.script == nil {
-        return nil, FilterScriptConditionError
-    }
-
     source := map[string]interface{}{
         "type": filter.Type(),
     }
 
-    script, err := filter.script.Source()
-    if err != nil {
-        return nil, err
-    }
+    if filter.script != nil {
+        script, err := filter.script.Source()
+        if err != nil {
+            return nil, err
+        }
 
-    source["script"] = script
+        source["script"] = script
+    }
 
     return source, nil
 }
@@ -2338,10 +2328,10 @@ func (filter *FilterWordDelimiter) Source() (interface{}, error) {
     }
 
     if len(filter.typeTable) > 0 {
-        typeTable := make([]string, len(filter.typeTable))
+        var typeTable []string
 
-        for index, item := range filter.typeTable {
-            typeTable[index] = item.String()
+        for _, item := range filter.typeTable {
+            typeTable = append(typeTable, item.String())
         }
 
         source["type_table"] = typeTable

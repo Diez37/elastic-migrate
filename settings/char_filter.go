@@ -51,7 +51,9 @@ func (filter *CharFilterHtmlStrip) Source() (interface{}, error) {
 		"type": filter.Type(),
 	}
 
-	source["escaped_tags"] = filter.escapedTags
+	if len(filter.escapedTags) > 0 {
+		source["escaped_tags"] = filter.escapedTags
+	}
 
 	return source, nil
 }
@@ -67,8 +69,10 @@ func NewCharFilterMapping(name string) *CharFilterMapping {
 	return &CharFilterMapping{name: CharFilterName(name)}
 }
 
-func (filter *CharFilterMapping) SetMappingsPath(mappingsPath string) {
+func (filter *CharFilterMapping) SetMappingsPath(mappingsPath string) *CharFilterMapping {
 	filter.mappingsPath = &mappingsPath
+
+	return filter
 }
 
 func (filter *CharFilterMapping) AddMappings(mappings ...*CharMapping) *CharFilterMapping {
@@ -95,10 +99,10 @@ func (filter *CharFilterMapping) Source() (interface{}, error) {
 	}
 
 	if len(filter.mappings) > 0 {
-		mappings := make([]string, len(filter.mappings))
+		var mappings []string
 
-		for index, charMapping := range filter.mappings {
-			mappings[index] = charMapping.String()
+		for _, charMapping := range filter.mappings {
+			mappings = append(mappings, charMapping.String())
 		}
 
 		source["mappings"] = mappings
@@ -132,12 +136,16 @@ func NewCharFilterPatternReplace(name string) *CharFilterPatternReplace {
 	return &CharFilterPatternReplace{name: CharFilterName(name)}
 }
 
-func (filter *CharFilterPatternReplace) SetPattern(pattern string) {
+func (filter *CharFilterPatternReplace) SetPattern(pattern string) *CharFilterPatternReplace {
 	filter.pattern = &pattern
+
+	return filter
 }
 
-func (filter *CharFilterPatternReplace) SetReplacement(replacement string) {
+func (filter *CharFilterPatternReplace) SetReplacement(replacement string) *CharFilterPatternReplace {
 	filter.replacement = &replacement
+
+	return filter
 }
 
 func (filter *CharFilterPatternReplace) AddFlags(flags ...JavaRegularFlag) *CharFilterPatternReplace {

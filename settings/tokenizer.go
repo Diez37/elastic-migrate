@@ -1,7 +1,5 @@
 package settings
 
-import "strings"
-
 const (
     TokenizerNameClassic       TokenizerName = "classic"
     TokenizerNameEdgeNgram     TokenizerName = "edge_ngram"
@@ -49,7 +47,7 @@ type Tokenizer interface {
 // see https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-chargroup-tokenizer.html
 type TokenizerCharGroup struct {
     name            TokenizerName
-    maxTokenLength  *int32
+    maxTokenLength  *uint32
     tokenizeOnChars []string
 }
 
@@ -57,7 +55,7 @@ func NewTokenizerCharGroup(name string) *TokenizerCharGroup {
     return &TokenizerCharGroup{name: TokenizerName(name)}
 }
 
-func (tokenizer *TokenizerCharGroup) SetMaxTokenLength(maxTokenLength int32) *TokenizerCharGroup {
+func (tokenizer *TokenizerCharGroup) SetMaxTokenLength(maxTokenLength uint32) *TokenizerCharGroup {
     tokenizer.maxTokenLength = &maxTokenLength
 
     return tokenizer
@@ -96,14 +94,14 @@ func (tokenizer *TokenizerCharGroup) Source() (interface{}, error) {
 // see https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-classic-tokenizer.html
 type TokenizerClassic struct {
     name           TokenizerName
-    maxTokenLength *int32
+    maxTokenLength *uint32
 }
 
 func NewTokenizerClassic(name string) *TokenizerClassic {
     return &TokenizerClassic{name: TokenizerName(name)}
 }
 
-func (tokenizer *TokenizerClassic) SetMaxTokenLength(maxTokenLength int32) *TokenizerClassic {
+func (tokenizer *TokenizerClassic) SetMaxTokenLength(maxTokenLength uint32) *TokenizerClassic {
     tokenizer.maxTokenLength = &maxTokenLength
 
     return tokenizer
@@ -193,13 +191,11 @@ func (tokenizer *TokenizerNgram) Source() (interface{}, error) {
     }
 
     if len(tokenizer.tokenChars) > 0 {
-        tokenChars := make([]string, len(tokenizer.tokenChars))
+        source["token_chars"] = tokenizer.tokenChars
+    }
 
-        for index, char := range tokenizer.tokenChars {
-            tokenChars[index] = string(char)
-        }
-
-        source["token_chars"] = tokenChars
+    if len(tokenizer.customTokenChars) > 0 {
+        source["custom_token_chars"] = tokenizer.customTokenChars
     }
 
     return source, nil
@@ -373,13 +369,13 @@ func (tokenizer *TokenizerPattern) Source() (interface{}, error) {
     }
 
     if len(tokenizer.flags) > 0 {
-        flags := make([]string, len(tokenizer.flags))
+        flags := ""
 
-        for index, flag := range tokenizer.flags {
-            flags[index] = string(flag)
+        for _, flag := range tokenizer.flags {
+            flags += string(flag) + JavaRegularFlagSeparator
         }
 
-        source["flags"] = strings.Join(flags, JavaRegularFlagSeparator)
+        source["flags"] = flags[0:len(flags)-1]
     }
 
     return source, nil
