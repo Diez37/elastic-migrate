@@ -65,8 +65,8 @@ func TestTokenCount_GetType(t *testing.T) {
 }
 
 func TestTokenCount_SetAnalyzer(t *testing.T) {
-    initAnalyzerName := settings.AnalyzerStandard
-    changeAnalyzerName := settings.AnalyzerSimple
+    initAnalyzerName := settings.AnalyzerNameStandard
+    changeAnalyzerName := settings.AnalyzerNameSimple
 
     type fields struct {
         enablePositionIncrements *bool
@@ -469,7 +469,7 @@ func TestTokenCount_SetStore(t *testing.T) {
 }
 
 func TestTokenCount_Source(t *testing.T) {
-    initAnalyzerName := settings.AnalyzerStandard
+    initAnalyzerName := settings.AnalyzerNameStandard
     initBoost := 9.0
 
     type fields struct {

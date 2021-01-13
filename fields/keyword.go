@@ -1,5 +1,7 @@
 package fields
 
+import "github.com/diez37/elastic-migrate/settings"
+
 type Keyword struct {
     docValues                *bool
     store                    *bool
@@ -10,8 +12,8 @@ type Keyword struct {
     boost                    *float64
     ignoreAbove              *int
     indexOptions             *IndexOption
-    similarity               *Similarity
-    normalizer               *Normalizer
+    similarity               *settings.SimilarityName
+    normalizer               *settings.NormalizerName
     nullValue                interface{}
     fields                   []*Field
     meta                     []*Meta
@@ -75,13 +77,13 @@ func (field *Keyword) SetIndexOptions(indexOptions IndexOption) *Keyword {
     return field
 }
 
-func (field *Keyword) SetSimilarity(similarity Similarity) *Keyword {
+func (field *Keyword) SetSimilarity(similarity settings.SimilarityName) *Keyword {
     field.similarity = &similarity
 
     return field
 }
 
-func (field *Keyword) SetNormalizer(normalizer Normalizer) *Keyword {
+func (field *Keyword) SetNormalizer(normalizer settings.NormalizerName) *Keyword {
     field.normalizer = &normalizer
 
     return field

@@ -41,7 +41,7 @@ func TestText_Fields(t *testing.T) {
         fielddataFrequencyFilter *FielddataFrequencyFilter
         indexOptions             *IndexOption
         indexPrefixes            *IndexPrefixes
-        similarity               *Similarity
+        similarity               *settings.SimilarityName
         termVector               *TermVector
         fields                   []*Field
         meta                     []*Meta
@@ -128,7 +128,7 @@ func TestText_GetType(t *testing.T) {
         fielddataFrequencyFilter *FielddataFrequencyFilter
         indexOptions             *IndexOption
         indexPrefixes            *IndexPrefixes
-        similarity               *Similarity
+        similarity               *settings.SimilarityName
         termVector               *TermVector
         fields                   []*Field
         meta                     []*Meta
@@ -189,7 +189,7 @@ func TestText_Meta(t *testing.T) {
         fielddataFrequencyFilter *FielddataFrequencyFilter
         indexOptions             *IndexOption
         indexPrefixes            *IndexPrefixes
-        similarity               *Similarity
+        similarity               *settings.SimilarityName
         termVector               *TermVector
         fields                   []*Field
         meta                     []*Meta
@@ -305,8 +305,8 @@ func TestText_Meta(t *testing.T) {
 }
 
 func TestText_SetAnalyzer(t *testing.T) {
-    initAnalyzerName := settings.AnalyzerStandard
-    changeAnalyzerName := settings.AnalyzerSimple
+    initAnalyzerName := settings.AnalyzerNameStandard
+    changeAnalyzerName := settings.AnalyzerNameSimple
 
     type fields struct {
         fielddata                *bool
@@ -323,7 +323,7 @@ func TestText_SetAnalyzer(t *testing.T) {
         fielddataFrequencyFilter *FielddataFrequencyFilter
         indexOptions             *IndexOption
         indexPrefixes            *IndexPrefixes
-        similarity               *Similarity
+        similarity               *settings.SimilarityName
         termVector               *TermVector
         fields                   []*Field
         meta                     []*Meta
@@ -398,7 +398,7 @@ func TestText_SetBoost(t *testing.T) {
         fielddataFrequencyFilter *FielddataFrequencyFilter
         indexOptions             *IndexOption
         indexPrefixes            *IndexPrefixes
-        similarity               *Similarity
+        similarity               *settings.SimilarityName
         termVector               *TermVector
         fields                   []*Field
         meta                     []*Meta
@@ -470,7 +470,7 @@ func TestText_SetEagerGlobalOrdinals(t *testing.T) {
         fielddataFrequencyFilter *FielddataFrequencyFilter
         indexOptions             *IndexOption
         indexPrefixes            *IndexPrefixes
-        similarity               *Similarity
+        similarity               *settings.SimilarityName
         termVector               *TermVector
         fields                   []*Field
         meta                     []*Meta
@@ -548,7 +548,7 @@ func TestText_SetFielddata(t *testing.T) {
         fielddataFrequencyFilter *FielddataFrequencyFilter
         indexOptions             *IndexOption
         indexPrefixes            *IndexPrefixes
-        similarity               *Similarity
+        similarity               *settings.SimilarityName
         termVector               *TermVector
         fields                   []*Field
         meta                     []*Meta
@@ -628,7 +628,7 @@ func TestText_SetFielddataFrequencyFilter(t *testing.T) {
         fielddataFrequencyFilter *FielddataFrequencyFilter
         indexOptions             *IndexOption
         indexPrefixes            *IndexPrefixes
-        similarity               *Similarity
+        similarity               *settings.SimilarityName
         termVector               *TermVector
         fields                   []*Field
         meta                     []*Meta
@@ -700,7 +700,7 @@ func TestText_SetIndex(t *testing.T) {
         fielddataFrequencyFilter *FielddataFrequencyFilter
         indexOptions             *IndexOption
         indexPrefixes            *IndexPrefixes
-        similarity               *Similarity
+        similarity               *settings.SimilarityName
         termVector               *TermVector
         fields                   []*Field
         meta                     []*Meta
@@ -781,7 +781,7 @@ func TestText_SetIndexOptions(t *testing.T) {
         fielddataFrequencyFilter *FielddataFrequencyFilter
         indexOptions             *IndexOption
         indexPrefixes            *IndexPrefixes
-        similarity               *Similarity
+        similarity               *settings.SimilarityName
         termVector               *TermVector
         fields                   []*Field
         meta                     []*Meta
@@ -853,7 +853,7 @@ func TestText_SetIndexPhrases(t *testing.T) {
         fielddataFrequencyFilter *FielddataFrequencyFilter
         indexOptions             *IndexOption
         indexPrefixes            *IndexPrefixes
-        similarity               *Similarity
+        similarity               *settings.SimilarityName
         termVector               *TermVector
         fields                   []*Field
         meta                     []*Meta
@@ -933,7 +933,7 @@ func TestText_SetIndexPrefixes(t *testing.T) {
         fielddataFrequencyFilter *FielddataFrequencyFilter
         indexOptions             *IndexOption
         indexPrefixes            *IndexPrefixes
-        similarity               *Similarity
+        similarity               *settings.SimilarityName
         termVector               *TermVector
         fields                   []*Field
         meta                     []*Meta
@@ -1005,7 +1005,7 @@ func TestText_SetNorms(t *testing.T) {
         fielddataFrequencyFilter *FielddataFrequencyFilter
         indexOptions             *IndexOption
         indexPrefixes            *IndexPrefixes
-        similarity               *Similarity
+        similarity               *settings.SimilarityName
         termVector               *TermVector
         fields                   []*Field
         meta                     []*Meta
@@ -1086,7 +1086,7 @@ func TestText_SetPositionIncrementGap(t *testing.T) {
         fielddataFrequencyFilter *FielddataFrequencyFilter
         indexOptions             *IndexOption
         indexPrefixes            *IndexPrefixes
-        similarity               *Similarity
+        similarity               *settings.SimilarityName
         termVector               *TermVector
         fields                   []*Field
         meta                     []*Meta
@@ -1143,8 +1143,8 @@ func TestText_SetPositionIncrementGap(t *testing.T) {
 }
 
 func TestText_SetSearchAnalyzer(t *testing.T) {
-    initAnalyzerName := settings.AnalyzerStandard
-    changeAnalyzerName := settings.AnalyzerSimple
+    initAnalyzerName := settings.AnalyzerNameStandard
+    changeAnalyzerName := settings.AnalyzerNameSimple
 
     type fields struct {
         fielddata                *bool
@@ -1161,7 +1161,7 @@ func TestText_SetSearchAnalyzer(t *testing.T) {
         fielddataFrequencyFilter *FielddataFrequencyFilter
         indexOptions             *IndexOption
         indexPrefixes            *IndexPrefixes
-        similarity               *Similarity
+        similarity               *settings.SimilarityName
         termVector               *TermVector
         fields                   []*Field
         meta                     []*Meta
@@ -1218,8 +1218,8 @@ func TestText_SetSearchAnalyzer(t *testing.T) {
 }
 
 func TestText_SetSearchQuoteAnalyzer(t *testing.T) {
-    initAnalyzerName := settings.AnalyzerStandard
-    changeAnalyzerName := settings.AnalyzerSimple
+    initAnalyzerName := settings.AnalyzerNameStandard
+    changeAnalyzerName := settings.AnalyzerNameSimple
 
     type fields struct {
         fielddata                *bool
@@ -1236,7 +1236,7 @@ func TestText_SetSearchQuoteAnalyzer(t *testing.T) {
         fielddataFrequencyFilter *FielddataFrequencyFilter
         indexOptions             *IndexOption
         indexPrefixes            *IndexPrefixes
-        similarity               *Similarity
+        similarity               *settings.SimilarityName
         termVector               *TermVector
         fields                   []*Field
         meta                     []*Meta
@@ -1293,8 +1293,8 @@ func TestText_SetSearchQuoteAnalyzer(t *testing.T) {
 }
 
 func TestText_SetSimilarity(t *testing.T) {
-    initValue := SimilarityClassic
-    setValue := SimilarityBM25
+    initValue := settings.SimilarityName("test1")
+    setValue := settings.SimilarityName("test2")
 
     type fields struct {
         fielddata                *bool
@@ -1311,13 +1311,13 @@ func TestText_SetSimilarity(t *testing.T) {
         fielddataFrequencyFilter *FielddataFrequencyFilter
         indexOptions             *IndexOption
         indexPrefixes            *IndexPrefixes
-        similarity               *Similarity
+        similarity               *settings.SimilarityName
         termVector               *TermVector
         fields                   []*Field
         meta                     []*Meta
     }
     type args struct {
-        similarity Similarity
+        similarity settings.SimilarityName
     }
     tests := []struct {
         name   string
@@ -1383,7 +1383,7 @@ func TestText_SetStore(t *testing.T) {
         fielddataFrequencyFilter *FielddataFrequencyFilter
         indexOptions             *IndexOption
         indexPrefixes            *IndexPrefixes
-        similarity               *Similarity
+        similarity               *settings.SimilarityName
         termVector               *TermVector
         fields                   []*Field
         meta                     []*Meta
@@ -1464,7 +1464,7 @@ func TestText_SetTermVector(t *testing.T) {
         fielddataFrequencyFilter *FielddataFrequencyFilter
         indexOptions             *IndexOption
         indexPrefixes            *IndexPrefixes
-        similarity               *Similarity
+        similarity               *settings.SimilarityName
         termVector               *TermVector
         fields                   []*Field
         meta                     []*Meta
@@ -1523,9 +1523,9 @@ func TestText_SetTermVector(t *testing.T) {
 func TestText_Source(t *testing.T) {
     boost := 2.5
     min := 1.5
-    initAnalyzerName := settings.AnalyzerStandard
+    initAnalyzerName := settings.AnalyzerNameStandard
     initIndexOptionValue := IndexOptionOffsets
-    initSimilarityOptionValue := SimilarityClassic
+    initSimilarityOptionValue := settings.SimilarityName("test1")
     initTermVectorValue := TermVectorYes
     indexPrefixesMin := 1
     initPositionIncrementGap := 9
@@ -1545,7 +1545,7 @@ func TestText_Source(t *testing.T) {
         fielddataFrequencyFilter *FielddataFrequencyFilter
         indexOptions             *IndexOption
         indexPrefixes            *IndexPrefixes
-        similarity               *Similarity
+        similarity               *settings.SimilarityName
         termVector               *TermVector
         fields                   []*Field
         meta                     []*Meta
@@ -1719,7 +1719,7 @@ func TestText_Source(t *testing.T) {
             fields: fields{similarity: &initSimilarityOptionValue},
             want: map[string]interface{}{
                 "type":       TypeText,
-                "similarity": initSimilarityOptionValue,
+                "similarity": settings.SimilarityName("test1"),
             },
             wantErr: false,
         },

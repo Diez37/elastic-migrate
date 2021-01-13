@@ -1,6 +1,8 @@
 package fields
 
-import "errors"
+import (
+    "errors"
+)
 
 const (
     TypeBinary            Type = "binary"
@@ -38,12 +40,6 @@ const (
     IndexOptionFreqs     IndexOption = "freqs"
     IndexOptionPositions IndexOption = "positions"
     IndexOptionOffsets   IndexOption = "offsets"
-
-    SimilarityBM25    Similarity = "BM25"
-    SimilarityClassic Similarity = "classic" // TF/IDF
-    SimilarityBoolean Similarity = "boolean"
-
-    NormalizerLowercase Normalizer = "lowercase"
 
     // see https://www.elastic.co/guide/en/elasticsearch/reference/7.x/date.html
     // see https://docs.oracle.com/javase/8/docs/api/java/util/Locale.html
@@ -193,17 +189,13 @@ var ErrorScalingFactorNotScaledFloat = errors.New("scaling_factor can only be in
 type Type string
 type Local string
 type Dynamic string
-type Similarity string
-type Normalizer string
 type DateFormat string
 type TermVector string
 type IndexOption string
 
 type Fielder interface {
-    Sourcer
+    Source() (interface{}, error)
     GetType() Type
 }
 
-type Sourcer interface {
-    Source() (interface{}, error)
-}
+

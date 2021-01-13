@@ -17,7 +17,7 @@ type Text struct {
     fielddataFrequencyFilter *FielddataFrequencyFilter
     indexOptions             *IndexOption
     indexPrefixes            *IndexPrefixes
-    similarity               *Similarity
+    similarity               *settings.SimilarityName
     termVector               *TermVector
     fields                   []*Field
     meta                     []*Meta
@@ -111,7 +111,7 @@ func (field *Text) SetIndexPrefixes(indexPrefixes *IndexPrefixes) *Text {
     return field
 }
 
-func (field *Text) SetSimilarity(similarity Similarity) *Text {
+func (field *Text) SetSimilarity(similarity settings.SimilarityName) *Text {
     field.similarity = &similarity
 
     return field

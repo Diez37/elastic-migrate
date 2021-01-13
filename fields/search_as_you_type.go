@@ -11,7 +11,7 @@ type SearchAsYouType struct {
     searchAnalyzer      *settings.AnalyzerName
     searchQuoteAnalyzer *settings.AnalyzerName
     indexOptions        *IndexOption
-    similarity          *Similarity
+    similarity          *settings.SimilarityName
     termVector          *TermVector
 }
 
@@ -67,7 +67,7 @@ func (field *SearchAsYouType) SetIndexOptions(indexOptions IndexOption) *SearchA
     return field
 }
 
-func (field *SearchAsYouType) SetSimilarity(similarity Similarity) *SearchAsYouType {
+func (field *SearchAsYouType) SetSimilarity(similarity settings.SimilarityName) *SearchAsYouType {
     field.similarity = &similarity
 
     return field
