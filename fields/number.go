@@ -1,5 +1,10 @@
 package fields
 
+import "errors"
+
+var ErrorScalingFactorNotSet = errors.New("scaling_factor required field on scaled_float type")
+var ErrorScalingFactorNotScaledFloat = errors.New("scaling_factor can only be installed in field type scaled_float")
+
 type Number struct {
     coerce          *bool
     docValues       *bool

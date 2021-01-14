@@ -2,6 +2,35 @@ package fields
 
 import "fmt"
 
+const (
+    // see https://www.elastic.co/guide/en/elasticsearch/reference/7.x/date.html
+    // see https://docs.oracle.com/javase/8/docs/api/java/util/Locale.html
+    LocalRoot               Local = "ROOT" // default in elasticsearch
+    LocalCanada             Local = "CANADA"
+    LocalEnglish            Local = "ENGLISH"
+    LocalFrench             Local = "FRENCH"
+    LocalGerman             Local = "GERMAN"
+    LocalItalian            Local = "ITALIAN"
+    LocalJapanese           Local = "JAPANESE"
+    LocalKorean             Local = "KOREAN"
+    LocalChinese            Local = "CHINESE"
+    LocalSimplifiedChinese  Local = "SIMPLIFIED_CHINESE"
+    LocalTraditionalChinese Local = "TRADITIONAL_CHINESE"
+    LocalFrance             Local = "FRANCE"
+    LocalGermany            Local = "GERMANY"
+    LocalItaly              Local = "ITALY"
+    LocalJapan              Local = "JAPAN"
+    LocalKorea              Local = "KOREA"
+    LocalChina              Local = "CHINA"
+    LocalPRC                Local = "PRC"
+    LocalTaiwan             Local = "TAIWAN"
+    LocalUK                 Local = "UK"
+    LocalUS                 Local = "US"
+    LocalCanadaFrench       Local = "CANADA_FRENCH"
+)
+
+type Local string
+
 type Date struct {
     docValues       *bool
     ignoreMalformed *bool

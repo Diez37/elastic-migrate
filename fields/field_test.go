@@ -6,6 +6,8 @@ import (
 )
 
 func TestField_Source(t *testing.T) {
+    boolFalse := false
+
     type fields struct {
         name  string
         field Fielder
@@ -32,7 +34,7 @@ func TestField_Source(t *testing.T) {
             name: "binary",
             fields: fields{
                 name:  "blob",
-                field: &Binary{docValues: &testFalse},
+                field: &Binary{docValues: &boolFalse},
             },
             want: map[string]interface{}{
                 "type":       TypeBinary,

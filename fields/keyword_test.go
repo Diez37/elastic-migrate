@@ -329,6 +329,9 @@ func TestKeyword_SetBoost(t *testing.T) {
 }
 
 func TestKeyword_SetDocValues(t *testing.T) {
+    boolTrue := true
+    boolFalse := false
+
     type fields struct {
         docValues                *bool
         store                    *bool
@@ -358,19 +361,19 @@ func TestKeyword_SetDocValues(t *testing.T) {
             name:   "true",
             fields: fields{},
             args:   args{docValues: true},
-            want:   &Keyword{docValues: &testTrue},
+            want:   &Keyword{docValues: &boolTrue},
         },
         {
             name:   "false",
             fields: fields{},
             args:   args{docValues: false},
-            want:   &Keyword{docValues: &testFalse},
+            want:   &Keyword{docValues: &boolFalse},
         },
         {
             name:   "change",
-            fields: fields{docValues: &testTrue},
+            fields: fields{docValues: &boolTrue},
             args:   args{docValues: false},
-            want:   &Keyword{docValues: &testFalse},
+            want:   &Keyword{docValues: &boolFalse},
         },
     }
     for _, tt := range tests {
@@ -399,6 +402,9 @@ func TestKeyword_SetDocValues(t *testing.T) {
 }
 
 func TestKeyword_SetEagerGlobalOrdinals(t *testing.T) {
+    boolTrue := true
+    boolFalse := false
+
     type fields struct {
         docValues                *bool
         store                    *bool
@@ -428,19 +434,19 @@ func TestKeyword_SetEagerGlobalOrdinals(t *testing.T) {
             name:   "true",
             fields: fields{},
             args:   args{eagerGlobalOrdinals: true},
-            want:   &Keyword{eagerGlobalOrdinals: &testTrue},
+            want:   &Keyword{eagerGlobalOrdinals: &boolTrue},
         },
         {
             name:   "false",
             fields: fields{},
             args:   args{eagerGlobalOrdinals: false},
-            want:   &Keyword{eagerGlobalOrdinals: &testFalse},
+            want:   &Keyword{eagerGlobalOrdinals: &boolFalse},
         },
         {
             name:   "change",
-            fields: fields{eagerGlobalOrdinals: &testTrue},
+            fields: fields{eagerGlobalOrdinals: &boolTrue},
             args:   args{eagerGlobalOrdinals: false},
-            want:   &Keyword{eagerGlobalOrdinals: &testFalse},
+            want:   &Keyword{eagerGlobalOrdinals: &boolFalse},
         },
     }
     for _, tt := range tests {
@@ -536,6 +542,9 @@ func TestKeyword_SetIgnoreAbove(t *testing.T) {
 }
 
 func TestKeyword_SetIndex(t *testing.T) {
+    boolTrue := true
+    boolFalse := false
+
     type fields struct {
         docValues                *bool
         store                    *bool
@@ -565,19 +574,19 @@ func TestKeyword_SetIndex(t *testing.T) {
             name:   "true",
             fields: fields{},
             args:   args{index: true},
-            want:   &Keyword{index: &testTrue},
+            want:   &Keyword{index: &boolTrue},
         },
         {
             name:   "false",
             fields: fields{},
             args:   args{index: false},
-            want:   &Keyword{index: &testFalse},
+            want:   &Keyword{index: &boolFalse},
         },
         {
             name:   "change",
-            fields: fields{index: &testTrue},
+            fields: fields{index: &boolTrue},
             args:   args{index: false},
-            want:   &Keyword{index: &testFalse},
+            want:   &Keyword{index: &boolFalse},
         },
     }
     for _, tt := range tests {
@@ -608,6 +617,10 @@ func TestKeyword_SetIndex(t *testing.T) {
 func TestKeyword_SetIndexOptions(t *testing.T) {
     initValue := IndexOptionOffsets
     setValue := IndexOptionDocs
+    indexOptionDocs := IndexOptionDocs
+    indexOptionFreqs := IndexOptionFreqs
+    indexOptionPositions := IndexOptionPositions
+    indexOptionOffsets := IndexOptionOffsets
 
     type fields struct {
         docValues                *bool
@@ -645,6 +658,26 @@ func TestKeyword_SetIndexOptions(t *testing.T) {
             fields: fields{indexOptions: &initValue},
             args:   args{indexOptions: IndexOptionDocs},
             want:   &Keyword{indexOptions: &setValue},
+        },
+        {
+            name:   "index_option_docs",
+            args:   args{indexOptions: IndexOptionDocs},
+            want:   &Keyword{indexOptions: &indexOptionDocs},
+        },
+        {
+            name:   "index_option_freqs",
+            args:   args{indexOptions: IndexOptionFreqs},
+            want:   &Keyword{indexOptions: &indexOptionFreqs},
+        },
+        {
+            name:   "index_option_positions",
+            args:   args{indexOptions: IndexOptionPositions},
+            want:   &Keyword{indexOptions: &indexOptionPositions},
+        },
+        {
+            name:   "index_option_offsets",
+            args:   args{indexOptions: IndexOptionOffsets},
+            want:   &Keyword{indexOptions: &indexOptionOffsets},
         },
     }
     for _, tt := range tests {
@@ -733,6 +766,9 @@ func TestKeyword_SetNormalizer(t *testing.T) {
 }
 
 func TestKeyword_SetNorms(t *testing.T) {
+    boolTrue := true
+    boolFalse := false
+
     type fields struct {
         docValues                *bool
         store                    *bool
@@ -762,19 +798,19 @@ func TestKeyword_SetNorms(t *testing.T) {
             name:   "true",
             fields: fields{},
             args:   args{norms: true},
-            want:   &Keyword{norms: &testTrue},
+            want:   &Keyword{norms: &boolTrue},
         },
         {
             name:   "false",
             fields: fields{},
             args:   args{norms: false},
-            want:   &Keyword{norms: &testFalse},
+            want:   &Keyword{norms: &boolFalse},
         },
         {
             name:   "change",
-            fields: fields{norms: &testTrue},
+            fields: fields{norms: &boolTrue},
             args:   args{norms: false},
-            want:   &Keyword{norms: &testFalse},
+            want:   &Keyword{norms: &boolFalse},
         },
     }
     for _, tt := range tests {
@@ -958,6 +994,9 @@ func TestKeyword_SetSimilarity(t *testing.T) {
 }
 
 func TestKeyword_SetSplitQueriesOnWhitespace(t *testing.T) {
+    boolTrue := true
+    boolFalse := false
+
     type fields struct {
         docValues                *bool
         store                    *bool
@@ -987,19 +1026,19 @@ func TestKeyword_SetSplitQueriesOnWhitespace(t *testing.T) {
             name:   "true",
             fields: fields{},
             args:   args{splitQueriesOnWhitespace: true},
-            want:   &Keyword{splitQueriesOnWhitespace: &testTrue},
+            want:   &Keyword{splitQueriesOnWhitespace: &boolTrue},
         },
         {
             name:   "false",
             fields: fields{},
             args:   args{splitQueriesOnWhitespace: false},
-            want:   &Keyword{splitQueriesOnWhitespace: &testFalse},
+            want:   &Keyword{splitQueriesOnWhitespace: &boolFalse},
         },
         {
             name:   "change",
-            fields: fields{splitQueriesOnWhitespace: &testTrue},
+            fields: fields{splitQueriesOnWhitespace: &boolTrue},
             args:   args{splitQueriesOnWhitespace: false},
-            want:   &Keyword{splitQueriesOnWhitespace: &testFalse},
+            want:   &Keyword{splitQueriesOnWhitespace: &boolFalse},
         },
     }
     for _, tt := range tests {
@@ -1028,6 +1067,9 @@ func TestKeyword_SetSplitQueriesOnWhitespace(t *testing.T) {
 }
 
 func TestKeyword_SetStore(t *testing.T) {
+    boolTrue := true
+    boolFalse := false
+
     type fields struct {
         docValues                *bool
         store                    *bool
@@ -1057,19 +1099,19 @@ func TestKeyword_SetStore(t *testing.T) {
             name:   "true",
             fields: fields{},
             args:   args{store: true},
-            want:   &Keyword{store: &testTrue},
+            want:   &Keyword{store: &boolTrue},
         },
         {
             name:   "false",
             fields: fields{},
             args:   args{store: false},
-            want:   &Keyword{store: &testFalse},
+            want:   &Keyword{store: &boolFalse},
         },
         {
             name:   "change",
-            fields: fields{store: &testTrue},
+            fields: fields{store: &boolTrue},
             args:   args{store: false},
-            want:   &Keyword{store: &testFalse},
+            want:   &Keyword{store: &boolFalse},
         },
     }
     for _, tt := range tests {
@@ -1103,6 +1145,7 @@ func TestKeyword_Source(t *testing.T) {
     indexOptions := IndexOptionFreqs
     similarity := settings.SimilarityName("test1")
     normalizer := settings.NormalizerNameLowercase
+    boolTrue := true
 
     type fields struct {
         docValues                *bool
@@ -1136,7 +1179,7 @@ func TestKeyword_Source(t *testing.T) {
         },
         {
             name:   "docValues",
-            fields: fields{docValues: &testTrue},
+            fields: fields{docValues: &boolTrue},
             want: map[string]interface{}{
                 "type":       TypeKeyword,
                 "doc_values": true,
@@ -1144,7 +1187,7 @@ func TestKeyword_Source(t *testing.T) {
         },
         {
             name:   "store",
-            fields: fields{store: &testTrue},
+            fields: fields{store: &boolTrue},
             want: map[string]interface{}{
                 "type":  TypeKeyword,
                 "store": true,
@@ -1152,7 +1195,7 @@ func TestKeyword_Source(t *testing.T) {
         },
         {
             name:   "index",
-            fields: fields{index: &testTrue},
+            fields: fields{index: &boolTrue},
             want: map[string]interface{}{
                 "type":  TypeKeyword,
                 "index": true,
@@ -1160,7 +1203,7 @@ func TestKeyword_Source(t *testing.T) {
         },
         {
             name:   "eagerGlobalOrdinals",
-            fields: fields{eagerGlobalOrdinals: &testTrue},
+            fields: fields{eagerGlobalOrdinals: &boolTrue},
             want: map[string]interface{}{
                 "type":                  TypeKeyword,
                 "eager_global_ordinals": true,
@@ -1168,7 +1211,7 @@ func TestKeyword_Source(t *testing.T) {
         },
         {
             name:   "norms",
-            fields: fields{norms: &testTrue},
+            fields: fields{norms: &boolTrue},
             want: map[string]interface{}{
                 "type":  TypeKeyword,
                 "norms": true,
@@ -1176,7 +1219,7 @@ func TestKeyword_Source(t *testing.T) {
         },
         {
             name:   "splitQueriesOnWhitespace",
-            fields: fields{splitQueriesOnWhitespace: &testTrue},
+            fields: fields{splitQueriesOnWhitespace: &boolTrue},
             want: map[string]interface{}{
                 "type":                        TypeKeyword,
                 "split_queries_on_whitespace": true,

@@ -1,6 +1,13 @@
 package fields
 
-import "github.com/diez37/elastic-migrate/settings"
+import (
+    "errors"
+    "github.com/diez37/elastic-migrate/settings"
+)
+
+var ErrorSearchAnalyzer = errors.New("analyzer must be set when search_analyzer is set")
+var ErrorShingleSizeMaximum = errors.New("max_shingle_size maximum value = 4")
+var ErrorShingleSizeMinimum = errors.New("max_shingle_size minimum value = 2")
 
 type SearchAsYouType struct {
     index               *bool

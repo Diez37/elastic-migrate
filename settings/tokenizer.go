@@ -370,7 +370,6 @@ func (tokenizer *TokenizerPattern) Source() (interface{}, error) {
 
     if len(tokenizer.flags) > 0 {
         flags := ""
-
         for _, flag := range tokenizer.flags {
             flags += string(flag) + JavaRegularFlagSeparator
         }

@@ -2,7 +2,6 @@ package settings
 
 import (
 	"fmt"
-	"strings"
 )
 
 const (
@@ -176,13 +175,12 @@ func (filter *CharFilterPatternReplace) Source() (interface{}, error) {
 	}
 
 	if len(filter.flags) > 0 {
-		flags := make([]string, len(filter.flags))
-
-		for index, flag := range filter.flags {
-			flags[index] = string(flag)
+		flags := ""
+		for _, flag := range filter.flags {
+			flags += string(flag) + JavaRegularFlagSeparator
 		}
 
-		source["flags"] = strings.Join(flags, JavaRegularFlagSeparator)
+		source["flags"] = flags[0:len(flags)-1]
 	}
 
 	return source, nil

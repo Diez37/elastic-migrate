@@ -90,6 +90,9 @@ func TestIp_SetBoost(t *testing.T) {
 }
 
 func TestIp_SetDocValues(t *testing.T) {
+    boolTrue := true
+    boolFalse := false
+
     type fields struct {
         docValues *bool
         index     *bool
@@ -110,19 +113,19 @@ func TestIp_SetDocValues(t *testing.T) {
             name:   "true",
             fields: fields{},
             args:   args{docValues: true},
-            want:   &Ip{docValues: &testTrue},
+            want:   &Ip{docValues: &boolTrue},
         },
         {
             name:   "false",
             fields: fields{},
             args:   args{docValues: false},
-            want:   &Ip{docValues: &testFalse},
+            want:   &Ip{docValues: &boolFalse},
         },
         {
             name:   "change",
-            fields: fields{docValues: &testTrue},
+            fields: fields{docValues: &boolTrue},
             args:   args{docValues: false},
-            want:   &Ip{docValues: &testFalse},
+            want:   &Ip{docValues: &boolFalse},
         },
     }
     for _, tt := range tests {
@@ -142,6 +145,9 @@ func TestIp_SetDocValues(t *testing.T) {
 }
 
 func TestIp_SetIndex(t *testing.T) {
+    boolTrue := true
+    boolFalse := false
+
     type fields struct {
         docValues *bool
         index     *bool
@@ -162,19 +168,19 @@ func TestIp_SetIndex(t *testing.T) {
             name:   "true",
             fields: fields{},
             args:   args{index: true},
-            want:   &Ip{index: &testTrue},
+            want:   &Ip{index: &boolTrue},
         },
         {
             name:   "false",
             fields: fields{},
             args:   args{index: false},
-            want:   &Ip{index: &testFalse},
+            want:   &Ip{index: &boolFalse},
         },
         {
             name:   "change",
-            fields: fields{index: &testTrue},
+            fields: fields{index: &boolTrue},
             args:   args{index: false},
-            want:   &Ip{index: &testFalse},
+            want:   &Ip{index: &boolFalse},
         },
     }
     for _, tt := range tests {
@@ -264,6 +270,9 @@ func TestIp_SetNullValue(t *testing.T) {
 }
 
 func TestIp_SetStore(t *testing.T) {
+    boolTrue := true
+    boolFalse := false
+
     type fields struct {
         docValues *bool
         index     *bool
@@ -284,19 +293,19 @@ func TestIp_SetStore(t *testing.T) {
             name:   "true",
             fields: fields{},
             args:   args{store: true},
-            want:   &Ip{store: &testTrue},
+            want:   &Ip{store: &boolTrue},
         },
         {
             name:   "false",
             fields: fields{},
             args:   args{store: false},
-            want:   &Ip{store: &testFalse},
+            want:   &Ip{store: &boolFalse},
         },
         {
             name:   "change",
-            fields: fields{store: &testTrue},
+            fields: fields{store: &boolTrue},
             args:   args{store: false},
-            want:   &Ip{store: &testFalse},
+            want:   &Ip{store: &boolFalse},
         },
     }
     for _, tt := range tests {
@@ -317,6 +326,7 @@ func TestIp_SetStore(t *testing.T) {
 
 func TestIp_Source(t *testing.T) {
     boost := 2.5
+    boolTrue := true
 
     type fields struct {
         docValues *bool
@@ -340,7 +350,7 @@ func TestIp_Source(t *testing.T) {
         },
         {
             name:   "docValues",
-            fields: fields{docValues: &testTrue},
+            fields: fields{docValues: &boolTrue},
             want: map[string]interface{}{
                 "type":       TypeIp,
                 "doc_values": true,
@@ -348,7 +358,7 @@ func TestIp_Source(t *testing.T) {
         },
         {
             name:   "store",
-            fields: fields{store: &testTrue},
+            fields: fields{store: &boolTrue},
             want: map[string]interface{}{
                 "type":  TypeIp,
                 "store": true,
@@ -364,7 +374,7 @@ func TestIp_Source(t *testing.T) {
         },
         {
             name:   "index",
-            fields: fields{index: &testTrue},
+            fields: fields{index: &boolTrue},
             want: map[string]interface{}{
                 "type":  TypeIp,
                 "index": true,

@@ -171,6 +171,9 @@ func TestTokenCount_SetBoost(t *testing.T) {
 }
 
 func TestTokenCount_SetDocValues(t *testing.T) {
+    boolTrue := true
+    boolFalse := false
+
     type fields struct {
         enablePositionIncrements *bool
         docValues                *bool
@@ -193,19 +196,19 @@ func TestTokenCount_SetDocValues(t *testing.T) {
             name:   "true",
             fields: fields{},
             args:   args{docValues: true},
-            want:   &TokenCount{docValues: &testTrue},
+            want:   &TokenCount{docValues: &boolTrue},
         },
         {
             name:   "false",
             fields: fields{},
             args:   args{docValues: false},
-            want:   &TokenCount{docValues: &testFalse},
+            want:   &TokenCount{docValues: &boolFalse},
         },
         {
             name:   "change",
-            fields: fields{docValues: &testTrue},
+            fields: fields{docValues: &boolTrue},
             args:   args{docValues: false},
-            want:   &TokenCount{docValues: &testFalse},
+            want:   &TokenCount{docValues: &boolFalse},
         },
     }
     for _, tt := range tests {
@@ -227,6 +230,9 @@ func TestTokenCount_SetDocValues(t *testing.T) {
 }
 
 func TestTokenCount_SetEnablePositionIncrements(t *testing.T) {
+    boolTrue := true
+    boolFalse := false
+
     type fields struct {
         enablePositionIncrements *bool
         docValues                *bool
@@ -249,19 +255,19 @@ func TestTokenCount_SetEnablePositionIncrements(t *testing.T) {
             name:   "true",
             fields: fields{},
             args:   args{enablePositionIncrements: true},
-            want:   &TokenCount{enablePositionIncrements: &testTrue},
+            want:   &TokenCount{enablePositionIncrements: &boolTrue},
         },
         {
             name:   "false",
             fields: fields{},
             args:   args{enablePositionIncrements: false},
-            want:   &TokenCount{enablePositionIncrements: &testFalse},
+            want:   &TokenCount{enablePositionIncrements: &boolFalse},
         },
         {
             name:   "change",
-            fields: fields{enablePositionIncrements: &testTrue},
+            fields: fields{enablePositionIncrements: &boolTrue},
             args:   args{enablePositionIncrements: false},
-            want:   &TokenCount{enablePositionIncrements: &testFalse},
+            want:   &TokenCount{enablePositionIncrements: &boolFalse},
         },
     }
     for _, tt := range tests {
@@ -283,6 +289,9 @@ func TestTokenCount_SetEnablePositionIncrements(t *testing.T) {
 }
 
 func TestTokenCount_SetIndex(t *testing.T) {
+    boolTrue := true
+    boolFalse := false
+
     type fields struct {
         enablePositionIncrements *bool
         docValues                *bool
@@ -305,19 +314,19 @@ func TestTokenCount_SetIndex(t *testing.T) {
             name:   "true",
             fields: fields{},
             args:   args{index: true},
-            want:   &TokenCount{index: &testTrue},
+            want:   &TokenCount{index: &boolTrue},
         },
         {
             name:   "false",
             fields: fields{},
             args:   args{index: false},
-            want:   &TokenCount{index: &testFalse},
+            want:   &TokenCount{index: &boolFalse},
         },
         {
             name:   "change",
-            fields: fields{index: &testTrue},
+            fields: fields{index: &boolTrue},
             args:   args{index: false},
-            want:   &TokenCount{index: &testFalse},
+            want:   &TokenCount{index: &boolFalse},
         },
     }
     for _, tt := range tests {
@@ -413,6 +422,9 @@ func TestTokenCount_SetNullValue(t *testing.T) {
 }
 
 func TestTokenCount_SetStore(t *testing.T) {
+    boolTrue := true
+    boolFalse := false
+
     type fields struct {
         enablePositionIncrements *bool
         docValues                *bool
@@ -435,19 +447,19 @@ func TestTokenCount_SetStore(t *testing.T) {
             name:   "true",
             fields: fields{},
             args:   args{store: true},
-            want:   &TokenCount{store: &testTrue},
+            want:   &TokenCount{store: &boolTrue},
         },
         {
             name:   "false",
             fields: fields{},
             args:   args{store: false},
-            want:   &TokenCount{store: &testFalse},
+            want:   &TokenCount{store: &boolFalse},
         },
         {
             name:   "change",
-            fields: fields{store: &testTrue},
+            fields: fields{store: &boolTrue},
             args:   args{store: false},
-            want:   &TokenCount{store: &testFalse},
+            want:   &TokenCount{store: &boolFalse},
         },
     }
     for _, tt := range tests {
@@ -471,6 +483,7 @@ func TestTokenCount_SetStore(t *testing.T) {
 func TestTokenCount_Source(t *testing.T) {
     initAnalyzerName := settings.AnalyzerNameStandard
     initBoost := 9.0
+    boolTrue := true
 
     type fields struct {
         enablePositionIncrements *bool
@@ -506,7 +519,7 @@ func TestTokenCount_Source(t *testing.T) {
         },
         {
             name:    "enable position increments",
-            fields:  fields{enablePositionIncrements: &testTrue},
+            fields:  fields{enablePositionIncrements: &boolTrue},
             want:    map[string]interface{}{
                 "type": TypeTokenCount,
                 "enable_position_increments": true,
@@ -524,7 +537,7 @@ func TestTokenCount_Source(t *testing.T) {
         },
         {
             name:    "doc_values",
-            fields:  fields{docValues: &testTrue},
+            fields:  fields{docValues: &boolTrue},
             want:    map[string]interface{}{
                 "type": TypeTokenCount,
                 "doc_values": true,
@@ -533,7 +546,7 @@ func TestTokenCount_Source(t *testing.T) {
         },
         {
             name:    "index",
-            fields:  fields{index: &testTrue},
+            fields:  fields{index: &boolTrue},
             want:    map[string]interface{}{
                 "type": TypeTokenCount,
                 "index": true,
@@ -542,7 +555,7 @@ func TestTokenCount_Source(t *testing.T) {
         },
         {
             name:    "nullValue",
-            fields:  fields{nullValue: testTrue},
+            fields:  fields{nullValue: boolTrue},
             want:    map[string]interface{}{
                 "type": TypeTokenCount,
                 "null_value": true,
@@ -551,7 +564,7 @@ func TestTokenCount_Source(t *testing.T) {
         },
         {
             name:    "store",
-            fields:  fields{store: &testTrue},
+            fields:  fields{store: &boolTrue},
             want:    map[string]interface{}{
                 "type": TypeTokenCount,
                 "store": true,
