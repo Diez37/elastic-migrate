@@ -41,31 +41,6 @@ const (
     IndexOptionPositions IndexOption = "positions"
     IndexOptionOffsets   IndexOption = "offsets"
 
-    // see https://www.elastic.co/guide/en/elasticsearch/reference/7.x/date.html
-    // see https://docs.oracle.com/javase/8/docs/api/java/util/Locale.html
-    LocalRoot               Local = "ROOT" // default in elasticsearch
-    LocalCanada             Local = "CANADA"
-    LocalEnglish            Local = "ENGLISH"
-    LocalFrench             Local = "FRENCH"
-    LocalGerman             Local = "GERMAN"
-    LocalItalian            Local = "ITALIAN"
-    LocalJapanese           Local = "JAPANESE"
-    LocalKorean             Local = "KOREAN"
-    LocalChinese            Local = "CHINESE"
-    LocalSimplifiedChinese  Local = "SIMPLIFIED_CHINESE"
-    LocalTraditionalChinese Local = "TRADITIONAL_CHINESE"
-    LocalFrance             Local = "FRANCE"
-    LocalGermany            Local = "GERMANY"
-    LocalItaly              Local = "ITALY"
-    LocalJapan              Local = "JAPAN"
-    LocalKorea              Local = "KOREA"
-    LocalChina              Local = "CHINA"
-    LocalPRC                Local = "PRC"
-    LocalTaiwan             Local = "TAIWAN"
-    LocalUK                 Local = "UK"
-    LocalUS                 Local = "US"
-    LocalCanadaFrench       Local = "CANADA_FRENCH"
-
     DynamicEnabled  Dynamic = "true"
     DynamicDisabled Dynamic = "false"
     DynamicStrict   Dynamic = "strict"
@@ -178,16 +153,10 @@ const (
     ShingleSizeMinimum int = 2
 )
 
-var ErrorSearchAnalyzer = errors.New("analyzer must be set when search_analyzer is set")
-var ErrorShingleSizeMaximum = errors.New("max_shingle_size maximum value = 4")
-var ErrorShingleSizeMinimum = errors.New("max_shingle_size minimum value = 2")
 var ErrorDynamicUnknownType = errors.New("dynamic unknown type")
 var ErrorSearchQuoteAnalyzer = errors.New("analyzer and search_analyzer must be set when search_quote_analyzer is set")
-var ErrorScalingFactorNotSet = errors.New("scaling_factor required field on scaled_float type")
-var ErrorScalingFactorNotScaledFloat = errors.New("scaling_factor can only be installed in field type scaled_float")
 
 type Type string
-type Local string
 type Dynamic string
 type DateFormat string
 type TermVector string

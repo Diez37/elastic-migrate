@@ -173,6 +173,9 @@ func TestObject_SetDynamic(t *testing.T) {
 }
 
 func TestObject_SetEnabled(t *testing.T) {
+    boolTrue := true
+    boolFalse := false
+
     type fields struct {
         enabled    *bool
         dynamic    *Dynamic
@@ -190,14 +193,14 @@ func TestObject_SetEnabled(t *testing.T) {
         {
             name:   "set",
             fields: fields{},
-            args:   args{enabled: testTrue},
-            want:   &Object{enabled: &testTrue},
+            args:   args{enabled: boolTrue},
+            want:   &Object{enabled: &boolTrue},
         },
         {
             name:   "change",
-            fields: fields{enabled: &testFalse},
-            args:   args{enabled: testTrue},
-            want:   &Object{enabled: &testTrue},
+            fields: fields{enabled: &boolFalse},
+            args:   args{enabled: boolTrue},
+            want:   &Object{enabled: &boolTrue},
         },
     }
     for _, tt := range tests {
@@ -217,6 +220,7 @@ func TestObject_SetEnabled(t *testing.T) {
 func TestObject_Source(t *testing.T) {
     dynamic := DynamicEnabled
     dynamicTest := Dynamic("test")
+    boolTrue := true
 
     type fields struct {
         enabled    *bool
@@ -251,7 +255,7 @@ func TestObject_Source(t *testing.T) {
         },
         {
             name:    "enabled",
-            fields:  fields{enabled: &testTrue},
+            fields:  fields{enabled: &boolTrue},
             want:    map[string]interface{}{
                 "enabled": true,
             },

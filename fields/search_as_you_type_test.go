@@ -130,6 +130,9 @@ func TestSearchAsYouType_SetAnalyzer(t *testing.T) {
 }
 
 func TestSearchAsYouType_SetIndex(t *testing.T) {
+    boolTrue := true
+    boolFalse := false
+
     type fields struct {
         index               *bool
         norms               *bool
@@ -155,19 +158,19 @@ func TestSearchAsYouType_SetIndex(t *testing.T) {
             name:   "true",
             fields: fields{},
             args:   args{index: true},
-            want:   &SearchAsYouType{index: &testTrue},
+            want:   &SearchAsYouType{index: &boolTrue},
         },
         {
             name:   "false",
             fields: fields{},
             args:   args{index: false},
-            want:   &SearchAsYouType{index: &testFalse},
+            want:   &SearchAsYouType{index: &boolFalse},
         },
         {
             name:   "change",
-            fields: fields{index: &testTrue},
+            fields: fields{index: &boolTrue},
             args:   args{index: false},
-            want:   &SearchAsYouType{index: &testFalse},
+            want:   &SearchAsYouType{index: &boolFalse},
         },
     }
     for _, tt := range tests {
@@ -310,6 +313,9 @@ func TestSearchAsYouType_SetMaxShingleSize(t *testing.T) {
 }
 
 func TestSearchAsYouType_SetNorms(t *testing.T) {
+    boolTrue := true
+    boolFalse := false
+
     type fields struct {
         index               *bool
         norms               *bool
@@ -335,19 +341,19 @@ func TestSearchAsYouType_SetNorms(t *testing.T) {
             name:   "true",
             fields: fields{},
             args:   args{norms: true},
-            want:   &SearchAsYouType{norms: &testTrue},
+            want:   &SearchAsYouType{norms: &boolTrue},
         },
         {
             name:   "false",
             fields: fields{},
             args:   args{norms: false},
-            want:   &SearchAsYouType{norms: &testFalse},
+            want:   &SearchAsYouType{norms: &boolFalse},
         },
         {
             name:   "change",
-            fields: fields{norms: &testTrue},
+            fields: fields{norms: &boolTrue},
             args:   args{norms: false},
-            want:   &SearchAsYouType{norms: &testFalse},
+            want:   &SearchAsYouType{norms: &boolFalse},
         },
     }
     for _, tt := range tests {
@@ -549,6 +555,9 @@ func TestSearchAsYouType_SetSimilarity(t *testing.T) {
 }
 
 func TestSearchAsYouType_SetStore(t *testing.T) {
+    boolTrue := true
+    boolFalse := false
+
     type fields struct {
         index               *bool
         norms               *bool
@@ -574,19 +583,19 @@ func TestSearchAsYouType_SetStore(t *testing.T) {
             name:   "true",
             fields: fields{},
             args:   args{store: true},
-            want:   &SearchAsYouType{store: &testTrue},
+            want:   &SearchAsYouType{store: &boolTrue},
         },
         {
             name:   "false",
             fields: fields{},
             args:   args{store: false},
-            want:   &SearchAsYouType{store: &testFalse},
+            want:   &SearchAsYouType{store: &boolFalse},
         },
         {
             name:   "change",
-            fields: fields{store: &testTrue},
+            fields: fields{store: &boolTrue},
             args:   args{store: false},
-            want:   &SearchAsYouType{store: &testFalse},
+            want:   &SearchAsYouType{store: &boolFalse},
         },
     }
     for _, tt := range tests {
@@ -675,6 +684,7 @@ func TestSearchAsYouType_Source(t *testing.T) {
     initIndexOptionValue := IndexOptionOffsets
     initSimilarityOptionValue := settings.SimilarityName("test1")
     initTermVectorValue := TermVectorYes
+    boolTrue := true
 
     type fields struct {
         index               *bool
@@ -750,7 +760,7 @@ func TestSearchAsYouType_Source(t *testing.T) {
         },
         {
             name:   "index",
-            fields: fields{index: &testTrue},
+            fields: fields{index: &boolTrue},
             want: map[string]interface{}{
                 "type":  TypeSearchAsYouType,
                 "index": true,
@@ -768,7 +778,7 @@ func TestSearchAsYouType_Source(t *testing.T) {
         },
         {
             name:   "norms",
-            fields: fields{norms: &testTrue},
+            fields: fields{norms: &boolTrue},
             want: map[string]interface{}{
                 "type":  TypeSearchAsYouType,
                 "norms": true,
@@ -777,7 +787,7 @@ func TestSearchAsYouType_Source(t *testing.T) {
         },
         {
             name:   "store",
-            fields: fields{store: &testTrue},
+            fields: fields{store: &boolTrue},
             want: map[string]interface{}{
                 "type":  TypeSearchAsYouType,
                 "store": true,

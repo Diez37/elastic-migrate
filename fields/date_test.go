@@ -304,8 +304,8 @@ func TestDate_Meta(t *testing.T) {
 }
 
 func TestDate_SetBoost(t *testing.T) {
-    var initBoost float64 = 9
-    var setBoost = 5.4
+    initBoost := float64(9)
+    setBoost := 5.4
 
     type fields struct {
         docValues       *bool
@@ -363,6 +363,9 @@ func TestDate_SetBoost(t *testing.T) {
 }
 
 func TestDate_SetDocValues(t *testing.T) {
+    boolTrue := true
+    boolFalse := false
+
     type fields struct {
         docValues       *bool
         ignoreMalformed *bool
@@ -388,19 +391,19 @@ func TestDate_SetDocValues(t *testing.T) {
             name:   "true",
             fields: fields{},
             args:   args{docValues: true},
-            want:   &Date{docValues: &testTrue},
+            want:   &Date{docValues: &boolTrue},
         },
         {
             name:   "false",
             fields: fields{},
             args:   args{docValues: false},
-            want:   &Date{docValues: &testFalse},
+            want:   &Date{docValues: &boolFalse},
         },
         {
             name:   "change",
-            fields: fields{docValues: &testTrue},
+            fields: fields{docValues: &boolTrue},
             args:   args{docValues: false},
-            want:   &Date{docValues: &testFalse},
+            want:   &Date{docValues: &boolFalse},
         },
     }
     for _, tt := range tests {
@@ -425,6 +428,9 @@ func TestDate_SetDocValues(t *testing.T) {
 }
 
 func TestDate_SetIgnoreMalformed(t *testing.T) {
+    boolTrue := true
+    boolFalse := false
+
     type fields struct {
         docValues       *bool
         ignoreMalformed *bool
@@ -450,19 +456,19 @@ func TestDate_SetIgnoreMalformed(t *testing.T) {
             name:   "true",
             fields: fields{},
             args:   args{ignoreMalformed: true},
-            want:   &Date{ignoreMalformed: &testTrue},
+            want:   &Date{ignoreMalformed: &boolTrue},
         },
         {
             name:   "false",
             fields: fields{},
             args:   args{ignoreMalformed: false},
-            want:   &Date{ignoreMalformed: &testFalse},
+            want:   &Date{ignoreMalformed: &boolFalse},
         },
         {
             name:   "change",
-            fields: fields{ignoreMalformed: &testTrue},
+            fields: fields{ignoreMalformed: &boolTrue},
             args:   args{ignoreMalformed: false},
-            want:   &Date{ignoreMalformed: &testFalse},
+            want:   &Date{ignoreMalformed: &boolFalse},
         },
     }
     for _, tt := range tests {
@@ -487,6 +493,9 @@ func TestDate_SetIgnoreMalformed(t *testing.T) {
 }
 
 func TestDate_SetIndex(t *testing.T) {
+    boolTrue := true
+    boolFalse := false
+
     type fields struct {
         docValues       *bool
         ignoreMalformed *bool
@@ -512,19 +521,19 @@ func TestDate_SetIndex(t *testing.T) {
             name:   "true",
             fields: fields{},
             args:   args{index: true},
-            want:   &Date{index: &testTrue},
+            want:   &Date{index: &boolTrue},
         },
         {
             name:   "false",
             fields: fields{},
             args:   args{index: false},
-            want:   &Date{index: &testFalse},
+            want:   &Date{index: &boolFalse},
         },
         {
             name:   "change",
-            fields: fields{index: &testTrue},
+            fields: fields{index: &boolTrue},
             args:   args{index: false},
-            want:   &Date{index: &testFalse},
+            want:   &Date{index: &boolFalse},
         },
     }
     for _, tt := range tests {
@@ -629,6 +638,9 @@ func TestDate_SetNullValue(t *testing.T) {
 }
 
 func TestDate_SetStore(t *testing.T) {
+    boolTrue := true
+    boolFalse := false
+
     type fields struct {
         docValues       *bool
         ignoreMalformed *bool
@@ -654,19 +666,19 @@ func TestDate_SetStore(t *testing.T) {
             name:   "true",
             fields: fields{},
             args:   args{store: true},
-            want:   &Date{store: &testTrue},
+            want:   &Date{store: &boolTrue},
         },
         {
             name:   "false",
             fields: fields{},
             args:   args{store: false},
-            want:   &Date{store: &testFalse},
+            want:   &Date{store: &boolFalse},
         },
         {
             name:   "change",
-            fields: fields{store: &testTrue},
+            fields: fields{store: &boolTrue},
             args:   args{store: false},
-            want:   &Date{store: &testFalse},
+            want:   &Date{store: &boolFalse},
         },
     }
     for _, tt := range tests {
@@ -693,6 +705,7 @@ func TestDate_SetStore(t *testing.T) {
 func TestDate_Source(t *testing.T) {
     boost := 2.5
     testLocalRoot := LocalRoot
+    boolTrue := true
 
     type fields struct {
         docValues       *bool
@@ -730,7 +743,7 @@ func TestDate_Source(t *testing.T) {
         },
         {
             name:   "docValues",
-            fields: fields{docValues: &testTrue},
+            fields: fields{docValues: &boolTrue},
             want: map[string]interface{}{
                 "type":       Type(""),
                 "doc_values": true,
@@ -739,7 +752,7 @@ func TestDate_Source(t *testing.T) {
         },
         {
             name:   "ignoreMalformed",
-            fields: fields{ignoreMalformed: &testTrue},
+            fields: fields{ignoreMalformed: &boolTrue},
             want: map[string]interface{}{
                 "type":             Type(""),
                 "ignore_malformed": true,
@@ -748,7 +761,7 @@ func TestDate_Source(t *testing.T) {
         },
         {
             name:   "index",
-            fields: fields{index: &testTrue},
+            fields: fields{index: &boolTrue},
             want: map[string]interface{}{
                 "type":  Type(""),
                 "index": true,
@@ -757,7 +770,7 @@ func TestDate_Source(t *testing.T) {
         },
         {
             name:   "store",
-            fields: fields{store: &testTrue},
+            fields: fields{store: &boolTrue},
             want: map[string]interface{}{
                 "type":  Type(""),
                 "store": true,

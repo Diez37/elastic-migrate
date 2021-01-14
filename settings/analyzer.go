@@ -1,7 +1,5 @@
 package settings
 
-import "strings"
-
 const (
     AnalyzerNameStandard   AnalyzerName = "standard"
     AnalyzerNameSimple     AnalyzerName = "simple"
@@ -221,12 +219,12 @@ func (analyzer *AnalyzerPattern) Source() (interface{}, error) {
     }
 
     if len(analyzer.flags) > 0 {
-        var flags []string
+        flags := ""
         for _, flag := range analyzer.flags {
-            flags = append(flags, string(flag))
+            flags += string(flag) + JavaRegularFlagSeparator
         }
 
-        source["flags"] = strings.Join(flags, JavaRegularFlagSeparator)
+        source["flags"] = flags[0:len(flags)-1]
     }
 
     if analyzer.lowercase != nil {

@@ -52,6 +52,9 @@ func TestRankFeature_GetType(t *testing.T) {
 }
 
 func TestRankFeature_SetPositiveScoreImpact(t *testing.T) {
+    boolTrue := true
+    boolFalse := false
+
     type fields struct {
         positiveScoreImpact *bool
     }
@@ -68,19 +71,19 @@ func TestRankFeature_SetPositiveScoreImpact(t *testing.T) {
             name:   "true",
             fields: fields{},
             args:   args{positiveScoreImpact: true},
-            want:   &RankFeature{positiveScoreImpact: &testTrue},
+            want:   &RankFeature{positiveScoreImpact: &boolTrue},
         },
         {
             name:   "false",
             fields: fields{},
             args:   args{positiveScoreImpact: false},
-            want:   &RankFeature{positiveScoreImpact: &testFalse},
+            want:   &RankFeature{positiveScoreImpact: &boolFalse},
         },
         {
             name:   "change",
-            fields: fields{positiveScoreImpact: &testTrue},
+            fields: fields{positiveScoreImpact: &boolTrue},
             args:   args{positiveScoreImpact: false},
-            want:   &RankFeature{positiveScoreImpact: &testFalse},
+            want:   &RankFeature{positiveScoreImpact: &boolFalse},
         },
     }
     for _, tt := range tests {
@@ -96,6 +99,8 @@ func TestRankFeature_SetPositiveScoreImpact(t *testing.T) {
 }
 
 func TestRankFeature_Source(t *testing.T) {
+    boolTrue := true
+
     type fields struct {
         positiveScoreImpact *bool
     }
@@ -115,7 +120,7 @@ func TestRankFeature_Source(t *testing.T) {
         },
         {
             name:    "positiveScoreImpact",
-            fields:  fields{positiveScoreImpact: &testTrue},
+            fields:  fields{positiveScoreImpact: &boolTrue},
             want:    map[string]interface{}{
                 "type": TypeRankFeature,
                 "positive_score_impact": true,

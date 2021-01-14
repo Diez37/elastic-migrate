@@ -104,6 +104,9 @@ func TestJoin_Questions(t *testing.T) {
 }
 
 func TestJoin_SetEagerGlobalOrdinals(t *testing.T) {
+    boolTrue := true
+    boolFalse := false
+
     type fields struct {
         eagerGlobalOrdinals *bool
         relations           []*Relation
@@ -121,19 +124,19 @@ func TestJoin_SetEagerGlobalOrdinals(t *testing.T) {
             name:   "true",
             fields: fields{},
             args:   args{eagerGlobalOrdinals: true},
-            want:   &Join{eagerGlobalOrdinals: &testTrue},
+            want:   &Join{eagerGlobalOrdinals: &boolTrue},
         },
         {
             name:   "false",
             fields: fields{},
             args:   args{eagerGlobalOrdinals: false},
-            want:   &Join{eagerGlobalOrdinals: &testFalse},
+            want:   &Join{eagerGlobalOrdinals: &boolFalse},
         },
         {
             name:   "change",
-            fields: fields{eagerGlobalOrdinals: &testTrue},
+            fields: fields{eagerGlobalOrdinals: &boolTrue},
             args:   args{eagerGlobalOrdinals: false},
-            want:   &Join{eagerGlobalOrdinals: &testFalse},
+            want:   &Join{eagerGlobalOrdinals: &boolFalse},
         },
     }
     for _, tt := range tests {
@@ -150,6 +153,8 @@ func TestJoin_SetEagerGlobalOrdinals(t *testing.T) {
 }
 
 func TestJoin_Source(t *testing.T) {
+    boolTrue := true
+
     type fields struct {
         eagerGlobalOrdinals *bool
         relations           []*Relation
@@ -170,10 +175,10 @@ func TestJoin_Source(t *testing.T) {
         },
         {
             name:   "eagerGlobalOrdinals",
-            fields: fields{eagerGlobalOrdinals: &testTrue},
+            fields: fields{eagerGlobalOrdinals: &boolTrue},
             want: map[string]interface{}{
                 "type":                  TypeJoin,
-                "eager_global_ordinals": testTrue,
+                "eager_global_ordinals": boolTrue,
             },
             wantErr: false,
         },

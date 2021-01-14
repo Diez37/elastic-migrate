@@ -455,6 +455,9 @@ func TestText_SetBoost(t *testing.T) {
 }
 
 func TestText_SetEagerGlobalOrdinals(t *testing.T) {
+    boolTrue := true
+    boolFalse := false
+
     type fields struct {
         fielddata                *bool
         eagerGlobalOrdinals      *bool
@@ -488,19 +491,19 @@ func TestText_SetEagerGlobalOrdinals(t *testing.T) {
             name:   "true",
             fields: fields{},
             args:   args{eagerGlobalOrdinals: true},
-            want:   &Text{eagerGlobalOrdinals: &testTrue},
+            want:   &Text{eagerGlobalOrdinals: &boolTrue},
         },
         {
             name:   "false",
             fields: fields{},
             args:   args{eagerGlobalOrdinals: false},
-            want:   &Text{eagerGlobalOrdinals: &testFalse},
+            want:   &Text{eagerGlobalOrdinals: &boolFalse},
         },
         {
             name:   "change",
-            fields: fields{eagerGlobalOrdinals: &testTrue},
+            fields: fields{eagerGlobalOrdinals: &boolTrue},
             args:   args{eagerGlobalOrdinals: false},
-            want:   &Text{eagerGlobalOrdinals: &testFalse},
+            want:   &Text{eagerGlobalOrdinals: &boolFalse},
         },
     }
     for _, tt := range tests {
@@ -533,6 +536,9 @@ func TestText_SetEagerGlobalOrdinals(t *testing.T) {
 }
 
 func TestText_SetFielddata(t *testing.T) {
+    boolTrue := true
+    boolFalse := false
+
     type fields struct {
         fielddata                *bool
         eagerGlobalOrdinals      *bool
@@ -566,19 +572,19 @@ func TestText_SetFielddata(t *testing.T) {
             name:   "true",
             fields: fields{},
             args:   args{fielddata: true},
-            want:   &Text{fielddata: &testTrue},
+            want:   &Text{fielddata: &boolTrue},
         },
         {
             name:   "false",
             fields: fields{},
             args:   args{fielddata: false},
-            want:   &Text{fielddata: &testFalse},
+            want:   &Text{fielddata: &boolFalse},
         },
         {
             name:   "change",
-            fields: fields{fielddata: &testTrue},
+            fields: fields{fielddata: &boolTrue},
             args:   args{fielddata: false},
-            want:   &Text{fielddata: &testFalse},
+            want:   &Text{fielddata: &boolFalse},
         },
     }
     for _, tt := range tests {
@@ -685,6 +691,9 @@ func TestText_SetFielddataFrequencyFilter(t *testing.T) {
 }
 
 func TestText_SetIndex(t *testing.T) {
+    boolTrue := true
+    boolFalse := false
+
     type fields struct {
         fielddata                *bool
         eagerGlobalOrdinals      *bool
@@ -718,19 +727,19 @@ func TestText_SetIndex(t *testing.T) {
             name:   "true",
             fields: fields{},
             args:   args{index: true},
-            want:   &Text{index: &testTrue},
+            want:   &Text{index: &boolTrue},
         },
         {
             name:   "false",
             fields: fields{},
             args:   args{index: false},
-            want:   &Text{index: &testFalse},
+            want:   &Text{index: &boolFalse},
         },
         {
             name:   "change",
-            fields: fields{index: &testTrue},
+            fields: fields{index: &boolTrue},
             args:   args{index: false},
-            want:   &Text{index: &testFalse},
+            want:   &Text{index: &boolFalse},
         },
     }
     for _, tt := range tests {
@@ -838,6 +847,9 @@ func TestText_SetIndexOptions(t *testing.T) {
 }
 
 func TestText_SetIndexPhrases(t *testing.T) {
+    boolTrue := true
+    boolFalse := false
+
     type fields struct {
         fielddata                *bool
         eagerGlobalOrdinals      *bool
@@ -871,19 +883,19 @@ func TestText_SetIndexPhrases(t *testing.T) {
             name:   "true",
             fields: fields{},
             args:   args{indexPhrases: true},
-            want:   &Text{indexPhrases: &testTrue},
+            want:   &Text{indexPhrases: &boolTrue},
         },
         {
             name:   "false",
             fields: fields{},
             args:   args{indexPhrases: false},
-            want:   &Text{indexPhrases: &testFalse},
+            want:   &Text{indexPhrases: &boolFalse},
         },
         {
             name:   "change",
-            fields: fields{indexPhrases: &testTrue},
+            fields: fields{indexPhrases: &boolTrue},
             args:   args{indexPhrases: false},
-            want:   &Text{indexPhrases: &testFalse},
+            want:   &Text{indexPhrases: &boolFalse},
         },
     }
     for _, tt := range tests {
@@ -990,6 +1002,9 @@ func TestText_SetIndexPrefixes(t *testing.T) {
 }
 
 func TestText_SetNorms(t *testing.T) {
+    boolTrue := true
+    boolFalse := false
+
     type fields struct {
         fielddata                *bool
         eagerGlobalOrdinals      *bool
@@ -1023,19 +1038,19 @@ func TestText_SetNorms(t *testing.T) {
             name:   "true",
             fields: fields{},
             args:   args{norms: true},
-            want:   &Text{norms: &testTrue},
+            want:   &Text{norms: &boolTrue},
         },
         {
             name:   "false",
             fields: fields{},
             args:   args{norms: false},
-            want:   &Text{norms: &testFalse},
+            want:   &Text{norms: &boolFalse},
         },
         {
             name:   "change",
-            fields: fields{norms: &testTrue},
+            fields: fields{norms: &boolTrue},
             args:   args{norms: false},
-            want:   &Text{norms: &testFalse},
+            want:   &Text{norms: &boolFalse},
         },
     }
     for _, tt := range tests {
@@ -1368,6 +1383,9 @@ func TestText_SetSimilarity(t *testing.T) {
 }
 
 func TestText_SetStore(t *testing.T) {
+    boolTrue := true
+    boolFalse := false
+
     type fields struct {
         fielddata                *bool
         eagerGlobalOrdinals      *bool
@@ -1401,19 +1419,19 @@ func TestText_SetStore(t *testing.T) {
             name:   "true",
             fields: fields{},
             args:   args{store: true},
-            want:   &Text{store: &testTrue},
+            want:   &Text{store: &boolTrue},
         },
         {
             name:   "false",
             fields: fields{},
             args:   args{store: false},
-            want:   &Text{store: &testFalse},
+            want:   &Text{store: &boolFalse},
         },
         {
             name:   "change",
-            fields: fields{store: &testTrue},
+            fields: fields{store: &boolTrue},
             args:   args{store: false},
-            want:   &Text{store: &testFalse},
+            want:   &Text{store: &boolFalse},
         },
     }
     for _, tt := range tests {
@@ -1448,6 +1466,13 @@ func TestText_SetStore(t *testing.T) {
 func TestText_SetTermVector(t *testing.T) {
     initValue := TermVectorYes
     setValue := TermVectorWithPositions
+    termVectorNo := TermVectorNo
+    termVectorYes := TermVectorYes
+    termVectorWithPositions := TermVectorWithPositions
+    termVectorWithOffsets := TermVectorWithOffsets
+    termVectorWithPositionsOffsets := TermVectorWithPositionsOffsets
+    termVectorWithPositionsPayloads := TermVectorWithPositionsPayloads
+    termVectorWithPositionsOffsetsPayloads := TermVectorWithPositionsOffsetsPayloads
 
     type fields struct {
         fielddata                *bool
@@ -1490,6 +1515,41 @@ func TestText_SetTermVector(t *testing.T) {
             args:   args{termVector: setValue},
             want:   &Text{termVector: &setValue},
         },
+        {
+            name:   "term_vector_no",
+            args:   args{termVector: TermVectorNo},
+            want:   &Text{termVector: &termVectorNo},
+        },
+        {
+            name:   "term_vector_yes",
+            args:   args{termVector: TermVectorYes},
+            want:   &Text{termVector: &termVectorYes},
+        },
+        {
+            name:   "term_vector_with_positions",
+            args:   args{termVector: TermVectorWithPositions},
+            want:   &Text{termVector: &termVectorWithPositions},
+        },
+        {
+            name:   "term_vector_with_offsets",
+            args:   args{termVector: TermVectorWithOffsets},
+            want:   &Text{termVector: &termVectorWithOffsets},
+        },
+        {
+            name:   "term_vector_with_positions_offsets",
+            args:   args{termVector: TermVectorWithPositionsOffsets},
+            want:   &Text{termVector: &termVectorWithPositionsOffsets},
+        },
+        {
+            name:   "term_vector_with_positions_payloads",
+            args:   args{termVector: TermVectorWithPositionsPayloads},
+            want:   &Text{termVector: &termVectorWithPositionsPayloads},
+        },
+        {
+            name:   "term_vector_with_positions_offsets_payloads",
+            args:   args{termVector: TermVectorWithPositionsOffsetsPayloads},
+            want:   &Text{termVector: &termVectorWithPositionsOffsetsPayloads},
+        },
     }
     for _, tt := range tests {
         t.Run(tt.name, func(t *testing.T) {
@@ -1529,6 +1589,7 @@ func TestText_Source(t *testing.T) {
     initTermVectorValue := TermVectorYes
     indexPrefixesMin := 1
     initPositionIncrementGap := 9
+    boolTrue := true
 
     type fields struct {
         fielddata                *bool
@@ -1611,7 +1672,7 @@ func TestText_Source(t *testing.T) {
         },
         {
             name:   "eager global ordinals",
-            fields: fields{eagerGlobalOrdinals: &testTrue},
+            fields: fields{eagerGlobalOrdinals: &boolTrue},
             want: map[string]interface{}{
                 "type":  TypeText,
                 "eager_global_ordinals": true,
@@ -1619,7 +1680,7 @@ func TestText_Source(t *testing.T) {
         },
         {
             name:   "fielddata",
-            fields: fields{fielddata: &testTrue},
+            fields: fields{fielddata: &boolTrue},
             want: map[string]interface{}{
                 "type":  TypeText,
                 "fielddata": true,
@@ -1651,7 +1712,7 @@ func TestText_Source(t *testing.T) {
         },
         {
             name:   "index",
-            fields: fields{index: &testTrue},
+            fields: fields{index: &boolTrue},
             want: map[string]interface{}{
                 "type":  TypeText,
                 "index": true,
@@ -1680,7 +1741,7 @@ func TestText_Source(t *testing.T) {
         },
         {
             name:   "indexPhrases",
-            fields: fields{indexPhrases: &testTrue},
+            fields: fields{indexPhrases: &boolTrue},
             want: map[string]interface{}{
                 "type":  TypeText,
                 "index_phrases": true,
@@ -1689,7 +1750,7 @@ func TestText_Source(t *testing.T) {
         },
         {
             name:   "norms",
-            fields: fields{norms: &testTrue},
+            fields: fields{norms: &boolTrue},
             want: map[string]interface{}{
                 "type":  TypeText,
                 "norms": true,
@@ -1707,7 +1768,7 @@ func TestText_Source(t *testing.T) {
         },
         {
             name:   "store",
-            fields: fields{store: &testTrue},
+            fields: fields{store: &boolTrue},
             want: map[string]interface{}{
                 "type":  TypeText,
                 "store": true,
