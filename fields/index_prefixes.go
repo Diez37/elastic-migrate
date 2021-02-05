@@ -1,41 +1,46 @@
 package fields
 
 type IndexPrefixes struct {
-    minChars *int
-    maxChars *int
+	name     FieldName
+	minChars *int
+	maxChars *int
 }
 
-func NewIndexPrefixes() *IndexPrefixes {
-    return &IndexPrefixes{}
+func NewIndexPrefixes(name string) *IndexPrefixes {
+	return &IndexPrefixes{name: FieldName(name)}
 }
 
-func (prefix *IndexPrefixes) SetMinimumChars(minimumChars int) *IndexPrefixes {
-    prefix.minChars = &minimumChars
-
-    return prefix
+func (field *IndexPrefixes) Name() FieldName {
+	return field.name
 }
 
-func (prefix *IndexPrefixes) SetMaximumChars(maximumChars int) *IndexPrefixes {
-    prefix.maxChars = &maximumChars
+func (field *IndexPrefixes) SetMinimumChars(minimumChars int) *IndexPrefixes {
+	field.minChars = &minimumChars
 
-    return prefix
+	return field
 }
 
-func (prefix *IndexPrefixes) Source() (interface{}, error) {
-    // {
-    //  "min_chars" : 1,
-    //  "max_chars" : 10
-    // }
+func (field *IndexPrefixes) SetMaximumChars(maximumChars int) *IndexPrefixes {
+	field.maxChars = &maximumChars
 
-    source := map[string]interface{}{}
+	return field
+}
 
-    if prefix.minChars != nil {
-        source["min_chars"] = *prefix.minChars
-    }
+func (field *IndexPrefixes) Source() (interface{}, error) {
+	// {
+	//  "min_chars" : 1,
+	//  "max_chars" : 10
+	// }
 
-    if prefix.maxChars != nil {
-        source["max_chars"] = *prefix.maxChars
-    }
+	source := map[string]interface{}{}
 
-    return source, nil
+	if field.minChars != nil {
+		source["min_chars"] = *field.minChars
+	}
+
+	if field.maxChars != nil {
+		source["max_chars"] = *field.maxChars
+	}
+
+	return source, nil
 }

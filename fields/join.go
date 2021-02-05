@@ -1,65 +1,70 @@
 package fields
 
 type Relation struct {
-    question string
-    answers  []string
+	question string
+	answers  []string
 }
 
 func NewRelation(question string, answers ...string) *Relation {
-    return &Relation{question: question, answers: answers}
+	return &Relation{question: question, answers: answers}
 }
 
 type Join struct {
-    eagerGlobalOrdinals *bool
-    relations           []*Relation
+	name                FieldName
+	eagerGlobalOrdinals *bool
+	relations           []*Relation
 }
 
-func NewJoin(relations ...*Relation) *Join {
-    return (&Join{}).Questions(relations...)
+func NewJoin(name string, relations ...*Relation) *Join {
+	return (&Join{name: FieldName(name)}).Questions(relations...)
+}
+
+func (field *Join) Name() FieldName {
+	return field.name
 }
 
 func (field *Join) SetEagerGlobalOrdinals(eagerGlobalOrdinals bool) *Join {
-    field.eagerGlobalOrdinals = &eagerGlobalOrdinals
+	field.eagerGlobalOrdinals = &eagerGlobalOrdinals
 
-    return field
+	return field
 }
 
 func (field *Join) Questions(relations ...*Relation) *Join {
-    field.relations = append(field.relations, relations...)
+	field.relations = append(field.relations, relations...)
 
-    return field
+	return field
 }
 
 func (field *Join) GetType() Type {
-    return TypeJoin
+	return TypeJoin
 }
 
 func (field *Join) Source() (interface{}, error) {
-    // {
-    //  "type": "join",
-    //  "relations": {
-    //    "question": ["answers", "comment"]
-    //  },
-    //  "eager_global_ordinals": false
-    // }
+	// {
+	//  "type": "join",
+	//  "relations": {
+	//    "question": ["answers", "comment"]
+	//  },
+	//  "eager_global_ordinals": false
+	// }
 
-    source := map[string]interface{}{}
+	source := map[string]interface{}{}
 
-    source["type"] = field.GetType()
+	source["type"] = field.GetType()
 
-    if field.eagerGlobalOrdinals != nil {
-        source["eager_global_ordinals"] = *field.eagerGlobalOrdinals
-    }
+	if field.eagerGlobalOrdinals != nil {
+		source["eager_global_ordinals"] = *field.eagerGlobalOrdinals
+	}
 
-    if len(field.relations) > 0 {
-        relations := map[string][]string{}
+	if len(field.relations) > 0 {
+		relations := map[string][]string{}
 
-        for _, relation := range field.relations {
-            relations[relation.question] = relation.answers
-        }
+		for _, relation := range field.relations {
+			relations[relation.question] = relation.answers
+		}
 
-        source["relations"] = relations
-    }
+		source["relations"] = relations
+	}
 
-    return source, nil
+	return source, nil
 }

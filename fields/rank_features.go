@@ -1,24 +1,29 @@
 package fields
 
 type RankFeatures struct {
+	name FieldName
 }
 
-func NewRankFeatures() *RankFeatures {
-    return &RankFeatures{}
+func NewRankFeatures(name string) *RankFeatures {
+	return &RankFeatures{name: FieldName(name)}
+}
+
+func (field *RankFeatures) Name() FieldName {
+	return field.name
 }
 
 func (field *RankFeatures) GetType() Type {
-    return TypeRankFeatures
+	return TypeRankFeatures
 }
 
 func (field *RankFeatures) Source() (interface{}, error) {
-    // {
-    //  "type": "rank_features"
-    // }
+	// {
+	//  "type": "rank_features"
+	// }
 
-    source := map[string]interface{}{}
+	source := map[string]interface{}{}
 
-    source["type"] = field.GetType()
+	source["type"] = field.GetType()
 
-    return source, nil
+	return source, nil
 }

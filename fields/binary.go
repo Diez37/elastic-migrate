@@ -1,48 +1,53 @@
 package fields
 
 type Binary struct {
-    docValues *bool
-    store     *bool
+	name      FieldName
+	docValues *bool
+	store     *bool
 }
 
-func NewBinary() *Binary {
-    return &Binary{}
+func NewBinary(name string) *Binary {
+	return &Binary{name: FieldName(name)}
+}
+
+func (field *Binary) Name() FieldName {
+	return field.name
 }
 
 func (field *Binary) SetDocValues(docValues bool) *Binary {
-    field.docValues = &docValues
+	field.docValues = &docValues
 
-    return field
+	return field
 }
 
 func (field *Binary) SetStore(store bool) *Binary {
-    field.store = &store
+	field.store = &store
 
-    return field
+	return field
 }
 
 func (field *Binary) GetType() Type {
-    return TypeBinary
+	return TypeBinary
 }
 
 func (field *Binary) Source() (interface{}, error) {
-    // {
-    //  "type": "binary",
-    //  "doc_values": false,
-    //  "store": false
-    // }
+	// {
+	//  "type": "binary",
+	//  "doc_values": false,
+	//  "store": false
+	// }
 
-    source := map[string]interface{}{}
+	source := map[string]interface{}{}
 
-    source["type"] = field.GetType()
+	source["type"] = field.GetType()
 
-    if field.docValues != nil {
-        source["doc_values"] = *field.docValues
-    }
+	if field.docValues != nil {
+		source["doc_values"] = *field.docValues
+	}
 
-    if field.store != nil {
-        source["store"] = *field.store
-    }
+	if field.store != nil {
+		source["store"] = *field.store
+	}
 
-    return source, nil
+	return source, nil
 }

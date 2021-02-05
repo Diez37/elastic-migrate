@@ -6,40 +6,49 @@ import (
 )
 
 func TestNewRange(t *testing.T) {
+	type args struct {
+		name string
+	}
 	tests := []struct {
 		name        string
 		want        *Range
-		constructor func() *Range
+		args        args
+		constructor func(name string) *Range
 	}{
 		{
 			name:        "integer",
-			want:        &Range{_type: TypeRangeInteger},
+			want:        &Range{_type: TypeRangeInteger, name: "test"},
+			args:        args{name: "test"},
 			constructor: NewRangeInteger,
 		},
 		{
 			name:        "float",
-			want:        &Range{_type: TypeRangeFloat},
+			args:        args{name: "test"},
+			want:        &Range{_type: TypeRangeFloat, name: "test"},
 			constructor: NewRangeFloat,
 		},
 		{
 			name:        "long",
-			want:        &Range{_type: TypeRangeLong},
+			args:        args{name: "test"},
+			want:        &Range{_type: TypeRangeLong, name: "test"},
 			constructor: NewRangeLong,
 		},
 		{
 			name:        "double",
-			want:        &Range{_type: TypeRangeDouble},
+			args:        args{name: "test"},
+			want:        &Range{_type: TypeRangeDouble, name: "test"},
 			constructor: NewRangeDouble,
 		},
 		{
 			name:        "ip",
-			want:        &Range{_type: TypeRangeIp},
+			args:        args{name: "test"},
+			want:        &Range{_type: TypeRangeIp, name: "test"},
 			constructor: NewRangeIp,
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := tt.constructor(); !reflect.DeepEqual(got, tt.want) {
+			if got := tt.constructor(tt.args.name); !reflect.DeepEqual(got, tt.want) {
 				t.Errorf("NewRangeDate() = %v, want %v", got, tt.want)
 			}
 		})
@@ -47,18 +56,23 @@ func TestNewRange(t *testing.T) {
 }
 
 func TestNewRangeDate(t *testing.T) {
+	type args struct {
+		name string
+	}
 	tests := []struct {
 		name string
+		args args
 		want *RangeDate
 	}{
 		{
 			name: "date",
-			want: &RangeDate{Range: Range{_type: TypeRangeDate}},
+			args: args{name: "test"},
+			want: &RangeDate{Range: Range{_type: TypeRangeDate, name: "test"}},
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := NewRangeDate(); !reflect.DeepEqual(got, tt.want) {
+			if got := NewRangeDate(tt.args.name); !reflect.DeepEqual(got, tt.want) {
 				t.Errorf("NewRangeDate() = %v, want %v", got, tt.want)
 			}
 		})

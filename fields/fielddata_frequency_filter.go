@@ -1,53 +1,58 @@
 package fields
 
-type FielddataFrequencyFilter struct {
-    min            *float64
-    max            *float64
-    minSegmentSize *int
+type FieldDataFrequencyFilter struct {
+	name           FieldName
+	min            *float64
+	max            *float64
+	minSegmentSize *int
 }
 
-func NewFielddataFrequencyFilter() *FielddataFrequencyFilter {
-    return &FielddataFrequencyFilter{}
+func NewFieldDataFrequencyFilter(name string) *FieldDataFrequencyFilter {
+	return &FieldDataFrequencyFilter{name: FieldName(name)}
 }
 
-func (fielddata *FielddataFrequencyFilter) SetMinimum(minimum float64) *FielddataFrequencyFilter {
-    fielddata.min = &minimum
-
-    return fielddata
+func (field *FieldDataFrequencyFilter) Name() FieldName {
+	return field.name
 }
 
-func (fielddata *FielddataFrequencyFilter) SetMaximum(maximum float64) *FielddataFrequencyFilter {
-    fielddata.max = &maximum
+func (field *FieldDataFrequencyFilter) SetMinimum(minimum float64) *FieldDataFrequencyFilter {
+	field.min = &minimum
 
-    return fielddata
+	return field
 }
 
-func (fielddata *FielddataFrequencyFilter) SetMinSegmentSize(minSegmentSize int) *FielddataFrequencyFilter {
-    fielddata.minSegmentSize = &minSegmentSize
+func (field *FieldDataFrequencyFilter) SetMaximum(maximum float64) *FieldDataFrequencyFilter {
+	field.max = &maximum
 
-    return fielddata
+	return field
 }
 
-func (fielddata *FielddataFrequencyFilter) Source() (interface{}, error) {
-    // {
-    //  "min": 0.001,
-    //  "max": 0.1,
-    //  "min_segment_size": 500
-    // }
+func (field *FieldDataFrequencyFilter) SetMinSegmentSize(minSegmentSize int) *FieldDataFrequencyFilter {
+	field.minSegmentSize = &minSegmentSize
 
-    source := map[string]interface{}{}
+	return field
+}
 
-    if fielddata.min != nil {
-        source["min"] = *fielddata.min
-    }
+func (field *FieldDataFrequencyFilter) Source() (interface{}, error) {
+	// {
+	//  "min": 0.001,
+	//  "max": 0.1,
+	//  "min_segment_size": 500
+	// }
 
-    if fielddata.max != nil {
-        source["max"] = *fielddata.max
-    }
+	source := map[string]interface{}{}
 
-    if fielddata.minSegmentSize != nil {
-        source["min_segment_size"] = *fielddata.minSegmentSize
-    }
+	if field.min != nil {
+		source["min"] = *field.min
+	}
 
-    return source, nil
+	if field.max != nil {
+		source["max"] = *field.max
+	}
+
+	if field.minSegmentSize != nil {
+		source["min_segment_size"] = *field.minSegmentSize
+	}
+
+	return source, nil
 }

@@ -1,139 +1,144 @@
 package fields
 
 import (
-    "fmt"
+	"fmt"
 )
 
 type Range struct {
-    coerce *bool
-    store  *bool
-    index  *bool
-    boost  *float64
-    _type  Type
+	name   FieldName
+	coerce *bool
+	store  *bool
+	index  *bool
+	boost  *float64
+	_type  Type
 }
 
-func NewRangeInteger() *Range {
-    return &Range{_type: TypeRangeInteger}
+func NewRangeInteger(name string) *Range {
+	return &Range{name: FieldName(name), _type: TypeRangeInteger}
 }
 
-func NewRangeFloat() *Range {
-    return &Range{_type: TypeRangeFloat}
+func NewRangeFloat(name string) *Range {
+	return &Range{name: FieldName(name), _type: TypeRangeFloat}
 }
 
-func NewRangeLong() *Range {
-    return &Range{_type: TypeRangeLong}
+func NewRangeLong(name string) *Range {
+	return &Range{name: FieldName(name), _type: TypeRangeLong}
 }
 
-func NewRangeDouble() *Range {
-    return &Range{_type: TypeRangeDouble}
+func NewRangeDouble(name string) *Range {
+	return &Range{name: FieldName(name), _type: TypeRangeDouble}
 }
 
-func NewRangeIp() *Range {
-    return &Range{_type: TypeRangeIp}
+func NewRangeIp(name string) *Range {
+	return &Range{name: FieldName(name), _type: TypeRangeIp}
+}
+
+func (field *Range) Name() FieldName {
+	return field.name
 }
 
 func (field *Range) SetCoerce(coerce bool) *Range {
-    field.coerce = &coerce
+	field.coerce = &coerce
 
-    return field
+	return field
 }
 
 func (field *Range) SetStore(store bool) *Range {
-    field.store = &store
+	field.store = &store
 
-    return field
+	return field
 }
 
 func (field *Range) SetIndex(index bool) *Range {
-    field.index = &index
+	field.index = &index
 
-    return field
+	return field
 }
 
 func (field *Range) SetBoost(boost float64) *Range {
-    field.boost = &boost
+	field.boost = &boost
 
-    return field
+	return field
 }
 
 func (field *Range) GetType() Type {
-    return field._type
+	return field._type
 }
 
 func (field *Range) Source() (interface{}, error) {
-    // {
-    //  "type": "integer_range",
-    //  "coerce": false,
-    //  "boost": 2,
-    //  "index": true,
-    //  "store": true
-    // }
+	// {
+	//  "type": "integer_range",
+	//  "coerce": false,
+	//  "boost": 2,
+	//  "index": true,
+	//  "store": true
+	// }
 
-    source := map[string]interface{}{}
+	source := map[string]interface{}{}
 
-    source["type"] = field.GetType()
+	source["type"] = field.GetType()
 
-    if field.store != nil {
-        source["store"] = *field.store
-    }
+	if field.store != nil {
+		source["store"] = *field.store
+	}
 
-    if field.boost != nil {
-        source["boost"] = *field.boost
-    }
+	if field.boost != nil {
+		source["boost"] = *field.boost
+	}
 
-    if field.index != nil {
-        source["index"] = *field.index
-    }
+	if field.index != nil {
+		source["index"] = *field.index
+	}
 
-    if field.coerce != nil {
-        source["coerce"] = *field.coerce
-    }
+	if field.coerce != nil {
+		source["coerce"] = *field.coerce
+	}
 
-    return source, nil
+	return source, nil
 }
 
 type RangeDate struct {
-    Range
-    formats []DateFormat
+	Range
+	formats []DateFormat
 }
 
-func NewRangeDate() *RangeDate {
-    return &RangeDate{Range: Range{_type: TypeRangeDate}}
+func NewRangeDate(name string) *RangeDate {
+	return &RangeDate{Range: Range{name: FieldName(name), _type: TypeRangeDate}}
 }
 
 func (field *RangeDate) Formats(formats ...DateFormat) *RangeDate {
-    field.formats = append(field.formats, formats...)
+	field.formats = append(field.formats, formats...)
 
-    return field
+	return field
 }
 
 func (field *RangeDate) Source() (interface{}, error) {
-    // {
-    //  "type": "integer_range",
-    //  "coerce": false,
-    //  "boost": 2,
-    //  "index": true,
-    //  "store": true,
-    //  "format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis"
-    // }
+	// {
+	//  "type": "integer_range",
+	//  "coerce": false,
+	//  "boost": 2,
+	//  "index": true,
+	//  "store": true,
+	//  "format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis"
+	// }
 
-    sourceRange, err := field.Range.Source()
-    if err != nil {
-        return nil, err
-    }
+	sourceRange, err := field.Range.Source()
+	if err != nil {
+		return nil, err
+	}
 
-    source := sourceRange.(map[string]interface{})
-    source["type"] = field.GetType()
+	source := sourceRange.(map[string]interface{})
+	source["type"] = field.GetType()
 
-    if len(field.formats) > 0 {
-        source["format"] = field.formats[0]
+	if len(field.formats) > 0 {
+		source["format"] = field.formats[0]
 
-        if len(field.formats) > 1 {
-            for _, format := range field.formats[1:] {
-                source["format"] = fmt.Sprintf("%s%s%s", source["format"], DateFormatSeparator, format)
-            }
-        }
-    }
+		if len(field.formats) > 1 {
+			for _, format := range field.formats[1:] {
+				source["format"] = fmt.Sprintf("%s%s%s", source["format"], DateFormatSeparator, format)
+			}
+		}
+	}
 
-    return source, nil
+	return source, nil
 }

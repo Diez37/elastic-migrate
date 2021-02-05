@@ -1,84 +1,89 @@
 package fields
 
 type Ip struct {
-    docValues *bool
-    index     *bool
-    store     *bool
-    boost     *float64
-    nullValue interface{}
+	name      FieldName
+	docValues *bool
+	index     *bool
+	store     *bool
+	boost     *float64
+	nullValue interface{}
 }
 
-func NewIp() *Ip {
-    return &Ip{}
+func NewIp(name string) *Ip {
+	return &Ip{name: FieldName(name)}
+}
+
+func (field *Ip) Name() FieldName {
+	return field.name
 }
 
 func (field *Ip) SetDocValues(docValues bool) *Ip {
-    field.docValues = &docValues
+	field.docValues = &docValues
 
-    return field
+	return field
 }
 
 func (field *Ip) SetStore(store bool) *Ip {
-    field.store = &store
+	field.store = &store
 
-    return field
+	return field
 }
 
 func (field *Ip) SetIndex(index bool) *Ip {
-    field.index = &index
+	field.index = &index
 
-    return field
+	return field
 }
 
 func (field *Ip) SetBoost(boost float64) *Ip {
-    field.boost = &boost
+	field.boost = &boost
 
-    return field
+	return field
 }
 
 func (field *Ip) SetNullValue(nullValue interface{}) *Ip {
-    field.nullValue = nullValue
+	field.nullValue = nullValue
 
-    return field
+	return field
 }
 
 func (field *Ip) GetType() Type {
-    return TypeIp
+	return TypeIp
 }
 
 func (field *Ip) Source() (interface{}, error) {
-    // {
-    //  "type": "ip",
-    //  "boost": 2,
-    //  "doc_values": false,
-    //  "index": true,
-    //  "null_value": "NULL",
-    //  "store": true
-    // }
+	// {
+	//  "type": "ip",
+	//  "boost": 2,
+	//  "doc_values": false,
+	//  "index": true,
+	//  "null_value": "NULL",
+	//  "store": true
+	// }
 
-    source := map[string]interface{}{}
+	source := map[string]interface{}{}
 
-    source["type"] = field.GetType()
+	source["type"] = field.GetType()
 
-    if field.docValues != nil {
-        source["doc_values"] = *field.docValues
-    }
+	if field.docValues != nil {
+		source["doc_values"] = *field.docValues
+	}
 
-    if field.store != nil {
-        source["store"] = *field.store
-    }
+	if field.store != nil {
+		source["store"] = *field.store
+	}
 
-    if field.boost != nil {
-        source["boost"] = *field.boost
-    }
+	if field.boost != nil {
+		source["boost"] = *field.boost
+	}
 
-    if field.index != nil {
-        source["index"] = *field.index
-    }
+	if field.index != nil {
+		source["index"] = *field.index
+	}
 
-    if field.nullValue != nil {
-        source["null_value"] = field.nullValue
-    }
+	if field.nullValue != nil {
+		source["null_value"] = field.nullValue
+	}
 
-    return source, nil
+	return source, nil
 }
